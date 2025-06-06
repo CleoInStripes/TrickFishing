@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class FishAIBrain : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class FishAIBrain : MonoBehaviour
 
     [SerializeField]
     private State currentState = State.Idle;
+    public State CurrentState { get { return currentState; } }
 
     [SerializeField]
     private State switchStateTarget = State.Idle;
@@ -69,6 +71,7 @@ public class FishAIBrain : MonoBehaviour
     [SerializeField]
     private bool btnSwitchState;
 
+    public UnityEvent OnAlert;
 
     private NavMeshAgent agent;
     private Vector3 roamTargetLocation;
@@ -115,6 +118,8 @@ public class FishAIBrain : MonoBehaviour
 
     public void OnAlerted()
     {
+        this.OnAlert.Invoke();
+
         // If we are chasing/attacking, we don't care about alerts - we just wanna go for the kill
         if (!nonAlertableStates.Contains(currentState))
         {

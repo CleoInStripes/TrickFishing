@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class FishSchool : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class FishSchool : MonoBehaviour
 
     [SerializeField]
     private bool isWaitingAtRoamTarget = false;
+
+    public UnityEvent OnAlert;
+    public UnityEvent OnAllFishesDead;
 
     private bool stayAtFocalPoint;
 
@@ -99,9 +103,19 @@ public class FishSchool : MonoBehaviour
                     fish.aiBrain.chainFleeWithAttack = true;
                     fish.aiBrain.followTarget = transform;
                     fish.aiBrain.SwitchState(FishAIBrain.State.Following);
+                    fish.aiBrain.OnAlert.AddListener(() =>
+                    {
+                        if (fishes.Contains(fish)) {
+                            OnAlert.Invoke();
+                        }
+                    });
                     fish.OnDeath.AddListener(() =>
                     {
                         fishes.Remove(fish);
+                        if (fishes.Count == 0)
+                        {
+                            OnAllFishesDead.Invoke();
+                        }
                     });
                     fishes.Add(fish);
                 }
@@ -125,7 +139,11 @@ public class FishSchool : MonoBehaviour
         foreach (var fish in fishes)
         {
             fish.aiBrain.followTarget = null;
-            fish.aiBrain.SwitchState(fish.aiBrain.alertSwitchState);
+            if (fish.aiBrain.CurrentState == FishAIBrain.State.Following)
+            {
+                fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
+            }
         }
+        fishes.Clear();
     }
 }

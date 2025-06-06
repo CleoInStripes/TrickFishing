@@ -14,14 +14,12 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     [Header("Level References")]
     public Transform initialFishSpawnSpotsHolder;
-    public List<Transform> capturePoints;
 
     [Header("Misc")]
     public LevelSettings settings;
 
     [ReadOnly] public bool isGameOver = false;
 
-    private Randomizer<Transform> capturePointsRandomizer;
     private SimpleTimer timer = new SimpleTimer();
 
     // Start is called before the first frame update
@@ -29,8 +27,6 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     {
         Time.timeScale = 1;
         HelperUtilities.UpdateCursorLock(true);
-
-        capturePointsRandomizer = new Randomizer<Transform>(capturePoints);
 
         Initialize();
     }

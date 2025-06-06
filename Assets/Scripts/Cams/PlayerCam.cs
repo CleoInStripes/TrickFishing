@@ -4,7 +4,7 @@ public class PlayerCam : SingletonMonoBehaviour<PlayerCam>
 {
     public Transform cameraPosition;
 
-    public Camera cam;
+    [HideInInspector] public Camera cam;
 
     private new void Awake()
     {

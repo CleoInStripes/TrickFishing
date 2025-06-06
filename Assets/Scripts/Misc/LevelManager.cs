@@ -12,15 +12,17 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         public float difficultyLevel = 0.5f;
     }
 
+    [Header("Level References")]
+    public Transform initialFishSpawnSpotsHolder;
+    public List<Transform> capturePoints;
+
+    [Header("Misc")]
     public LevelSettings settings;
 
-    public List<Transform> playerSpawnPoints;
-
-    Randomizer<Transform> playerSpawnRandomizer;
-
-    public SimpleTimer timer = new SimpleTimer();
-
     [ReadOnly] public bool isGameOver = false;
+
+    private Randomizer<Transform> capturePointsRandomizer;
+    private SimpleTimer timer = new SimpleTimer();
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         Time.timeScale = 1;
         HelperUtilities.UpdateCursorLock(true);
 
-        playerSpawnRandomizer = new Randomizer<Transform>(playerSpawnPoints);
+        capturePointsRandomizer = new Randomizer<Transform>(capturePoints);
 
         Initialize();
     }

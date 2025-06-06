@@ -27,7 +27,6 @@ public class PlayerCam : SingletonMonoBehaviour<PlayerCam>
         Cursor.visible = false;
     }
 
-
     void Update()
     {
         //connect camera to player view

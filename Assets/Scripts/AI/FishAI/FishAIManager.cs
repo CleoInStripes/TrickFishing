@@ -17,6 +17,10 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     [Header("Targeted Spawning")]
     public RangeFloat targetedSpawnRadiusRange = new(5f, 15f);
 
+    [Header("Alerting")]
+    public bool enableAlerting = true;
+    public RangeFloat alertRadiusRange = new(10f, 12f);
+
     [Header("Misc")]
     public float spawnSampleRadius = 2f;
     public int maxNavMeshSampleAttempts = 10;
@@ -90,6 +94,13 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     {
         var fish = Instantiate(fishAIPrefab, spawnPosition, spawnRotation);
         var fishModel = fish.GetComponent<FishAIModel>();
+        fishModel.health.OnDamageTaken.AddListener(() =>
+        {
+            if (enableAlerting)
+            {
+                AlertFishesAround(fish.transform.position, alertRadiusRange.GetRandom());
+            }
+        });
         fishModel.health.OnHealthDepleted.AddListener(() => spawnedFishes.Remove(fishModel));
         spawnedFishes.Add(fishModel);
     }
@@ -114,5 +125,16 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
         result = Vector3.zero;
         return false;
+    }
+
+    void AlertFishesAround(Vector3 center, float radius)
+    {
+        foreach (var fish in spawnedFishes)
+        {
+            if (Vector3.Distance(fish.transform.position, center) <= radius)
+            {
+                fish.aiBrain.SwitchState(FishAIBrain.State.Chasing);
+            }
+        }
     }
 }

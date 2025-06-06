@@ -17,6 +17,8 @@ public class FishAIModel : MonoBehaviour
 
     [HideInInspector]
     public Health health;
+    [HideInInspector]
+    public FishAIBrain aiBrain;
 
     private Tween swimYTween;
     private Tween swimYLongTermTween;
@@ -24,6 +26,7 @@ public class FishAIModel : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
+        aiBrain = GetComponent<FishAIBrain>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

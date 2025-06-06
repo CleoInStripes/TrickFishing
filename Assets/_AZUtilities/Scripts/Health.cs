@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
     {
         if (startWithMaxHealth)
         {
-            currentHealth = maxHealth;
+            ResetHealth();
         }
     }
 
@@ -42,6 +42,12 @@ public class Health : MonoBehaviour
     {
         currentHealth += updateAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        healthDepleted = false;
     }
 
     public void TakeDamage(float damage)

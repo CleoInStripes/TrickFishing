@@ -8,16 +8,23 @@ public class FishAIBrain : MonoBehaviour
         Idle,
         Roaming,
         Chasing,
-        Attacking
+        Attacking,
+        Fleeing,
     }
 
-    [Header("Roam")]
+    [Header("Roaming")]
     public RangeFloat roamRange;
     public RangeFloat waitTimeRangeAtRoamTarget;
-
     [SerializeField]
     private bool isWaitingAtRoamTarget = false;
 
+    [Header("Fleeing")]
+    public RangeFloat fleeDistanceRange;
+    public float fleeAngleMaxDegrees = 30f;
+    public float fleeSpeedMultiplier = 2f;
+
+    [Header("Alerting")]
+    public State alertSwitchState = State.Fleeing;
 
     [Header("DEBUG")]
 
@@ -35,9 +42,16 @@ public class FishAIBrain : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 roamTargetLocation;
 
+    private float originalSpeed;
+    private float originalAngularSpeed;
+    private float originalAcceleration;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        originalSpeed = agent.speed;
+        originalAngularSpeed = agent.angularSpeed;
+        originalAcceleration = agent.acceleration;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,6 +75,11 @@ public class FishAIBrain : MonoBehaviour
         OnStateEnter(currentState, prevState);
     }
 
+    public void OnAlerted()
+    {
+        SwitchState(alertSwitchState);
+    }
+
     public void BtnExecute_SwitchState()
     {
         currentState = switchStateTarget;
@@ -73,6 +92,11 @@ public class FishAIBrain : MonoBehaviour
             case State.Roaming:
                 isWaitingAtRoamTarget = false;
                 break;
+            case State.Fleeing:
+                agent.speed = originalSpeed;
+                agent.angularSpeed = originalAngularSpeed;
+                agent.acceleration = originalAcceleration;
+                break;
         }
     }
 
@@ -82,6 +106,12 @@ public class FishAIBrain : MonoBehaviour
         {
             case State.Roaming:
                 PickNewRoamDestination();
+                break;
+            case State.Fleeing:
+                agent.speed = originalSpeed * fleeSpeedMultiplier;
+                agent.angularSpeed = originalAngularSpeed * fleeSpeedMultiplier;
+                agent.acceleration = originalAcceleration * fleeSpeedMultiplier;
+                PickNewFleeDestination();
                 break;
         }
     }
@@ -100,10 +130,13 @@ public class FishAIBrain : MonoBehaviour
                 break;
             case State.Attacking:
                 break;
+            case State.Fleeing:
+                HandleFleeingUpdate();
+                break;
         }
     }
 
-    // Roam
+    // Roaming
 
     void PerformRoam()
     {
@@ -122,17 +155,44 @@ public class FishAIBrain : MonoBehaviour
             {
                 agent.SetDestination(target);
             }
+            else
+            {
+                Debug.LogError("Could not find a roaming position on the Nav Mesh");
+            }
         }
         isWaitingAtRoamTarget = false;
     }
 
-    // Chase
+    // Chasing
 
     void PerformChase()
     {
         if (PlayerModel.Instance)
         {
             agent.SetDestination(PlayerModel.Instance.transform.position);
+        }
+    }
+
+    // Fleeing
+
+    void PickNewFleeDestination()
+    {
+        if (currentState == State.Fleeing)
+        {
+            var fleeDir = (transform.position - PlayerModel.Instance.transform.position).normalized;
+            if (FishAIManager.Instance.TryGetRandomNavMeshLocationInDirection(transform.position, fleeDir, fleeAngleMaxDegrees, fleeDistanceRange, out Vector3 target))
+            {
+                DebugExtension.DebugWireSphere(target);
+                agent.SetDestination(target);
+            }
+        }
+    }
+
+    void HandleFleeingUpdate()
+    {
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            SwitchState(State.Roaming);
         }
     }
 

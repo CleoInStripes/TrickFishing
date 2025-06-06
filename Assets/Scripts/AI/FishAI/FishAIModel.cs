@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class FishAIModel : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class FishAIModel : MonoBehaviour
     public Health health;
     [HideInInspector]
     public FishAIBrain aiBrain;
+    [HideInInspector]
+    public NavMeshAgent agent;
+
+    public UnityEvent OnDeath;
 
     private Tween swimYTween;
     private Tween swimYLongTermTween;
@@ -27,6 +32,7 @@ public class FishAIModel : MonoBehaviour
     {
         health = GetComponent<Health>();
         aiBrain = GetComponent<FishAIBrain>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,8 +72,9 @@ public class FishAIModel : MonoBehaviour
 
     public void OnDead()
     {
-        //Debug.Log("Fish is dead");
-        Destroy(gameObject);
+        // TODO: Play animation, particle fx, etc..
+
+        OnDeath.Invoke();
     }
 
     void OnDestroy()

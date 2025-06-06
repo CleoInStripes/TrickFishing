@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Splines;
 using static UnityEditor.FilePathAttribute;
+using static UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 {
-    public GameObject fishAIPrefab;
+    [Header("Fish Prefabs")]
+    public Randomizer<FishAIModel> initialFishAIPrefabs;
 
     [Header("Initial Spawning")]
     public RangeInt initialSpawnCountRangePerSpot = new(2, 5);
     public RangeFloat initialSpawnRadiusRange = new(0f, 15f);
+
+    [Header("Respawning")]
+    public RangeFloat respawnRadiusRange = new(40f, 70f);
 
     [Header("Targeted Spawning")]
     public RangeFloat targetedSpawnRadiusRange = new(5f, 15f);
@@ -38,6 +44,8 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        initialFishAIPrefabs.Shuffle();
+
         SpawnFishesInInitialSpots();
     }
 
@@ -47,7 +55,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         
     }
 
-    Transform GetTargetTransform()
+    Transform GetPlayerTransform()
     {
         return PlayerModel.Instance.transform;
     }
@@ -59,12 +67,16 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
             var spawnCount = initialSpawnCountRangePerSpot.GetRandom();
             for (int i = 0; i < spawnCount; i++)
             {
-                var targetTransform = GetTargetTransform();
+                var targetTransform = GetPlayerTransform();
                 Vector3 spawnPosition;
                 if (TryGetRandomNavMeshLocation(spawnSpot.position, initialSpawnRadiusRange, out spawnPosition))
                 {
                     var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-                    SpawnFish(spawnPosition, spawnRotation);
+                    var fish = SpawnFish(initialFishAIPrefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation, false);
+                    fish.OnDeath.AddListener(() =>
+                    {
+                        RespawnFishAwayFromPlayer(fish);
+                    });
                 }
                 else
                 {
@@ -73,16 +85,38 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
             }
         }
     }
-
-    void SpawnNewFishAwayFromTarget()
+    
+    void RespawnFishAwayFromPlayer(FishAIModel fish)
     {
-        var targetTransform = GetTargetTransform();
+        var targetTransform = GetPlayerTransform();
+        Vector3 respawnPosition;
+        if (TryGetRandomNavMeshLocation(targetTransform.position, targetedSpawnRadiusRange, out respawnPosition))
+        {
+            var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+            // Teleport the agent
+            fish.agent.Warp(respawnPosition);
+            fish.agent.ResetPath();
+
+            fish.health.ResetHealth();
+            fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
+        }
+        else
+        {
+            Debug.LogError("Could not find a respawn position on the Nav Mesh. Destroying Fish");
+            Destroy(fish.gameObject);
+            spawnedFishes.Remove(fish);
+        }
+    }
+
+    void SpawnNewFishAwayFromPlayer(GameObject prefab)
+    {
+        var targetTransform = GetPlayerTransform();
         Vector3 spawnPosition;
         if (TryGetRandomNavMeshLocation(targetTransform.position, targetedSpawnRadiusRange, out spawnPosition))
         {
-            var dirToTarget = targetTransform.position - spawnPosition;
-            var spawnRotation = Quaternion.LookRotation(dirToTarget, Vector3.up);
-            SpawnFish(spawnPosition, spawnRotation);
+            var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+            SpawnFish(prefab, spawnPosition, spawnRotation);
         } 
         else
         {
@@ -90,9 +124,9 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         }
     }
 
-    void SpawnFish(Vector3 spawnPosition, Quaternion spawnRotation)
+    FishAIModel SpawnFish(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, bool destroyOnDeath = true)
     {
-        var fish = Instantiate(fishAIPrefab, spawnPosition, spawnRotation);
+        var fish = Instantiate(prefab, spawnPosition, spawnRotation);
         var fishModel = fish.GetComponent<FishAIModel>();
         fishModel.health.OnDamageTaken.AddListener(() =>
         {
@@ -101,8 +135,18 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
                 AlertFishesAround(fish.transform.position, alertRadiusRange.GetRandom());
             }
         });
-        fishModel.health.OnHealthDepleted.AddListener(() => spawnedFishes.Remove(fishModel));
+
+        if (destroyOnDeath)
+        {
+            fishModel.OnDeath.AddListener(() =>
+            {
+                Destroy(fishModel.gameObject);
+                spawnedFishes.Remove(fishModel);
+            });
+        }
+
         spawnedFishes.Add(fishModel);
+        return fishModel;
     }
 
     public bool TryGetRandomNavMeshLocation(Vector3 center, RangeFloat range, out Vector3 result)
@@ -111,9 +155,37 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         {
             // Get random direction on the XZ plane
             Vector2 randomCircle = Random.insideUnitCircle.normalized;
+
             float distance = Random.Range(range.min, range.max);
             Vector3 offset = new Vector3(randomCircle.x, 0f, randomCircle.y) * distance;
+            Vector3 potentialPosition = center + offset;
 
+            if (NavMesh.SamplePosition(potentialPosition, out NavMeshHit hit, spawnSampleRadius, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+
+        result = Vector3.zero;
+        return false;
+    }
+
+    public bool TryGetRandomNavMeshLocationInDirection(Vector3 center, Vector3 direction, float maxAngleDegrees, RangeFloat range, out Vector3 result)
+    {
+        direction.y = 0;
+        direction.Normalize();
+        maxAngleDegrees = Mathf.Clamp(maxAngleDegrees, 0, 180);
+
+        for (int i = 0; i < maxNavMeshSampleAttempts; i++)
+        {
+            // Pick a random angle within the cone
+            float angleOffset = Random.Range(-maxAngleDegrees / 2f, maxAngleDegrees / 2f);
+            Quaternion rotation = Quaternion.Euler(0, angleOffset, 0);
+            Vector3 rotatedDirection = rotation * direction;
+
+            float distance = Random.Range(range.min, range.max);
+            Vector3 offset = rotatedDirection * distance;
             Vector3 potentialPosition = center + offset;
 
             if (NavMesh.SamplePosition(potentialPosition, out NavMeshHit hit, spawnSampleRadius, NavMesh.AllAreas))
@@ -133,7 +205,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         {
             if (Vector3.Distance(fish.transform.position, center) <= radius)
             {
-                fish.aiBrain.SwitchState(FishAIBrain.State.Chasing);
+                fish.aiBrain.OnAlerted();
             }
         }
     }

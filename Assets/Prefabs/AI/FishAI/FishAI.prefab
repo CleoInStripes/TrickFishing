@@ -383,6 +383,9 @@ MonoBehaviour:
   swimYLongTermDurationRange:
     min: 5
     max: 7
+  health: {fileID: 0}
+  aiBrain: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!114 &5471044649128888043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +404,11 @@ MonoBehaviour:
   waitTimeRangeAtRoamTarget:
     min: 0
     max: 0
+  fleeDistanceRange:
+    min: 50
+    max: 100
+  fleeAngleMaxDegrees: 90
+  fleeSpeedMultiplier: 3
   isWaitingAtRoamTarget: 0
   currentState: 0
   switchStateTarget: 0

@@ -17,7 +17,7 @@ public class gun : MonoBehaviour
 
     public bool Automatic;
 
-    public Camera fpsCam;
+    private Camera fpsCam;
 
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;

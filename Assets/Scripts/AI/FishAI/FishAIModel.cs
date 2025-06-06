@@ -1,21 +1,37 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class FishAIModel : MonoBehaviour
 {
     public Transform avatarRoot;
+    public Transform avatarYControl;
     public RangeFloat avatarYOffsetRange;
 
     [Header("Swimming")]
     public RangeFloat swimYRange;
     public RangeFloat swimYDurationRange;
+    public RangeFloat swimYLongTermRange;
+    public RangeFloat swimYLongTermDurationRange;
+
+    [HideInInspector]
+    public Health health;
+
+    private Tween swimYTween;
+    private Tween swimYLongTermTween;
+
+    private void Awake()
+    {
+        health = GetComponent<Health>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         RandomizeYOffset();
         PlaySwimmingAnimationAlongYAxis();
+        PlayLongTermSwimmingAnimationAlongYAxis();
     }
 
     // Update is called once per frame
@@ -31,8 +47,28 @@ public class FishAIModel : MonoBehaviour
 
     void PlaySwimmingAnimationAlongYAxis()
     {
-        avatarRoot.DOMoveY(avatarRoot.position.y + swimYRange.GetRandom(), swimYDurationRange.GetRandom())
+        swimYTween = avatarYControl.DOLocalMoveY(avatarYControl.localPosition.y + swimYRange.GetRandom(), swimYDurationRange.GetRandom())
                  .SetLoops(-1, LoopType.Yoyo)
-                 .SetEase(Ease.InOutSine);
+                 .SetEase(Ease.InOutSine)
+                 .SetTarget(this);
+    }
+
+    void PlayLongTermSwimmingAnimationAlongYAxis()
+    {
+        swimYLongTermTween = avatarRoot.DOLocalMoveY(avatarRoot.localPosition.y + swimYLongTermRange.GetRandom(), swimYLongTermDurationRange.GetRandom())
+                 .SetLoops(-1, LoopType.Yoyo)
+                 .SetEase(Ease.InOutSine)
+                 .SetTarget(this);
+    }
+
+    public void OnDead()
+    {
+        //Debug.Log("Fish is dead");
+        Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        DOTween.Kill(this);
     }
 }

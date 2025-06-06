@@ -45,7 +45,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
     Transform GetTargetTransform()
     {
-        return FishAITarget.Instance?.transform ?? transform;
+        return PlayerModel.Instance.transform;
     }
 
     void SpawnFishesInInitialSpots()
@@ -60,12 +60,11 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
                 if (TryGetRandomNavMeshLocation(spawnSpot.position, initialSpawnRadiusRange, out spawnPosition))
                 {
                     var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-                    var fish = Instantiate(fishAIPrefab, spawnPosition, spawnRotation);
-                    spawnedFishes.Add(fish.GetComponent<FishAIModel>());
+                    SpawnFish(spawnPosition, spawnRotation);
                 }
                 else
                 {
-                    Console.Error.WriteLine("Could not find a random position on the Nav Mesh");
+                    Debug.LogError("Could not find a random position on the Nav Mesh");
                 }
             }
         }
@@ -79,15 +78,23 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         {
             var dirToTarget = targetTransform.position - spawnPosition;
             var spawnRotation = Quaternion.LookRotation(dirToTarget, Vector3.up);
-            Instantiate(fishAIPrefab, spawnPosition, spawnRotation);
+            SpawnFish(spawnPosition, spawnRotation);
         } 
         else
         {
-            Console.Error.WriteLine("Could not find a random position on the Nav Mesh");
+            Debug.LogError("Could not find a random position on the Nav Mesh");
         }
     }
 
-    bool TryGetRandomNavMeshLocation(Vector3 center, RangeFloat range, out Vector3 result)
+    void SpawnFish(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        var fish = Instantiate(fishAIPrefab, spawnPosition, spawnRotation);
+        var fishModel = fish.GetComponent<FishAIModel>();
+        fishModel.health.OnHealthDepleted.AddListener(() => spawnedFishes.Remove(fishModel));
+        spawnedFishes.Add(fishModel);
+    }
+
+    public bool TryGetRandomNavMeshLocation(Vector3 center, RangeFloat range, out Vector3 result)
     {
         for (int i = 0; i < maxNavMeshSampleAttempts; i++)
         {

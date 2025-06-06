@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCam : MonoBehaviour
+public class PlayerCam : SingletonMonoBehaviour<PlayerCam>
 {
     public Transform cameraPosition;
 

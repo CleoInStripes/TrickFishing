@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public float timeSinceLastDamage => Time.time - timeOfLastDamage;
 
     public bool startWithMaxHealth = true;
+    public bool IsAlive => !healthDepleted;
+
 
     public UnityEvent OnDamageTaken;
     public UnityEvent OnHealthDepleted;

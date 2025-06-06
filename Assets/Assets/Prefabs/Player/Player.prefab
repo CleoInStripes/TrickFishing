@@ -236,12 +236,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480183105943207456}
+  - component: {fileID: 3846438535248971264}
   - component: {fileID: 4144656601665570902}
   - component: {fileID: 1608124762661889816}
   - component: {fileID: 6465596629420419115}
+  - component: {fileID: 3865555295443770097}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +266,19 @@ Transform:
   - {fileID: 9004552770034595943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3846438535248971264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120017519398551456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad1693e3aba41347992bb3966119b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 0}
 --- !u!114 &4144656601665570902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +299,7 @@ MonoBehaviour:
   playerHeight: 1.55
   groundCheck:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
   jumpKey: 32
   orientation: {fileID: 6418817385750226395}
 --- !u!54 &1608124762661889816
@@ -326,3 +341,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdefd6749bbbca4db288e903e2e9be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3865555295443770097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120017519398551456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ccfe2275f5fc1646828c27013d66a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  fireRate: 15
+  impactForce: 30
+  maxAmmo: 10
+  reloadTime: 1
+  Automatic: 0
+  fpsCam: {fileID: 9004552770034595943}
+  muzzleFlash: {fileID: 0}
+  impactEffect: {fileID: 0}

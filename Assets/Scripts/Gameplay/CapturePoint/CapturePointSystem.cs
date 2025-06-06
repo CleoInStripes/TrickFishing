@@ -4,6 +4,7 @@ public class CapturePointSystem : SingletonMonoBehaviour<CapturePointSystem>
 {
     public Transform capturePointsHolder;
     public CapturePoint capturePointPrefab;
+    public bool capturePointsEnabled = true;
 
     private Randomizer<Transform> capturePointsRandomizer;
     private CapturePoint capturePoint;

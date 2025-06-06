@@ -590,6 +590,7 @@ MonoBehaviour:
   capturePointsHolder: {fileID: 622640785}
   capturePointPrefab: {fileID: 1362159120544433674, guid: 57ef0f0838f5bc94597aa211624fc1ee,
     type: 3}
+  capturePointsEnabled: 1
 --- !u!4 &1185210856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6054916113415370577, guid: 0879f9c8b25a8d14e921623baf570952,
@@ -1544,7 +1545,7 @@ PrefabInstance:
     - target: {fileID: 5315152580159699622, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8634620179641765956, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}

@@ -44,24 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeb0f6cd7f80c54fa3115763e49a907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialFishAIPrefabs:
-    items:
-    - {fileID: 8204494955924865638, guid: 07d13701db9aea0429290439da10a4ae, type: 3}
-  initialSpawnCountRangePerSpot:
-    min: 2
-    max: 5
+  initialFishSpawnGroups:
+  - prefabs:
+      items:
+      - {fileID: 7624123208369790671, guid: 44cccfc10a201ec449dc4e07a546451d, type: 3}
+    countRange:
+      min: 2
+      max: 5
+  enableInitialSpawning: 1
   initialSpawnRadiusRange:
     min: 0
     max: 15
   respawnRadiusRange:
-    min: 40
-    max: 70
+    min: 50
+    max: 80
   targetedSpawnRadiusRange:
-    min: 5
-    max: 15
+    min: 15
+    max: 30
   enableAlerting: 1
   alertRadiusRange:
     min: 40
     max: 50
   spawnSampleRadius: 2
   maxNavMeshSampleAttempts: 10
+  spawnedFishes: []

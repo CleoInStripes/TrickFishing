@@ -1,4 +1,6 @@
 using BasicTools.ButtonInspector;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,9 +10,16 @@ public class FishAIBrain : MonoBehaviour
         Idle,
         Roaming,
         Chasing,
-        Attacking,
+        Attacking,  // Obsolete
         Fleeing,
+        Following,
     }
+
+    public static readonly List<State> nonAlertableStates = new()
+    {
+        State.Chasing,
+        State.Attacking,
+    };
 
     [Header("Roaming")]
     public RangeFloat roamRange;
@@ -22,9 +31,31 @@ public class FishAIBrain : MonoBehaviour
     public RangeFloat fleeDistanceRange;
     public float fleeAngleMaxDegrees = 30f;
     public float fleeSpeedMultiplier = 2f;
+    public bool chainFleeWithAttack = false;
+    public float chainFleeWithAttackProbability = 0.3f;
+
+    [Header("Chasing")]
+    public float chaseSpeedMultiplier = 1.5f;
+    public float chaseTurnSpeed = 5f;
+
+    [Header("Following")]
+    public float followStopDistance = 1f;
+    public float followSpeedMultiplier = 2f;
+    [HideInInspector] public Transform followTarget;
+
+    [Header("Attacking")]
+    public float attackDistance = 5f;
+    public float attackDamage = 5f;
+    public RangeFloat attackIntervalRange = new(3, 5);
+    public bool isRangedAttack = false;
 
     [Header("Alerting")]
     public State alertSwitchState = State.Fleeing;
+
+    [Header("Misc")]
+    [SerializeField] float viewAngle = 120f; // in degrees
+    [SerializeField] float viewDistance = 200f; // optional clamp for performance
+    [SerializeField] LayerMask visibilityLayers; // exclude obstacles like walls
 
     [Header("DEBUG")]
 
@@ -45,6 +76,9 @@ public class FishAIBrain : MonoBehaviour
     private float originalSpeed;
     private float originalAngularSpeed;
     private float originalAcceleration;
+    private float originalStopDistance;
+
+    private bool canAttack = true;
 
     private void Awake()
     {
@@ -52,12 +86,16 @@ public class FishAIBrain : MonoBehaviour
         originalSpeed = agent.speed;
         originalAngularSpeed = agent.angularSpeed;
         originalAcceleration = agent.acceleration;
+        originalStopDistance = agent.stoppingDistance;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SwitchState(State.Roaming);
+        if (currentState == State.Idle)
+        {
+            SwitchState(State.Roaming);
+        }
     }
 
     // Update is called once per frame
@@ -77,7 +115,11 @@ public class FishAIBrain : MonoBehaviour
 
     public void OnAlerted()
     {
-        SwitchState(alertSwitchState);
+        // If we are chasing/attacking, we don't care about alerts - we just wanna go for the kill
+        if (!nonAlertableStates.Contains(currentState))
+        {
+            SwitchState(alertSwitchState);
+        }
     }
 
     public void BtnExecute_SwitchState()
@@ -87,31 +129,54 @@ public class FishAIBrain : MonoBehaviour
 
     void OnStateExit(State state, State newState)
     {
+        if (!agent)
+        {
+            return;
+        }
+
         switch (state)
         {
             case State.Roaming:
                 isWaitingAtRoamTarget = false;
                 break;
+            case State.Chasing:
+                ApplySpeedMultiplier(1f);
+                agent.updateRotation = true;
+                break;
             case State.Fleeing:
-                agent.speed = originalSpeed;
-                agent.angularSpeed = originalAngularSpeed;
-                agent.acceleration = originalAcceleration;
+                ApplySpeedMultiplier(1f);
+                break;
+            case State.Following:
+                agent.stoppingDistance = originalStopDistance;
+                ApplySpeedMultiplier(1f);
                 break;
         }
     }
 
     void OnStateEnter(State state, State prevState)
     {
+        if (!agent)
+        {
+            return;
+        }
+
         switch (state)
         {
             case State.Roaming:
                 PickNewRoamDestination();
                 break;
+            case State.Chasing:
+                ApplySpeedMultiplier(chaseSpeedMultiplier);
+                agent.updateRotation = false;
+                agent.SetDestination(PlayerModel.Instance.transform.position);
+                break;
             case State.Fleeing:
-                agent.speed = originalSpeed * fleeSpeedMultiplier;
-                agent.angularSpeed = originalAngularSpeed * fleeSpeedMultiplier;
-                agent.acceleration = originalAcceleration * fleeSpeedMultiplier;
+                ApplySpeedMultiplier(fleeSpeedMultiplier);
                 PickNewFleeDestination();
+                break;
+            case State.Following:
+                agent.stoppingDistance = followStopDistance;
+                ApplySpeedMultiplier(followSpeedMultiplier);
                 break;
         }
     }
@@ -128,10 +193,14 @@ public class FishAIBrain : MonoBehaviour
             case State.Chasing:
                 PerformChase();
                 break;
-            case State.Attacking:
-                break;
+            //case State.Attacking:
+                //PerformAttack();
+                //break;
             case State.Fleeing:
                 HandleFleeingUpdate();
+                break;
+            case State.Following:
+                PerformFollow();
                 break;
         }
     }
@@ -140,6 +209,12 @@ public class FishAIBrain : MonoBehaviour
 
     void PerformRoam()
     {
+        if (followTarget != null)
+        {
+            SwitchState(State.Following);
+            return;
+        }
+
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !isWaitingAtRoamTarget)
         {
             isWaitingAtRoamTarget = true;
@@ -167,7 +242,33 @@ public class FishAIBrain : MonoBehaviour
 
     void PerformChase()
     {
-        if (PlayerModel.Instance)
+        if (!CanSeePlayer())
+        {
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                SwitchState(State.Roaming);
+            }
+            return;
+        }
+
+        RotateTowardsPlayer();
+
+        if (agent.pathPending)
+        {
+            return;
+        }
+
+        var distanceToPlayer = Vector3.Distance(PlayerModel.Instance.transform.position, transform.position);
+        if (distanceToPlayer <= attackDistance)
+        {
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+            if (canAttack)
+            {
+                PerformAttack();
+            }
+        } 
+        else
         {
             agent.SetDestination(PlayerModel.Instance.transform.position);
         }
@@ -192,10 +293,97 @@ public class FishAIBrain : MonoBehaviour
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            SwitchState(State.Roaming);
+            if (chainFleeWithAttack && Random.value <= chainFleeWithAttackProbability)
+            {
+                SwitchState(State.Chasing);
+            } 
+            else
+            {
+                SwitchState(State.Roaming);
+            }
+        }
+    }
+
+    // Following
+
+    void PerformFollow()
+    {
+        if (followTarget)
+        {
+            agent.SetDestination(followTarget.position);
         }
     }
 
     // Helpers
+    void ApplySpeedMultiplier(float speedMultiplier)
+    {
+        agent.speed = originalSpeed * speedMultiplier;
+        agent.angularSpeed = originalAngularSpeed * speedMultiplier;
+        agent.acceleration = originalAcceleration * speedMultiplier;
+    }
 
+    void RotateTowardsPlayer()
+    {
+        Vector3 direction = PlayerModel.Instance.transform.position - transform.position;
+        direction.y = 0; // Optional: prevent tilting up/down
+
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, chaseTurnSpeed * Time.deltaTime);
+        }
+    }
+
+    bool CanSeePlayer()
+    {
+        Vector3 origin = transform.position + Vector3.up * (agent.height / 2); // Adjust for eye height
+        Vector3 target = PlayerCam.Instance.transform.position;
+        Vector3 direction = target - origin;
+
+        // Check if player is within view angle
+        //float angleToPlayer = Vector3.Angle(transform.forward, direction);
+        //if (angleToPlayer > viewAngle / 2f)
+        //    return false;
+
+        // Perform a linecast to detect obstruction
+        if (Physics.Linecast(origin, target, out RaycastHit hit, visibilityLayers))
+        {
+            var playerModel = hit.transform.GetComponentInParent<PlayerModel>();
+            if (playerModel == null)
+            {
+                Debug.LogError("Found something in between: " + hit.transform.gameObject.name);
+            }
+
+            // Only switch if we directly hit the player
+            return playerModel != null;
+        }
+
+        Debug.LogError("Cannot see player");
+        return false;
+    }
+
+    void PerformAttack()
+    {
+        if (isRangedAttack)
+        {
+            // Ranged
+            //Debug.Log($"Launching projectile at player: Potential Damage {attackDamage}");
+            // TODO: Launch a projectile
+        }
+        else
+        {
+            // Melee
+            //Debug.Log($"Dealing damage to player: {attackDamage}");
+            // TODO: Integrate with player once Player Health is ready
+        }
+
+        canAttack = false;
+
+        Invoke(nameof(ResetCanAttack), attackIntervalRange.GetRandom());
+    }
+
+    void ResetCanAttack()
+    {
+        canAttack = true;
+    }
 }

@@ -17,6 +17,9 @@ public class FishAIModel : MonoBehaviour
     public RangeFloat swimYLongTermDurationRange;
 
     [HideInInspector]
+    public bool destroyOnDeath = true;
+
+    [HideInInspector]
     public Health health;
     [HideInInspector]
     public FishAIBrain aiBrain;
@@ -33,6 +36,8 @@ public class FishAIModel : MonoBehaviour
         health = GetComponent<Health>();
         aiBrain = GetComponent<FishAIBrain>();
         agent = GetComponent<NavMeshAgent>();
+
+        FishAIManager.Instance.spawnedFishes.Add(this);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,10 +80,16 @@ public class FishAIModel : MonoBehaviour
         // TODO: Play animation, particle fx, etc..
 
         OnDeath.Invoke();
+
+        if (destroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnDestroy()
     {
+        FishAIManager.Instance.spawnedFishes.Remove(this);
         DOTween.Kill(this);
     }
 }

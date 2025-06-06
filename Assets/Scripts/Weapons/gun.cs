@@ -105,7 +105,7 @@ public class gun : MonoBehaviour
             target target = hit.transform.GetComponentInParent<target>();
             if (target != null)
             {
-                Debug.Log($"Found Target: {target.gameObject.name}");
+                //Debug.Log($"Found Target: {target.gameObject.name}");
                 target.Hit(damage);
             }
 

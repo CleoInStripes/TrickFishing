@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TrickFishing.sln"
+    "dotnet.defaultSolution": "TrickFishing.sln",
+    "dotnet.preferCSharpExtension": true
 }

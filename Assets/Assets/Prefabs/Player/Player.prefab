@@ -139,9 +139,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.06
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &3437700164135430132
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,17 +386,19 @@ MonoBehaviour:
   walkSpeed: 7
   sprintSpeed: 16
   slideSpeed: 35
-  dashSpeed: 35
+  dashSpeed: 50
   groundDrag: 4
   speedIncreaseMultiplier: 3
   slopeIncreaseMultiplier: 4
   jumpForce: 10
   airSpeedMultiplier: 2
   jumpCooldown: 0.6
+  maxJumpCounter: 2
+  doubleJumpForce: 1.5
   aboveHeadCheck:
     serializedVersion: 2
-    m_Bits: 0
-  aboveHeadCheckObject: {fileID: 472777818205998567}
+    m_Bits: 65
+  aboveHeadCheckObj: {fileID: 472777818205998567}
   underObject: 0
   playerHeight: 1.55
   groundCheck:
@@ -423,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
-  dashForce: 50
+  dashForce: 10
   dashUpwardForce: 0
   dashDuration: 0.8
   dashCooldown: 1.2
@@ -441,9 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 3364656503678048123}
-  maxSlideTime: 0.75
+  maxSlideTime: 1.25
   slideForce: 250
-  slideTimer: 0
   slideYScale: 0.5
   slideKey: 306
 --- !u!54 &1608124762661889816
@@ -504,7 +505,7 @@ MonoBehaviour:
   maxAmmo: 10
   reloadTime: 1
   Automatic: 0
-  muzzleFlash: {fileID: 0}
+  muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
     type: 3}
   impactEffectPrefab: {fileID: 0}

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Sliding : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
     public Transform playerObj;
     private Rigidbody rb;
     private playerMovement pm;
@@ -67,7 +66,8 @@ public class Sliding : MonoBehaviour
 
     private void SlidingMovement()
     {
-        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        var cam = PlayerCam.Instance.cam;
+        Vector3 inputDirection = cam.transform.forward * verticalInput + cam.transform.right * horizontalInput;
 
         //sliding normal style
         if(!pm.OnSlope() || rb.linearVelocity.y > -0.1f)

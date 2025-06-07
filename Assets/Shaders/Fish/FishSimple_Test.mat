@@ -45,7 +45,7 @@ Material:
     m_Floats:
     - _Amplitude: 511.43
     - _Dist: 0.1
-    - _Frequency: 0.11
+    - _Frequency: 1.28
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 3

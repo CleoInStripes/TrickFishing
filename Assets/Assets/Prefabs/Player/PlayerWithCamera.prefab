@@ -96,26 +96,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCameraHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 6372039256184407869, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
-        type: 3}
-      propertyPath: playerOrientation
-      value: 
-      objectReference: {fileID: 3615029499858101985}
     - target: {fileID: 8923210951041345867, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
         type: 3}
       propertyPath: cameraPosition
       value: 
       objectReference: {fileID: 1714054254933326685}
-    - target: {fileID: 8923210951041345867, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
-        type: 3}
-      propertyPath: playerOrientation
-      value: 
-      objectReference: {fileID: 3615029499858101985}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe12cc9ffb812d40b0ebe8f080633cc, type: 3}
+--- !u!4 &2434309015561376053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4777443907435274584, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7171002522937176173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7991477074609994367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 964872864297110034, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
@@ -180,6 +176,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 2434309015561376053}
     - target: {fileID: 7120017519398551456, guid: 8e5e929a4879b474db8a82a77e6ed38f,
         type: 3}
       propertyPath: m_Name
@@ -193,12 +194,6 @@ PrefabInstance:
 --- !u!4 &1714054254933326685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9004552770034595943, guid: 8e5e929a4879b474db8a82a77e6ed38f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7727915595368743738}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3615029499858101985 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6418817385750226395, guid: 8e5e929a4879b474db8a82a77e6ed38f,
     type: 3}
   m_PrefabInstance: {fileID: 7727915595368743738}
   m_PrefabAsset: {fileID: 0}

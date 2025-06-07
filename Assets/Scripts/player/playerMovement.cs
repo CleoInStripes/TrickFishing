@@ -6,6 +6,9 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
 
+    [Header("Player Object")]
+    public Transform playerObj;
+
     [Header("Movement")]
     private float moveSpeed = 12f;
     public float walkSpeed;
@@ -15,6 +18,7 @@ public class playerMovement : MonoBehaviour
 
     [Tooltip("How much the player drags when on the ground (prevents slippery movement)")]
     public float groundDrag;
+    private float startYScale;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -34,13 +38,6 @@ public class playerMovement : MonoBehaviour
     bool readyToJump = true;
     bool readyToDoubleJump = false;
 
-    //i dont want the player to crouch. This is getting removed later
-    //I am keeping it as a temporary replacement to ground sliding
-    [Header("Crouching")]
-    //public float crouchSpeed;
-    //public float crouchYScale;
-    private float startYScale;
-
     [Header("Ground Check")]
     [Tooltip("The height of the player. Can't you read?")]
     public float playerHeight;
@@ -57,12 +54,6 @@ public class playerMovement : MonoBehaviour
     public KeyCode jumpKey;
     public KeyCode sprintKey;
     public KeyCode crouchKey;
-
-    [Header("Text")]
-    [SerializeField] TextMeshProUGUI speedText; 
-    [SerializeField] TextMeshProUGUI moveStateText;
-
-    public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
@@ -96,13 +87,14 @@ public class playerMovement : MonoBehaviour
 
         //save the default scale of the player
         startYScale = transform.localScale.y;
-
-        speedText = GetComponent<TextMeshProUGUI>();
-        moveStateText = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
+        //player rotate
+        var cam = PlayerCam.Instance.cam;
+        playerObj.rotation = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0);
+
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.2f, groundCheck);
 
@@ -119,11 +111,6 @@ public class playerMovement : MonoBehaviour
         PlayerInput();
         SpeedControl();
         StateHandler();
-
-        // UPDATE TEST SCENE TEXT //
-        string speedText = ("Speed: " + moveSpeed);
-        string moveStateText = ("Move state: " + desiredMoveSpeed);
-
     }
 
     private void FixedUpdate()
@@ -147,24 +134,6 @@ public class playerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         } 
-
-        // CROUCHING //
-        //start crouch 
-        /*if (Input.GetKeyDown(crouchKey))
-        {
-            //shrink down player
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-
-            //a small push down so the shrunken player hits the ground
-            rb.AddForce(Vector3.down * 4f, ForceMode.Impulse);
-        }
-
-        //stop crouch
-        if (Input.GetKeyUp(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        } */
-
     }
 
     // STATE HANDLER //
@@ -191,13 +160,6 @@ public class playerMovement : MonoBehaviour
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
         }
-
-        //Mode - Crouching
-        //else if(Input.GetKey(crouchKey))
-        //{
-        //    state = MovementState.crouching;
-        //    desiredMoveSpeed = crouchSpeed;
-        //}
 
         // Mode - Sprinting
         else if(grounded && Input.GetKey(sprintKey))
@@ -234,7 +196,6 @@ public class playerMovement : MonoBehaviour
     }
 
     // SPEED LERP //
-
     private IEnumerator LerpMoveSpeed()
     {
         //lerp movement speed back to walk speed after speeding up real fast
@@ -265,8 +226,8 @@ public class playerMovement : MonoBehaviour
     // WALKING //
     private void Schmoovement()
     {
-        var cam = PlayerCam.Instance.cam;
 
+        var cam = PlayerCam.Instance.cam;
         //calculate movement direction, so you always move in the direction you are looking
         moveDirection = cam.transform.forward * verticalInput + cam.transform.right * horizontalInput;
 
@@ -360,35 +321,5 @@ public class playerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
-
-
-    //double jump. //double jump is not working. I will come back to it/
-    /*
-    if (Input.GetKey(jumpKey))
-    {
-        //double jump
-        if (readyToDoubleJump && !readyToJump && !grounded)
-        {
-            readyToDoubleJump = false;
-
-            Jump();
-
-            return;
-
-            //Invoke(nameof(ResetJump), doubleJumpCoolDown);
-        }
-        else if (readyToJump && grounded)
-        {
-            readyToJump = false;
-            readyToDoubleJump = true;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-            return;
-        }
-    }
-    */
-
 }
 

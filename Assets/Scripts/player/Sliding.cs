@@ -67,7 +67,7 @@ public class Sliding : MonoBehaviour
     private void SlidingMovement()
     {
         var cam = PlayerCam.Instance.cam;
-        Vector3 inputDirection = cam.transform.forward * verticalInput + cam.transform.right * horizontalInput;
+        Vector3 inputDirection = playerObj.transform.forward * verticalInput + playerObj.transform.right * horizontalInput;
 
         //sliding normal style
         if(!pm.OnSlope() || rb.linearVelocity.y > -0.1f)

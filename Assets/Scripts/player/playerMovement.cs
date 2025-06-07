@@ -40,8 +40,6 @@ public class playerMovement : MonoBehaviour
     public KeyCode sprintKey;
     public KeyCode crouchKey;
 
-    public Transform orientation;
-
     float horizontalInput;
     float verticalInput;
 
@@ -192,8 +190,10 @@ public class playerMovement : MonoBehaviour
     // WALKING //
     private void Schmoovement()
     {
+        var cam = PlayerCam.Instance.cam;
+
         //calculate movement direction, so you always move in the direction you are looking
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = cam.transform.forward * verticalInput + cam.transform.right * horizontalInput;
 
         //on slope
         if (OnSlope())

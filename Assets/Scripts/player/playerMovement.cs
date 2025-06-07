@@ -37,10 +37,15 @@ public class playerMovement : MonoBehaviour
     public float jumpCooldown;
     bool readyToJump = true;
     bool readyToDoubleJump = false;
+    [Tooltip("Whats above you")]
+    public LayerMask aboveHeadCheck;
+    public Transform aboveHeadCheckObj;
+    public bool underObject;
 
     [Header("Ground Check")]
     [Tooltip("The height of the player. Can't you read?")]
     public float playerHeight;
+    [Tooltip("Whats below you")]
     public LayerMask groundCheck;
     bool grounded;
 
@@ -112,6 +117,15 @@ public class playerMovement : MonoBehaviour
             rb.linearDamping = 0;
         }
 
+        //above head check
+        underObject = Physics.Raycast(aboveHeadCheckObj.position, Vector3.up, 1.5f, aboveHeadCheck);
+        if (underObject)
+        {
+            Debug.Log("There is something above my head!");
+        }
+
+
+
         PlayerInput();
         SpeedControl();
         StateHandler();
@@ -130,7 +144,7 @@ public class playerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // START JUMP //
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKey(jumpKey) && readyToJump && grounded && !underObject)
         {
             readyToJump = false;
 

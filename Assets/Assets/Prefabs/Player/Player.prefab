@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &223579785313253669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3434533602682309229}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3434533602682309229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223579785313253669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.599, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1480183105943207456}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769145073549907294
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +43,7 @@ GameObject:
   - component: {fileID: 2175066150092618845}
   - component: {fileID: 1470249669887059568}
   - component: {fileID: 2131245170467843595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Object (Capsule)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,8 +154,8 @@ GameObject:
   - component: {fileID: 4405028339536951864}
   - component: {fileID: 6945873019233413508}
   - component: {fileID: 9051473370548277155}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 3
+  m_Name: Glassses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 3437700164135430132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.408, z: 0.31}
+  m_LocalPosition: {x: 0, y: 0.408, z: 0.23}
   m_LocalScale: {x: 0.71567, y: 0.26986614, z: 0.51479053}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,6 +281,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1480183105943207456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6791661681241941746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 472777818205998567}
+  m_Layer: 0
+  m_Name: AboveHeadCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472777818205998567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791661681241941746}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.608, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1480183105943207456}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7120017519398551456
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +350,8 @@ Transform:
   m_Children:
   - {fileID: 3364656503678048123}
   - {fileID: 9004552770034595943}
+  - {fileID: 3434533602682309229}
+  - {fileID: 472777818205998567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3846438535248971264
@@ -315,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 3364656503678048123}
-  walkSpeed: 10
+  walkSpeed: 7
   sprintSpeed: 16
   slideSpeed: 35
   dashSpeed: 35
@@ -323,8 +387,13 @@ MonoBehaviour:
   speedIncreaseMultiplier: 3
   slopeIncreaseMultiplier: 4
   jumpForce: 10
-  airSpeedMultiplier: 0
+  airSpeedMultiplier: 2
   jumpCooldown: 0.6
+  aboveHeadCheck:
+    serializedVersion: 2
+    m_Bits: 0
+  aboveHeadCheckObject: {fileID: 472777818205998567}
+  underObject: 0
   playerHeight: 1.55
   groundCheck:
     serializedVersion: 2
@@ -333,9 +402,8 @@ MonoBehaviour:
   jumpKey: 32
   sprintKey: 304
   crouchKey: 273
-  speedText: {fileID: 0}
-  moveStateText: {fileID: 0}
   state: 0
+  isOnSlope: 0
   isSliding: 0
   isdashing: 0
 --- !u!114 &6434324421766954490
@@ -371,6 +439,7 @@ MonoBehaviour:
   playerObj: {fileID: 3364656503678048123}
   maxSlideTime: 0.75
   slideForce: 250
+  slideTimer: 0
   slideYScale: 0.5
   slideKey: 306
 --- !u!54 &1608124762661889816

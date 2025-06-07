@@ -12,7 +12,7 @@ public class Sliding : MonoBehaviour
     public float maxSlideTime;
     [Tooltip("omph of the slide. Feels more forceful than speed")]
     public float slideForce;
-    private float slideTimer;
+    public float slideTimer;
 
     [Tooltip("The size that you shrink to upon sliding")]
     public float slideYScale;
@@ -74,7 +74,10 @@ public class Sliding : MonoBehaviour
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 
-            slideTimer -= Time.deltaTime;
+            if (!pm.underObject)
+            {
+                slideTimer -= Time.deltaTime;
+            }
         }
         //sliding down a slope
         else
@@ -83,7 +86,7 @@ public class Sliding : MonoBehaviour
             rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
         }
 
-        if (slideTimer <= 0)
+        if (slideTimer <= 0 && !pm.underObject)
         {
             StopSlide();
         }

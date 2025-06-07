@@ -3,7 +3,6 @@ using UnityEngine;
 public class Dashing : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
     public Transform playerCam;
     private Rigidbody rb;
     private playerMovement pm;
@@ -47,7 +46,8 @@ public class Dashing : MonoBehaviour
 
         pm.isdashing = true;
 
-        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
+        var cam = PlayerCam.Instance.cam;
+        Vector3 forceToApply = cam.transform.forward * dashForce + cam.transform.up * dashUpwardForce;
 
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);

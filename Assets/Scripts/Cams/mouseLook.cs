@@ -9,8 +9,8 @@ public class mouseLook : MonoBehaviour
     public float mouseSenseX;
     public float mouseSenseY;
 
-    float xRotation = 0f;
-    float yRotation = 0f;
+    public float xRotation = 0f;
+    public float yRotation = 0f;
 
     void Start()
     {

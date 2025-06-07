@@ -354,16 +354,10 @@ public class FishAIBrain : MonoBehaviour
         if (Physics.Linecast(origin, target, out RaycastHit hit, visibilityLayers))
         {
             var playerModel = hit.transform.GetComponentInParent<PlayerModel>();
-            if (playerModel == null)
-            {
-                Debug.LogError("Found something in between: " + hit.transform.gameObject.name);
-            }
-
             // Only switch if we directly hit the player
             return playerModel != null;
         }
 
-        Debug.LogError("Cannot see player");
         return false;
     }
 

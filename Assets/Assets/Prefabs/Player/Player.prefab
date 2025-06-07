@@ -154,13 +154,13 @@ GameObject:
   - component: {fileID: 4405028339536951864}
   - component: {fileID: 6945873019233413508}
   - component: {fileID: 9051473370548277155}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Glassses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &278955021608070416
 Transform:
   m_ObjectHideFlags: 0
@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 1608124762661889816}
   - component: {fileID: 6465596629420419115}
   - component: {fileID: 3865555295443770097}
+  - component: {fileID: 5777921017701546972}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -366,6 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad1693e3aba41347992bb3966119b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  gun: {fileID: 0}
+  score: 0
 --- !u!114 &4144656601665570902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,4 +505,27 @@ MonoBehaviour:
   reloadTime: 1
   Automatic: 0
   muzzleFlash: {fileID: 0}
-  impactEffect: {fileID: 0}
+  bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
+    type: 3}
+  impactEffectPrefab: {fileID: 0}
+--- !u!114 &5777921017701546972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120017519398551456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5745610f13473a544892b56a6b95afa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  startWithMaxHealth: 1
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDepleted:
+    m_PersistentCalls:
+      m_Calls: []

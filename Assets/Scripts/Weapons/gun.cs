@@ -19,11 +19,14 @@ public class gun : MonoBehaviour
 
     private Camera fpsCam;
 
-    public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
+    public GameObject muzzlePoint;
+
+    public GameObject bulletTrailPrefab;
+    public GameObject impactEffectPrefab;
 
     private float nextTimeToFire = 0f;
 
+    public int CurrentAmmo => curAmmo;
 
     void Start()
     {
@@ -39,6 +42,12 @@ public class gun : MonoBehaviour
         }
 
         if (curAmmo <= 0)
+        {
+            PerformReload();
+            return;
+        }
+
+        if (curAmmo < maxAmmo && Input.GetKeyDown(KeyCode.R))
         {
             PerformReload();
             return;
@@ -89,13 +98,13 @@ public class gun : MonoBehaviour
 
     void Shoot()
     {
-        if (muzzleFlash)
-        {
-            muzzleFlash.Play();
-        }
-
         curAmmo--;
-        Debug.Log($"Shot; Ammo: {curAmmo}");
+
+        if (bulletTrailPrefab)
+        {
+            var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+            Destroy(bulletTrail, 3f);
+        }
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
@@ -114,9 +123,9 @@ public class gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
-            if (impactEffect)
+            if (impactEffectPrefab)
             {
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                GameObject impactGO = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
             }
         }

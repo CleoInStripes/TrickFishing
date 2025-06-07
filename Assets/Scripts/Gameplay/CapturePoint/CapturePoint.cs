@@ -7,6 +7,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
     public FishSchool fishSchoolPrefab;
     public float activationProximity = 50f;
     public SimpleTimer timer;
+    public int captureScore = 500;
 
     [Button("Pre-Activate", "BtnExecute_PreActivate")]
     [SerializeField]
@@ -86,6 +87,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
 
     void OnSuccessfulCapture()
     {
+        PlayerModel.Instance.AddScore(captureScore);
         Deactivate();
     }
 

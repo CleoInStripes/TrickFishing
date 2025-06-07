@@ -16,6 +16,14 @@ public class FishAIModel : MonoBehaviour
     public RangeFloat swimYLongTermRange;
     public RangeFloat swimYLongTermDurationRange;
 
+    [Header("Scoring")]
+    public int hitScore;
+    public int killScore;
+
+    [Header("Misc")]
+    public Transform projectileSpawnPoint;
+    public GameObject deathParticleEffectPrefab;
+
     [HideInInspector]
     public bool destroyOnDeath = true;
 
@@ -75,10 +83,20 @@ public class FishAIModel : MonoBehaviour
                  .SetTarget(this);
     }
 
-    public void OnDead()
+    public void OnTakenDamage()
     {
         // TODO: Play animation, particle fx, etc..
 
+        PlayerModel.Instance.AddScore(hitScore);
+    }
+
+    public void OnDead()
+    {
+        // TODO: Play animation, particle fx, etc..
+        var pfx = Instantiate(deathParticleEffectPrefab, transform.position, transform.rotation);
+        Destroy(pfx, 10f);
+
+        PlayerModel.Instance.AddScore(killScore);
         OnDeath.Invoke();
 
         if (destroyOnDeath)

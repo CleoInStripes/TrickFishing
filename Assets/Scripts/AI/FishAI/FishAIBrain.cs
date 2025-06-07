@@ -49,6 +49,7 @@ public class FishAIBrain : MonoBehaviour
     public float attackDamage = 5f;
     public RangeFloat attackIntervalRange = new(3, 5);
     public bool isRangedAttack = false;
+    public FishProjectile projectilePrefab;
 
     [Header("Alerting")]
     public State alertSwitchState = State.Fleeing;
@@ -73,6 +74,7 @@ public class FishAIBrain : MonoBehaviour
 
     public UnityEvent OnAlert;
 
+    private FishAIModel fishModel;
     private NavMeshAgent agent;
     private Vector3 roamTargetLocation;
 
@@ -85,6 +87,7 @@ public class FishAIBrain : MonoBehaviour
 
     private void Awake()
     {
+        fishModel = GetComponent<FishAIModel>();
         agent = GetComponent<NavMeshAgent>();
         originalSpeed = agent.speed;
         originalAngularSpeed = agent.angularSpeed;
@@ -366,14 +369,13 @@ public class FishAIBrain : MonoBehaviour
         if (isRangedAttack)
         {
             // Ranged
-            //Debug.Log($"Launching projectile at player: Potential Damage {attackDamage}");
-            // TODO: Launch a projectile
+            var dirToPlayer = PlayerCam.Instance.cam.transform.position - fishModel.projectileSpawnPoint.position;
+            Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToPlayer));
         }
         else
         {
             // Melee
-            //Debug.Log($"Dealing damage to player: {attackDamage}");
-            // TODO: Integrate with player once Player Health is ready
+            PlayerModel.Instance.health.TakeDamage(attackDamage);
         }
 
         canAttack = false;

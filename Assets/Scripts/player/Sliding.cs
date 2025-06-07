@@ -33,10 +33,7 @@ public class Sliding : MonoBehaviour
 
     private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal"); // A + D keys
-        verticalInput = Input.GetAxisRaw("Vertical"); //W + S keys
-
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
+        if (Input.GetKeyDown(slideKey))
         {
             StartSlide();
         }
@@ -74,6 +71,7 @@ public class Sliding : MonoBehaviour
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 
+            //stop timer if under object
             if (!pm.underObject)
             {
                 slideTimer -= Time.deltaTime;

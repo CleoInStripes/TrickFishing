@@ -51,7 +51,6 @@ public class Dashing : MonoBehaviour
 
         Vector3 direction = GetDirection(forwardT);
 
-        var cam = PlayerCam.Instance.cam;
         Vector3 forceToApply = playerObj.transform.forward * dashForce + playerObj.transform.up * dashUpwardForce;
 
         rb.useGravity = false;

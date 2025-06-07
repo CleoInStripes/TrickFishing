@@ -379,5 +379,10 @@ public class playerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+
+    // 
+
+
 }
 

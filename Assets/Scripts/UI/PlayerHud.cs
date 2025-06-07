@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
 {
-    public TextMeshProUGUI HealthHud;
-    public TextMeshProUGUI ScoreHud;
+    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI AmmoText;
 
     [Header("Damage Screen")]
     public MenuPage damageScreen;
@@ -23,18 +24,29 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     // Update is called once per frame
     void Update()
     {
+        if (!PlayerModel.Instance)
+        {
+            return;
+        }
+
         UpdateHealth();
         UpdateScore();
+        UpdateAmmoText();
     }
 
     void UpdateHealth()
     {
-        HealthHud.text = $"{PlayerModel.Instance.health.currentHealth}";
+        HealthText.text = $"{PlayerModel.Instance.health.currentHealth}";
     }
 
     void UpdateScore()
     {
-        ScoreHud.text = $"{PlayerModel.Instance.score}";
+        ScoreText.text = $"{PlayerModel.Instance.score}";
+    }
+
+    void UpdateAmmoText()
+    {
+        AmmoText.text = $"{PlayerModel.Instance.gun.CurrentAmmo}/{PlayerModel.Instance.gun.maxAmmo}";
     }
 
     async void FlickerDamageScreen()

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 {
     public Health health;
+    public gun gun;
 
     [ReadOnly]
     public int score = 0;
@@ -11,6 +12,7 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     {
         base.Awake();
         health = GetComponent<Health>();
+        gun = GetComponent<gun>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

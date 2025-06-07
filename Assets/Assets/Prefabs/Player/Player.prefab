@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6945873019233413508}
   - component: {fileID: 9051473370548277155}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Glassses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 3437700164135430132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.408, z: 0.31}
+  m_LocalPosition: {x: 0, y: 0.408, z: 0.23}
   m_LocalScale: {x: 0.71567, y: 0.26986614, z: 0.51479053}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,6 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad1693e3aba41347992bb3966119b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  score: 0
 --- !u!114 &4144656601665570902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +326,7 @@ MonoBehaviour:
   speedIncreaseMultiplier: 3
   slopeIncreaseMultiplier: 4
   jumpForce: 10
-  airSpeedMultiplier: 0
+  airSpeedMultiplier: 2
   jumpCooldown: 0.6
   playerHeight: 1.55
   groundCheck:

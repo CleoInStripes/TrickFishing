@@ -24,6 +24,7 @@ public class gun : MonoBehaviour
 
     private float nextTimeToFire = 0f;
 
+    public int CurrentAmmo => curAmmo;
 
     void Start()
     {

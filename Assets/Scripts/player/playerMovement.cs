@@ -6,7 +6,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
 
-    [Header("Player Object")]
+    [Header("References")]
     public Transform playerObj;
 
     [Header("Movement")]
@@ -73,14 +73,18 @@ public class playerMovement : MonoBehaviour
         air
     }
 
-    public bool isSliding;
+    public bool isOnSlope;
 
+    public bool isSliding;
+    
     public bool isdashing;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        isOnSlope = false;
 
         readyToJump = true;
         readyToDoubleJump = false;
@@ -96,7 +100,7 @@ public class playerMovement : MonoBehaviour
         playerObj.rotation = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0);
 
         //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.2f, groundCheck);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.3f, groundCheck);
 
         //activate drag if grounded
         if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
@@ -226,30 +230,27 @@ public class playerMovement : MonoBehaviour
     // WALKING //
     private void Schmoovement()
     {
+        isOnSlope = false;
 
         var cam = PlayerCam.Instance.cam;
         //calculate movement direction, so you always move in the direction you are looking
-        moveDirection = cam.transform.forward * verticalInput + cam.transform.right * horizontalInput;
+        moveDirection = playerObj.transform.forward * verticalInput + playerObj.transform.right * horizontalInput;
 
         //on slope
         if (OnSlope())
         {
-            rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 10f, ForceMode.Force);
 
             if(rb.linearVelocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 8f, ForceMode.Force);
             }
         }
-
-        //on ground
-        else if (grounded)
+        else if (grounded) //on ground
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10, ForceMode.Force);
         }
-        
-        //in air
-        else if(!grounded)
+        else if(!grounded) //in air
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airSpeedMultiplier, ForceMode.Force);
 
         //turn off gravity while on a slope
@@ -289,7 +290,7 @@ public class playerMovement : MonoBehaviour
         //reset y velocity
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        //jump !
+        //A big burst of force into the air!
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
     private void ResetJump()
@@ -308,7 +309,9 @@ public class playerMovement : MonoBehaviour
     // SLOPES //
     public bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 2))
+        isOnSlope = false;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.3f + 2))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;

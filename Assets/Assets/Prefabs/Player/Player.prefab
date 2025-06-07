@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  gun: {fileID: 0}
   score: 0
 --- !u!114 &4144656601665570902
 MonoBehaviour:
@@ -433,7 +434,9 @@ MonoBehaviour:
   reloadTime: 1
   Automatic: 0
   muzzleFlash: {fileID: 0}
-  impactEffect: {fileID: 0}
+  bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
+    type: 3}
+  impactEffectPrefab: {fileID: 0}
 --- !u!114 &5777921017701546972
 MonoBehaviour:
   m_ObjectHideFlags: 0

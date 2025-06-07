@@ -306,15 +306,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe12cc9ffb812d40b0ebe8f080633cc, type: 3}
---- !u!198 &881825605614724041 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8050284914938729380, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 7171002522937176173}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2434309015561376053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4777443907435274584, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7171002522937176173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3200012222359793411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5759047174112436078, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
     type: 3}
   m_PrefabInstance: {fileID: 7171002522937176173}
   m_PrefabAsset: {fileID: 0}
@@ -386,7 +386,12 @@ PrefabInstance:
         type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 881825605614724041}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865555295443770097, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: muzzlePoint
+      value: 
+      objectReference: {fileID: 3200012222359793411}
     - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
         type: 3}
       propertyPath: playerCam

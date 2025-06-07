@@ -3,7 +3,6 @@ using UnityEngine;
 public class Dashing : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
     public Transform playerCam;
     private Rigidbody rb;
     private playerMovement pm;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Splines;
@@ -11,10 +12,10 @@ using Random = UnityEngine.Random;
 public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 {
     [Header("Fish Prefabs")]
-    public Randomizer<FishAIModel> initialFishAIPrefabs;
+    public List<FishSpawnGroup> initialFishSpawnGroups;
 
     [Header("Initial Spawning")]
-    public RangeInt initialSpawnCountRangePerSpot = new(2, 5);
+    public bool enableInitialSpawning = true;
     public RangeFloat initialSpawnRadiusRange = new(0f, 15f);
 
     [Header("Respawning")]
@@ -33,7 +34,8 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
 
     private List<Transform> initialFishSpawnSpots = new();
-    private List<FishAIModel> spawnedFishes = new ();
+    [HideInInspector]
+    public List<FishAIModel> spawnedFishes = new ();
 
     private new void Awake()
     {
@@ -44,9 +46,15 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        initialFishAIPrefabs.Shuffle();
+        foreach (var spawnGroup in initialFishSpawnGroups)
+        {
+            spawnGroup.Prepare();
+        }
 
-        SpawnFishesInInitialSpots();
+        if (enableInitialSpawning)
+        {
+            SpawnFishesInInitialSpots();
+        }
     }
 
     // Update is called once per frame
@@ -64,23 +72,25 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     {
         foreach (var spawnSpot in initialFishSpawnSpots)
         {
-            var spawnCount = initialSpawnCountRangePerSpot.GetRandom();
-            for (int i = 0; i < spawnCount; i++)
+            foreach (var spawnGroup in initialFishSpawnGroups)
             {
-                var targetTransform = GetPlayerTransform();
-                Vector3 spawnPosition;
-                if (TryGetRandomNavMeshLocation(spawnSpot.position, initialSpawnRadiusRange, out spawnPosition))
+                var spawnCount = spawnGroup.countRange.GetRandom();
+                for (int i = 0; i < spawnCount; i++)
                 {
-                    var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-                    var fish = SpawnFish(initialFishAIPrefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation, false);
-                    fish.OnDeath.AddListener(() =>
+                    Vector3 spawnPosition;
+                    if (TryGetRandomNavMeshLocation(spawnSpot.position, initialSpawnRadiusRange, out spawnPosition))
                     {
-                        RespawnFishAwayFromPlayer(fish);
-                    });
-                }
-                else
-                {
-                    Debug.LogError("Could not find a random position on the Nav Mesh");
+                        var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                        var fish = SpawnFish(spawnGroup.prefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation, false);
+                        fish.OnDeath.AddListener(() =>
+                        {
+                            RespawnFishAwayFromPlayer(fish);
+                        });
+                    }
+                    else
+                    {
+                        Debug.LogError("Could not find a random position on the Nav Mesh");
+                    }
                 }
             }
         }
@@ -90,22 +100,37 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     {
         var targetTransform = GetPlayerTransform();
         Vector3 respawnPosition;
-        if (TryGetRandomNavMeshLocation(targetTransform.position, targetedSpawnRadiusRange, out respawnPosition))
+        if (TryGetRandomNavMeshLocation(targetTransform.position, respawnRadiusRange, out respawnPosition))
         {
             var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
             // Teleport the agent
-            fish.agent.Warp(respawnPosition);
             fish.agent.ResetPath();
+            fish.agent.Warp(respawnPosition);
 
             fish.health.ResetHealth();
             fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
         }
         else
         {
-            Debug.LogError("Could not find a respawn position on the Nav Mesh. Destroying Fish");
-            Destroy(fish.gameObject);
-            spawnedFishes.Remove(fish);
+            Debug.LogError("Could not find a respawn position on the Nav Mesh. Attempting wider search...");
+            if (TryGetRandomNavMeshLocation(targetTransform.position, new RangeFloat(0, respawnRadiusRange.max * 2), out respawnPosition))
+            {
+                var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+                // Teleport the agent
+                fish.agent.ResetPath();
+                fish.agent.Warp(respawnPosition);
+
+                fish.health.ResetHealth();
+                fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
+            }
+            else
+            {
+                Debug.LogError("Failed to find a respawn position on the Nav Mesh. Destroying Fish...");
+                Destroy(fish.gameObject);
+                spawnedFishes.Remove(fish);
+            }
         }
     }
 
@@ -124,10 +149,11 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         }
     }
 
-    FishAIModel SpawnFish(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, bool destroyOnDeath = true)
+    public FishAIModel SpawnFish(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, bool destroyOnDeath = true)
     {
         var fish = Instantiate(prefab, spawnPosition, spawnRotation);
         var fishModel = fish.GetComponent<FishAIModel>();
+        fishModel.destroyOnDeath = destroyOnDeath;
         fishModel.health.OnDamageTaken.AddListener(() =>
         {
             if (enableAlerting)
@@ -135,15 +161,6 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
                 AlertFishesAround(fish.transform.position, alertRadiusRange.GetRandom());
             }
         });
-
-        if (destroyOnDeath)
-        {
-            fishModel.OnDeath.AddListener(() =>
-            {
-                Destroy(fishModel.gameObject);
-                spawnedFishes.Remove(fishModel);
-            });
-        }
 
         spawnedFishes.Add(fishModel);
         return fishModel;
@@ -203,6 +220,8 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     {
         foreach (var fish in spawnedFishes)
         {
+            if (fish.IsDestroyed()) continue;
+
             if (Vector3.Distance(fish.transform.position, center) <= radius)
             {
                 fish.aiBrain.OnAlerted();

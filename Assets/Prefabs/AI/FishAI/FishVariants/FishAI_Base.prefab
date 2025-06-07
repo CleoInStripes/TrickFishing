@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6556665815455608287}
   - component: {fileID: 1636280521452627607}
   - component: {fileID: 6498898929039297728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f90bc7f9ebf7cbc46a9373182a7cd3fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1906274817629570014}
   - component: {fileID: 86997845381424491}
   - component: {fileID: 8067213312327207511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Placeholder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f90bc7f9ebf7cbc46a9373182a7cd3fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4666707081321741657}
   - component: {fileID: 1189985127714425998}
   - component: {fileID: 7113456980052585428}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Placeholder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f90bc7f9ebf7cbc46a9373182a7cd3fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398142679516262621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AvatarYControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,8 +331,8 @@ GameObject:
   - component: {fileID: 3001904692780236488}
   - component: {fileID: 2947127130275176993}
   - component: {fileID: 3863553173406894546}
-  m_Layer: 0
-  m_Name: FishAI
+  m_Layer: 7
+  m_Name: FishAI_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,9 +383,13 @@ MonoBehaviour:
   swimYLongTermDurationRange:
     min: 5
     max: 7
+  destroyOnDeath: 1
   health: {fileID: 0}
   aiBrain: {fileID: 0}
   agent: {fileID: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5471044649128888043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,15 +408,37 @@ MonoBehaviour:
   waitTimeRangeAtRoamTarget:
     min: 0
     max: 0
+  isWaitingAtRoamTarget: 0
   fleeDistanceRange:
-    min: 50
-    max: 100
+    min: 20
+    max: 30
   fleeAngleMaxDegrees: 90
   fleeSpeedMultiplier: 3
-  isWaitingAtRoamTarget: 0
+  chainFleeWithAttack: 0
+  chainFleeWithAttackProbability: 0.3
+  chaseSpeedMultiplier: 2
+  chaseTurnSpeed: 5
+  followStopDistance: 0
+  followSpeedMultiplier: 1
+  followTarget: {fileID: 0}
+  attackDistance: 5
+  attackDamage: 5
+  attackIntervalRange:
+    min: 3
+    max: 5
+  isRangedAttack: 0
+  alertSwitchState: 4
+  viewAngle: 160
+  viewDistance: 200
+  visibilityLayers:
+    serializedVersion: 2
+    m_Bits: 81
   currentState: 0
   switchStateTarget: 0
   btnSwitchState: 0
+  OnAlert:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &990240372050540358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5745610f13473a544892b56a6b95afa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 30
   currentHealth: 0
   startWithMaxHealth: 1
   OnDamageTaken:
@@ -516,7 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260096392016879390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

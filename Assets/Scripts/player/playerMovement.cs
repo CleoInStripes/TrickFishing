@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
 
-    [Header("References")]
+    [Header("References")] //
     public Transform playerObj;
 
-    [Header("Movement")]
+    [Header("Movement")] //
     private float moveSpeed = 12f;
     public float walkSpeed;
     public float sprintSpeed;
@@ -28,7 +29,7 @@ public class playerMovement : MonoBehaviour
     [Tooltip("Increase in speed when going down a slope")]
     public float slopeIncreaseMultiplier;
 
-    [Header("Jumping")]
+    [Header("Jumping")] //
     [Tooltip("Power of the jump up")]
     public float jumpForce;
     [Tooltip("Speed while off the ground")]
@@ -36,7 +37,15 @@ public class playerMovement : MonoBehaviour
     [Tooltip("Time that you must wait before jumping again")]
     public float jumpCooldown;
     bool readyToJump = true;
-    bool readyToDoubleJump = false;
+    int jumpCounter;
+    [Tooltip("The amount of times that you can jump")]
+    public int maxJumpCounter = 2;
+    [Tooltip("A little extra oomph when you double jump")]
+    public float doubleJumpForce;
+    private float timeBetweenJumps = 0.2f;
+    bool isDoubleJumpReady;
+
+    [Header("Above Head Check")]
     [Tooltip("Whats above you")]
     public LayerMask aboveHeadCheck;
     public Transform aboveHeadCheckObj;
@@ -92,7 +101,9 @@ public class playerMovement : MonoBehaviour
         isOnSlope = false;
 
         readyToJump = true;
-        readyToDoubleJump = false;
+        isDoubleJumpReady = false;
+        jumpCounter = 0;
+        maxJumpCounter = 2;
 
         //save the default scale of the player
         startYScale = transform.localScale.y;
@@ -108,13 +119,19 @@ public class playerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.3f, groundCheck);
 
         //activate drag if grounded
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
+        if (state == MovementState.walking || state == MovementState.sprinting)
         {
             rb.linearDamping = groundDrag;
+            rb.mass = 1;
         }
         else
         {
             rb.linearDamping = 0;
+
+            if (state == MovementState.air)
+            {
+                rb.mass = 2;
+            }
         }
 
         //above head check
@@ -123,8 +140,6 @@ public class playerMovement : MonoBehaviour
         {
             Debug.Log("There is something above my head!");
         }
-
-
 
         PlayerInput();
         SpeedControl();
@@ -143,22 +158,62 @@ public class playerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // START JUMP //
-        if(Input.GetKey(jumpKey) && readyToJump && grounded && !underObject)
+        // JUMPING //
+        if(Input.GetKeyDown(jumpKey) && readyToJump && grounded && !underObject && jumpCounter <= 0)
         {
             readyToJump = false;
 
-            Jump();
+            jumpCounter += 1;
+
+            //abandon slope physics
+            exitingSlope = true;
+
+            //reset y velocity
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+            //A big burst of force into the air!
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
             Invoke(nameof(ResetJump), jumpCooldown);
-        } 
+
+            //gives a short pause before the double jump can activate
+            isDoubleJumpReady = false;
+            Invoke(nameof(WaitToJumpAgain), timeBetweenJumps);
+        }
+
+        //Double (or triple) jump
+        if (Input.GetKeyDown(jumpKey) && !readyToJump && (jumpCounter >= 1) && (jumpCounter < maxJumpCounter) && isDoubleJumpReady)
+        {
+            jumpCounter += 1;
+
+            //reset y velocity
+            //rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+            //A big burst of force into the air!
+            rb.AddForce(transform.up * jumpForce * doubleJumpForce, ForceMode.Impulse);
+
+            //Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
+    private void WaitToJumpAgain()
+    {
+        isDoubleJumpReady = true;
+    }
+
+    private void ResetJump()
+    {
+        exitingSlope = false;
+        readyToJump = true;
+
+        jumpCounter = 0;
     }
 
     // STATE HANDLER //
     private void StateHandler()
     {
-        // Mode - Sliding
-        if (isSliding)
+        
+        if (isSliding) // Mode - Sliding
         {
             state = MovementState.sliding;
 
@@ -171,30 +226,22 @@ public class playerMovement : MonoBehaviour
                 desiredMoveSpeed = sprintSpeed;
             }
         }
-
-        //Mode - Dashing
-        if (isdashing)
+        if (isdashing) //Mode - Dashing
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
         }
-
-        // Mode - Sprinting
-        else if(grounded && Input.GetKey(sprintKey))
+        else if(grounded && Input.GetKey(sprintKey)) // Mode - Sprinting
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
         }
-
-        //Mode - Walking
-        else if (grounded)
+        else if (grounded) //Mode - Walking
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
-
-        //Mode - Air
-        else
+        else //Mode - Air
         {
             state = MovementState.air;
         }
@@ -293,31 +340,6 @@ public class playerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
-    }
-
-    // JUMPING //
-    public void Jump()
-    {
-        //abandon slope physics
-        exitingSlope = true;
-
-        //reset y velocity
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-
-        //A big burst of force into the air!
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-    }
-    private void ResetJump()
-    {
-        exitingSlope = false;
-
-        readyToJump = true;
-        readyToDoubleJump = false;
-    }
-
-    private void ResetDoubleJump()
-    {
-        readyToDoubleJump = true;
     }
 
     // SLOPES //

@@ -12,7 +12,7 @@ public class Sliding : MonoBehaviour
     public float maxSlideTime;
     [Tooltip("omph of the slide. Feels more forceful than speed")]
     public float slideForce;
-    public float slideTimer;
+    float slideTimer;
 
     [Tooltip("The size that you shrink to upon sliding")]
     public float slideYScale;
@@ -41,7 +41,7 @@ public class Sliding : MonoBehaviour
             StartSlide();
         }
 
-        if (Input.GetKeyUp(slideKey) && pm.isSliding)
+        if (Input.GetKeyUp(slideKey) && pm.isSliding && !pm.underObject)
         {
             StopSlide();
         }
@@ -59,7 +59,7 @@ public class Sliding : MonoBehaviour
     {
         pm.isSliding = true;
         playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
-        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        rb.AddForce(Vector3.down * 5.5f, ForceMode.Impulse);
 
         slideTimer = maxSlideTime;
     }

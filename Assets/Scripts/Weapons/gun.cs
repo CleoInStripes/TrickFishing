@@ -9,6 +9,7 @@ public class gun : MonoBehaviour
     public float range = 100f;
     public float fireRate = 15f;
     public float impactForce = 30f;
+    public float bulletSpawnOffsetFactor = 1f;
 
     public int maxAmmo = 10;
     private int curAmmo;
@@ -102,7 +103,10 @@ public class gun : MonoBehaviour
 
         if (bulletTrailPrefab)
         {
-            var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+            var playerVelocity = PlayerModel.Instance.rb.linearVelocity;
+            var bulletSpawnOffset = playerVelocity * bulletSpawnOffsetFactor;
+
+            var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position + bulletSpawnOffset, muzzlePoint.transform.rotation);
             Destroy(bulletTrail, 3f);
         }
 

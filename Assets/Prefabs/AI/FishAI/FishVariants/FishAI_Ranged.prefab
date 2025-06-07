@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: chainFleeWithAttackProbability
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6740621092058756302, guid: 07d13701db9aea0429290439da10a4ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.968
+      objectReference: {fileID: 0}
     - target: {fileID: 7113456980052585428, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

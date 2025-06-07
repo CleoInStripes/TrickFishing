@@ -47,6 +47,12 @@ public class gun : MonoBehaviour
             return;
         }
 
+        if (curAmmo < maxAmmo && Input.GetKeyDown(KeyCode.R))
+        {
+            PerformReload();
+            return;
+        }
+
         if (Automatic)
         {
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)

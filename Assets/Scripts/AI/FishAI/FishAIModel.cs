@@ -21,6 +21,7 @@ public class FishAIModel : MonoBehaviour
     public int killScore;
 
     [Header("Misc")]
+    public Transform projectileSpawnPoint;
     public GameObject deathParticleEffectPrefab;
 
     [HideInInspector]

@@ -5,8 +5,12 @@ public class Dashing : MonoBehaviour
     [Header("References")]
     public Transform playerObj;
     public Transform playerCam;
+    public Camera cam;
     private Rigidbody rb;
     private playerMovement pm;
+
+    private float camFOVStart;
+    public float camFOVEnd;
 
     [Header("Dashing")]
     public float dashForce;
@@ -23,6 +27,8 @@ public class Dashing : MonoBehaviour
 
     private void Start()
     {
+        camFOVStart = cam.fieldOfView;
+
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<playerMovement>();
     }
@@ -48,9 +54,7 @@ public class Dashing : MonoBehaviour
 
         Transform forwardT;
         forwardT = playerObj.transform;
-
         Vector3 direction = GetDirection(forwardT);
-
         Vector3 forceToApply = playerObj.transform.forward * dashForce + playerObj.transform.up * dashUpwardForce;
 
         rb.useGravity = false;
@@ -65,6 +69,19 @@ public class Dashing : MonoBehaviour
     private void DelayedDashForce()
     {
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
+
+        //smooth camera zoom?
+        float time = 0;
+        float camFOVChange = Mathf.Abs(camFOVStart - camFOVEnd);
+
+        while (time < camFOVChange)
+        {
+            cam.fieldOfView = Mathf.Lerp(camFOVStart, camFOVEnd, time / camFOVChange);
+
+            time += Time.deltaTime;
+            Debug.Log(time);
+
+        }
     }
 
     private void ResetDash()
@@ -72,6 +89,17 @@ public class Dashing : MonoBehaviour
         pm.isdashing = false;
         rb.useGravity = true;
 
+        //smooth camera zoom?
+        float time = 0;
+        float camFOVChange = Mathf.Abs(camFOVEnd - camFOVStart); 
+
+        while (time < camFOVChange)
+        {
+            cam.fieldOfView = Mathf.Lerp(camFOVEnd, camFOVStart, time / camFOVChange);
+
+            time += Time.deltaTime;
+            Debug.Log(time);
+        }
     }
 
     private Vector3 GetDirection(Transform forwardT)

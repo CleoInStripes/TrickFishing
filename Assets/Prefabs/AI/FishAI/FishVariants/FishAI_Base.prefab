@@ -385,6 +385,8 @@ MonoBehaviour:
     max: 7
   hitScore: 0
   killScore: 0
+  deathParticleEffectPrefab: {fileID: 375571543012155186, guid: 3f71509385a927d41951db333fafccc3,
+    type: 3}
   destroyOnDeath: 1
   health: {fileID: 0}
   aiBrain: {fileID: 0}

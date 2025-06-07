@@ -20,6 +20,9 @@ public class FishAIModel : MonoBehaviour
     public int hitScore;
     public int killScore;
 
+    [Header("Misc")]
+    public GameObject deathParticleEffectPrefab;
+
     [HideInInspector]
     public bool destroyOnDeath = true;
 
@@ -89,6 +92,8 @@ public class FishAIModel : MonoBehaviour
     public void OnDead()
     {
         // TODO: Play animation, particle fx, etc..
+        var pfx = Instantiate(deathParticleEffectPrefab, transform.position, transform.rotation);
+        Destroy(pfx, 10f);
 
         PlayerModel.Instance.AddScore(killScore);
         OnDeath.Invoke();

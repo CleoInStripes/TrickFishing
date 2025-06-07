@@ -97,7 +97,7 @@ public class gun : MonoBehaviour
         if (bulletTrailPrefab)
         {
             var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
-            Destroy(bulletTrail, 10f);
+            Destroy(bulletTrail, 3f);
         }
 
         RaycastHit hit;

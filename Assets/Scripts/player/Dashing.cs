@@ -3,6 +3,7 @@ using UnityEngine;
 public class Dashing : MonoBehaviour
 {
     [Header("References")]
+    public Transform playerObj;
     public Transform playerCam;
     private Rigidbody rb;
     private playerMovement pm;
@@ -43,11 +44,17 @@ public class Dashing : MonoBehaviour
         if (dashCooldownTimer > 0) return;
         else dashCooldownTimer = dashCooldown;
 
-
         pm.isdashing = true;
 
+        Transform forwardT;
+        forwardT = playerObj.transform;
+
+        Vector3 direction = GetDirection(forwardT);
+
         var cam = PlayerCam.Instance.cam;
-        Vector3 forceToApply = cam.transform.forward * dashForce + cam.transform.up * dashUpwardForce;
+        Vector3 forceToApply = playerObj.transform.forward * dashForce + playerObj.transform.up * dashUpwardForce;
+
+        rb.useGravity = false;
 
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
@@ -64,6 +71,23 @@ public class Dashing : MonoBehaviour
     private void ResetDash()
     {
         pm.isdashing = false;
+        rb.useGravity = true;
+
+    }
+
+    private Vector3 GetDirection(Transform forwardT)
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        Vector3 direction = new Vector3();
+
+        direction = forwardT.forward * verticalInput + forwardT.right * horizontalInput;
+
+        if (verticalInput == 0 && horizontalInput == 0)
+            direction = forwardT.forward;
+
+        return direction.normalized;
     }
 
 }

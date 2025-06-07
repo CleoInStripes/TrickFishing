@@ -42,6 +42,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 446164669837474385}
     m_Modifications:
+    - target: {fileID: 1569857126431469940, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569857126431469940, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569857126431469940, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569857126431469940, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1908132742375665531, guid: c1d3d7ff131893947b1a1831b5f20c90,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -183,6 +203,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6823987267675566777, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367986936818502078, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367986936818502078, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367986936818502078, guid: c1d3d7ff131893947b1a1831b5f20c90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367986936818502078, guid: c1d3d7ff131893947b1a1831b5f20c90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -392,6 +432,11 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 2434309015561376053}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: playerObj
+      value: 
+      objectReference: {fileID: 5012149083726926913}
     - target: {fileID: 7120017519398551456, guid: 8e5e929a4879b474db8a82a77e6ed38f,
         type: 3}
       propertyPath: m_Name
@@ -405,6 +450,12 @@ PrefabInstance:
 --- !u!4 &1714054254933326685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9004552770034595943, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7727915595368743738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5012149083726926913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3364656503678048123, guid: 8e5e929a4879b474db8a82a77e6ed38f,
     type: 3}
   m_PrefabInstance: {fileID: 7727915595368743738}
   m_PrefabAsset: {fileID: 0}

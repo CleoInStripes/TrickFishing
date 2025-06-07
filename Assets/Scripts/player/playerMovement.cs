@@ -23,6 +23,8 @@ public class playerMovement : MonoBehaviour
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
+    private MovementState lastState;
+    private bool keepMomentum;
 
     [Tooltip("Increase in speed over time while moving")]
     public float speedIncreaseMultiplier;
@@ -226,12 +228,12 @@ public class playerMovement : MonoBehaviour
                 desiredMoveSpeed = sprintSpeed;
             }
         }
-        if (isdashing) //Mode - Dashing
+        else if (isdashing) //Mode - Dashing
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
         }
-        else if(grounded && Input.GetKey(sprintKey)) // Mode - Sprinting
+        else if (Input.GetKey(sprintKey) && grounded)
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -241,23 +243,35 @@ public class playerMovement : MonoBehaviour
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
+        else if (Input.GetKey(sprintKey) && !grounded) // Mode - Sprinting on air
+        {
+            state = MovementState.air;
+            desiredMoveSpeed = sprintSpeed;
+        }
         else //Mode - Air
         {
             state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
         }
 
         //check if desiredMoveSpeed has changed drastically
-        if(Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
         {
             StopAllCoroutines();
             StartCoroutine(LerpMoveSpeed());
         }
         else
         {
+            StopAllCoroutines();
             moveSpeed = desiredMoveSpeed;
         }
 
         lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
     }
 
     // SPEED LERP //
@@ -267,6 +281,7 @@ public class playerMovement : MonoBehaviour
         float time = 0;
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
+
 
         while (time < difference)
         {
@@ -281,6 +296,8 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
+                moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time/difference);
+
                 time += Time.deltaTime * speedIncreaseMultiplier;
             }
 
@@ -291,6 +308,8 @@ public class playerMovement : MonoBehaviour
     // WALKING //
     private void Schmoovement()
     {
+        if (state == MovementState.dashing) return;
+
         isOnSlope = false;
 
         var cam = PlayerCam.Instance.cam;

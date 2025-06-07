@@ -374,6 +374,7 @@ public class FishAIBrain : MonoBehaviour
             // Melee
             //Debug.Log($"Dealing damage to player: {attackDamage}");
             // TODO: Integrate with player once Player Health is ready
+            PlayerModel.Instance.health.TakeDamage(attackDamage);
         }
 
         canAttack = false;

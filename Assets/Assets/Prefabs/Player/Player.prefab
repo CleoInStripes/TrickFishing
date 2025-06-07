@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &278955021608070416
 Transform:
   m_ObjectHideFlags: 0
@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 1608124762661889816}
   - component: {fileID: 6465596629420419115}
   - component: {fileID: 3865555295443770097}
+  - component: {fileID: 5777921017701546972}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -333,8 +334,6 @@ MonoBehaviour:
   jumpKey: 32
   sprintKey: 304
   crouchKey: 273
-  speedText: {fileID: 0}
-  moveStateText: {fileID: 0}
   state: 0
   isSliding: 0
   isdashing: 0
@@ -433,3 +432,24 @@ MonoBehaviour:
   Automatic: 0
   muzzleFlash: {fileID: 0}
   impactEffect: {fileID: 0}
+--- !u!114 &5777921017701546972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120017519398551456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5745610f13473a544892b56a6b95afa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  startWithMaxHealth: 1
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDepleted:
+    m_PersistentCalls:
+      m_Calls: []

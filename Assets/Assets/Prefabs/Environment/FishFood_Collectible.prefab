@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5373662157230741635}
   - component: {fileID: 9131754269229936390}
   - component: {fileID: 7165320958202003231}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FishFood_Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,6 +133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FishFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855531943702412834, guid: 4875b53c0333d7344b20f7a8aca166c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

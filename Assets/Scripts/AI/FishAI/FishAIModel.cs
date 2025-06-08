@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class FishAIModel : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class FishAIModel : MonoBehaviour
     [Header("Scoring")]
     public int hitScore;
     public int killScore;
+
+    [Header("UI")]
+    public Slider healthSlider;
+    public float healthSliderVisibilityTimeout = 2f;
+    public Image chasingIcon;
 
     [Header("Misc")]
     public Transform projectileSpawnPoint;
@@ -60,7 +66,14 @@ public class FishAIModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        healthSlider.value = health.normalizedHealth;
+        healthSlider.gameObject.SetActive(health.normalizedHealth < 1f && health.timeSinceLastDamage < healthSliderVisibilityTimeout);
+        chasingIcon.gameObject.SetActive(aiBrain.CurrentState == FishAIBrain.State.Chasing);
     }
 
     void RandomizeYOffset()

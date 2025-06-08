@@ -28,6 +28,8 @@ public class FishSchool : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 roamTargetLocation;
 
+    private bool hasAlerted = false;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -105,6 +107,14 @@ public class FishSchool : MonoBehaviour
                     fish.aiBrain.SwitchState(FishAIBrain.State.Following);
                     fish.aiBrain.OnAlert.AddListener(() =>
                     {
+                        if (!hasAlerted)
+                        {
+                            hasAlerted = true;
+                            roamFocalPoint = null;
+                            AlertAllFishes();
+                            return;
+                        }
+
                         if (fishes.Contains(fish)) {
                             OnAlert.Invoke();
                         }
@@ -133,16 +143,33 @@ public class FishSchool : MonoBehaviour
         roamRange = circleRoamRange;
     }
 
+    void AlertAllFishes()
+    {
+        foreach (var fish in fishes)
+        {
+            fish.aiBrain.Alert();
+        }
+    }
+
+    void RemoveFishFromSchool(FishAIModel fish, bool removeFromList = true)
+    {
+        fish.aiBrain.followTarget = null;
+        if (fish.aiBrain.CurrentState == FishAIBrain.State.Following)
+        {
+            fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
+            if (removeFromList)
+            {
+                fishes.Remove(fish);
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         // Clean up fishes
         foreach (var fish in fishes)
         {
-            fish.aiBrain.followTarget = null;
-            if (fish.aiBrain.CurrentState == FishAIBrain.State.Following)
-            {
-                fish.aiBrain.SwitchState(FishAIBrain.State.Roaming);
-            }
+            RemoveFishFromSchool(fish, false);
         }
         fishes.Clear();
     }

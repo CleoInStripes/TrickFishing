@@ -224,7 +224,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
             if (Vector3.Distance(fish.transform.position, center) <= radius)
             {
-                fish.aiBrain.OnAlerted();
+                fish.aiBrain.Alert();
             }
         }
     }

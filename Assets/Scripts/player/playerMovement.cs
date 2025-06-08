@@ -16,6 +16,7 @@ public class playerMovement : MonoBehaviour
     public float sprintSpeed;
     public float slideSpeed;
     public float dashSpeed;
+    public float backwardsMoveSpeedMultiplier = 0.5f;
 
     [Tooltip("How much the player drags when on the ground (prevents slippery movement)")]
     public float groundDrag;
@@ -261,6 +262,12 @@ public class playerMovement : MonoBehaviour
                 desiredMoveSpeed = walkSpeed;
             else
                 desiredMoveSpeed = sprintSpeed;
+        }
+
+        // Moving Backward
+        if (verticalInput < 0)
+        {
+            desiredMoveSpeed *= backwardsMoveSpeedMultiplier;
         }
 
         //check if desiredMoveSpeed has changed drastically

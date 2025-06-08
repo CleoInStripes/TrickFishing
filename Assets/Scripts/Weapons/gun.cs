@@ -52,7 +52,7 @@ public class gun : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire1") && curAmmo <= 0)
+        if (curAmmo <= 0)
         {
             PerformReload();
             return;

@@ -312,4 +312,34 @@ public class HelperUtilities
         Gizmos.color = fillColor;
         Gizmos.DrawCube(Vector3.zero, bounds.size);
     }
+
+    public static Vector3? FirstOrderIntercept(
+        Vector3 shooterPos,
+        Vector3 targetPos,
+        Vector3 targetVelocity,
+        float projectileSpeed)
+    {
+        Vector3 dirToTarget = targetPos - shooterPos;
+        float targetSpeedSq = targetVelocity.sqrMagnitude;
+        float projectileSpeedSq = projectileSpeed * projectileSpeed;
+
+        float a = targetSpeedSq - projectileSpeedSq;
+        float b = 2f * Vector3.Dot(dirToTarget, targetVelocity);
+        float c = dirToTarget.sqrMagnitude;
+
+        float discriminant = b * b - 4f * a * c;
+
+        if (discriminant < 0)
+            return null; // No interception possible
+
+        float sqrtDisc = Mathf.Sqrt(discriminant);
+        float t1 = (-b + sqrtDisc) / (2f * a);
+        float t2 = (-b - sqrtDisc) / (2f * a);
+
+        float time = Mathf.Min(t1, t2);
+        if (time < 0) time = Mathf.Max(t1, t2);
+        if (time < 0) return null;
+
+        return targetPos + targetVelocity * time;
+    }
 }

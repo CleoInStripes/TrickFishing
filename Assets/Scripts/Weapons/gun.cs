@@ -47,6 +47,8 @@ public class gun : MonoBehaviour
             return;
         }
 
+        tempAnimator.SetBool("ADS", Input.GetButton("Fire2"));
+
         if (isReloading)
         {
             return;

@@ -89,6 +89,7 @@ public class SimpleTimer
     public float timeSinceExpiry => _elapsedTime - durationRange.selected;
 
     public float elapsedTimeClamped => expired ? durationRange.selected : elapsedTime;
+    public float timeLeft => durationRange.selected - elapsedTimeClamped;
 
     public SimpleTimer(float duration = 3)
     {

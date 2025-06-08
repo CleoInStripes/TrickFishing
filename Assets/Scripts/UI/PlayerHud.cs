@@ -7,6 +7,7 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI AmmoText;
+    public TextMeshProUGUI TimerText;
     public GameObject WaveInfo;
     public TextMeshProUGUI WaveText;
     public GameObject FishesLeftBox;
@@ -41,7 +42,8 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         UpdateHealth();
         UpdateScore();
         UpdateAmmoText();
-        UpdateWaveInfo();
+        //UpdateWaveInfo();
+        UpdateTimerInfo();
     }
 
     void UpdateHealth()
@@ -77,6 +79,15 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
             FishesLeftText.text = $"{capturePointSystem.capturePoint.activeFishCount}";
             FishesLeftBox.SetActive(true);
         }
+    }
+
+    void UpdateTimerInfo()
+    {
+        int secondsLeft = Mathf.FloorToInt(LevelManager.Instance.timer.timeLeft);
+        int minutes = secondsLeft / 60;
+        int seconds = secondsLeft % 60;
+
+        TimerText.text = $"{minutes:D2}:{seconds:D2}";
     }
 
     async void FlickerDamageScreen()

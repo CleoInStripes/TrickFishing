@@ -51,10 +51,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialFishSpawnSpotsHolder: {fileID: 0}
+  playerRespawnPoint: {fileID: 0}
   settings:
-    maxTime: 60
+    maxTime: 300
     difficultyLevel: 0.5
   isGameOver: 0
+  timer:
+    durationRange:
+      min: 3
+      max: 3
+    _elapsedTime: 0
 --- !u!114 &3390291717224922431
 MonoBehaviour:
   m_ObjectHideFlags: 0

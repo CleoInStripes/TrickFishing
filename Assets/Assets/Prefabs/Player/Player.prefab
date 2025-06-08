@@ -393,7 +393,7 @@ MonoBehaviour:
   sprintSpeed: 16
   slideSpeed: 35
   dashSpeed: 50
-  backwardsMoveSpeedMultiplier: 0.5
+  backwardsMoveSpeedMultiplier: 1
   groundDrag: 4
   speedIncreaseMultiplier: 3
   slopeIncreaseMultiplier: 4

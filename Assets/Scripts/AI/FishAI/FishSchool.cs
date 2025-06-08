@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class FishSchool : MonoBehaviour
 {
+    public bool initializeOnStart = false;
+    public bool infiniteMode = false;
     public List<FishSpawnGroup> fishSpawnGroups;
     public RangeFloat spawnRadiusRange = new(0f, 15f);
 
@@ -39,7 +41,19 @@ public class FishSchool : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+        {
+            agent.Warp(hit.position);
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name} is not on the NavMesh!");
+        }
+
+        if (initializeOnStart)
+        {
+            Initialize();
+        }
     }
 
     public void Initialize()
@@ -92,48 +106,70 @@ public class FishSchool : MonoBehaviour
     
     void SpawnFishes()
     {
-        foreach (var spawnGroup in fishSpawnGroups)
+        var totalSpawned = 0;
+        var totalAttempts = 0;
+        while (totalSpawned == 0 && totalAttempts < 10)
         {
-            var spawnCount = spawnGroup.countRange.GetRandom();
-            for (int i = 0; i < spawnCount; i++)
+            foreach (var spawnGroup in fishSpawnGroups)
             {
-                Vector3 spawnPosition;
-                if (FishAIManager.Instance.TryGetRandomNavMeshLocation(transform.position, spawnRadiusRange, out spawnPosition))
+                var spawnCount = spawnGroup.countRange.GetRandom();
+                for (int i = 0; i < spawnCount; i++)
                 {
-                    var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-                    var fish = FishAIManager.Instance.SpawnFish(spawnGroup.prefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation);
-                    fish.aiBrain.chainFleeWithAttack = true;
-                    fish.aiBrain.followTarget = transform;
-                    fish.aiBrain.SwitchState(FishAIBrain.State.Following);
-                    fish.aiBrain.OnAlert.AddListener(() =>
+                    Vector3 spawnPosition;
+                    if (FishAIManager.Instance.TryGetRandomNavMeshLocation(transform.position, spawnRadiusRange, out spawnPosition))
                     {
-                        if (!hasAlerted)
+                        var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                        var fish = FishAIManager.Instance.SpawnFish(spawnGroup.prefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation);
+                        fish.aiBrain.chainFleeWithAttack = true;
+                        fish.aiBrain.followTarget = transform;
+                        fish.aiBrain.SwitchState(FishAIBrain.State.Following);
+                        fish.aiBrain.OnAlert.AddListener(() =>
                         {
-                            hasAlerted = true;
-                            roamFocalPoint = null;
-                            AlertAllFishes();
-                            return;
-                        }
+                            if (!hasAlerted)
+                            {
+                                hasAlerted = true;
+                                roamFocalPoint = null;
+                                AlertAllFishes();
+                                return;
+                            }
 
-                        if (fishes.Contains(fish)) {
-                            OnAlert.Invoke();
-                        }
-                    });
-                    fish.OnDeath.AddListener(() =>
-                    {
-                        fishes.Remove(fish);
-                        if (fishes.Count == 0)
+                            if (fishes.Contains(fish))
+                            {
+                                OnAlert.Invoke();
+                            }
+                        });
+                        fish.OnDeath.AddListener(() =>
                         {
-                            OnAllFishesDead.Invoke();
-                        }
-                    });
-                    fishes.Add(fish);
-                }
-                else
-                {
-                    Debug.LogError("Could not find a random position on the Nav Mesh");
+                            fishes.Remove(fish);
+                            if (fishes.Count == 0)
+                            {
+                                onLastFishDied();
+                            }
+                        });
+                        fishes.Add(fish);
+
+                        totalSpawned++;
+                    }
+                    else
+                    {
+                        Debug.LogError("Could not find a random position on the Nav Mesh");
+                    }
                 }
             }
+            
+            totalAttempts++;
+        }
+    }
+
+    void onLastFishDied()
+    {
+        if (infiniteMode)
+        {
+            SpawnFishes();
+        } 
+        else 
+        { 
+            OnAllFishesDead.Invoke();
         }
     }
 

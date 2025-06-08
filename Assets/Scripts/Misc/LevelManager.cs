@@ -21,7 +21,8 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     [ReadOnly] public bool isGameOver = false;
 
-    private SimpleTimer timer = new SimpleTimer();
+    [HideInInspector]
+    public SimpleTimer timer = new SimpleTimer();
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
                 if (timer.expired)
                 {
                     // Out of time
-                    //TriggerGameOver();
+                    TriggerGameOver();
                 }
             }
         }

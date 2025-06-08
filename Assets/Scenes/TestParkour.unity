@@ -5483,6 +5483,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1009108725064610056, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5497,6 +5502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458170415940978648, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: camFOVEnd
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 1997188791301067387, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
@@ -5522,6 +5532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: camFOVDash
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3959480317142043151, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}

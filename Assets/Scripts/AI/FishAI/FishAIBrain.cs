@@ -50,7 +50,9 @@ public class FishAIBrain : MonoBehaviour
     public float attackDamage = 5f;
     public RangeFloat attackIntervalRange = new(3, 5);
     public bool isRangedAttack = false;
+    public bool canRangeAttackWhileChasing = true;
     public FishProjectile projectilePrefab;
+    public float projectileTargetOffsetFactor = 1f;
     public RangeFloat projectileTargetOffsetRange = new(-2, 2);
 
     [Header("Alerting")]
@@ -293,6 +295,11 @@ public class FishAIBrain : MonoBehaviour
         {
             RotateByVelocity();
             agent.SetDestination(PlayerModel.Instance.transform.position);
+
+            if (isRangedAttack && canRangeAttackWhileChasing && canAttack)
+            {
+                PerformAttack();
+            }
         }
     }
 
@@ -396,8 +403,16 @@ public class FishAIBrain : MonoBehaviour
         if (isRangedAttack)
         {
             // Ranged
-            var dirToPlayer = PlayerCam.Instance.cam.transform.position - fishModel.projectileSpawnPoint.position;
-            var dirToTarget = dirToPlayer + Random.onUnitSphere * projectileTargetOffsetRange.GetRandom();
+
+            var playerVelocity = PlayerModel.Instance.rb.linearVelocity;
+            var targetOffset = playerVelocity * projectileTargetOffsetFactor;
+            if (playerVelocity.magnitude > 1f)
+            {
+                targetOffset += Random.onUnitSphere * projectileTargetOffsetRange.GetRandom();
+            }
+
+            var target = PlayerCam.Instance.cam.transform.position + targetOffset;
+            var dirToTarget = target - fishModel.projectileSpawnPoint.position;
             Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToTarget));
         }
         else

@@ -93,7 +93,7 @@ public class FishAIModel : MonoBehaviour
     public void OnDead()
     {
         // TODO: Play animation, particle fx, etc..
-        var pfx = Instantiate(deathParticleEffectPrefab, transform.position, transform.rotation);
+        var pfx = Instantiate(deathParticleEffectPrefab, avatarYControl.transform.position + (Vector3.up * 1), avatarYControl.transform.rotation);
         Destroy(pfx, 10f);
 
         PlayerModel.Instance.AddScore(killScore);

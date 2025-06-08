@@ -1,13 +1,19 @@
 using BasicTools.ButtonInspector;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
 {
     public GameObject beam;
     public FishSchool fishSchoolPrefab;
     public float activationProximity = 50f;
-    public SimpleTimer timer;
     public int captureScore = 500;
+    public GameObject TreasureChestPrefab;
+    public float treasureChestSpawnHeight = 50f;
+    public float treasureChestSpawnOffset = 3f;
+    TreasureChest treasureChest;
+
 
     [Button("Pre-Activate", "BtnExecute_PreActivate")]
     [SerializeField]
@@ -16,9 +22,20 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
     [SerializeField]
     private bool btnActivate;
 
-    public bool isActive => beam.activeSelf;
+    [HideInInspector] public bool isActive = false;
 
     private FishSchool currentFishSchool;
+    public int activeFishCount {
+        get
+        {
+            if (!currentFishSchool)
+            {
+                return 0;
+            }
+
+            return currentFishSchool.fishes.Count;
+        }
+    }
 
     private new void Awake()
     {
@@ -28,7 +45,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //
     }
 
     // Update is called once per frame
@@ -37,15 +54,6 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
         if (currentFishSchool && !isActive)
         {
             CheckPlayerAndActivate();
-        }
-
-        if (isActive & !timer.expired)
-        {
-            timer.Update();
-            if (timer.expired)
-            {
-                OutOfTime();
-            }
         }
     }
 
@@ -58,14 +66,23 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
         }
     }
 
-    public void PreActivate()
+    public void DropTreasure()
     {
-        Vector3 spawnPosition;
-        if (FishAIManager.Instance.TryGetRandomNavMeshLocation(transform.position, fishSchoolPrefab.roamRange, out spawnPosition))
+        treasureChest = Instantiate(TreasureChestPrefab, transform.position + (Random.insideUnitSphere * treasureChestSpawnOffset) + (Vector3.up * treasureChestSpawnHeight), transform.rotation).GetComponent<TreasureChest>(); ;
+        treasureChest.OnLanded.AddListener(() =>
+        {
+            // TODO: Open Chest, and maybe have the fishes come out of there?
+            SpawnFishes();
+            Activate();
+        });
+    }
+
+    void SpawnFishes() {
+        if (NavMesh.SamplePosition(treasureChest.transform.position, out NavMeshHit hit, fishSchoolPrefab.roamRange.max, NavMesh.AllAreas))
         {
             var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-            currentFishSchool = Instantiate(fishSchoolPrefab, spawnPosition, spawnRotation);
-            currentFishSchool.roamFocalPoint = transform;
+            currentFishSchool = Instantiate(fishSchoolPrefab, hit.position, spawnRotation);
+            currentFishSchool.roamFocalPoint = treasureChest.transform;
             currentFishSchool.OnAlert.AddListener(() =>
             {
                 if (currentFishSchool)
@@ -91,11 +108,6 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
         Deactivate();
     }
 
-    void OutOfTime()
-    {
-        Deactivate();
-    }
-
     public void Activate()
     {
         if (isActive)
@@ -103,9 +115,9 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
             return;
         }
 
+        isActive = true;
         beam.SetActive(true);
         currentFishSchool.CircleFocalPoint();
-        timer.Reset();
     }
 
     public void Deactivate()
@@ -118,13 +130,15 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
         beam.SetActive(false);
         Destroy(currentFishSchool);
         currentFishSchool = null;
+        treasureChest = null;
+        isActive = false;
 
-        CapturePointSystem.Instance.MoveToNewLocation();
+        CapturePointSystem.Instance.OnCapturePointDeactivated();
     }
 
     public void BtnExecute_PreActivate()
     {
-        PreActivate();
+        DropTreasure();
     }
     public void BtnExecute_Activate()
     {

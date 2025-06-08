@@ -80,7 +80,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4541946048219048203}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -199,10 +199,11 @@ MonoBehaviour:
   fishSchoolPrefab: {fileID: 2135461826161267095, guid: 0b41657ff002c58499b1dcb60e2d5535,
     type: 3}
   activationProximity: 15
-  timer:
-    durationRange:
-      min: 180
-      max: 180
-    _elapsedTime: 0
+  captureScore: 500
+  TreasureChestPrefab: {fileID: 3895548755994111152, guid: a03277f223fd8f54c94df42be3d13687,
+    type: 3}
+  treasureChestSpawnHeight: 35
+  treasureChestSpawnOffset: 10
   btnPreActivate: 0
   btnActivate: 0
+  isActive: 0

@@ -99,6 +99,8 @@ public class Sliding : MonoBehaviour
     {
         pm.isSliding = false;
 
+        rb.position = rb.position + new Vector3(0, (2.06f * 1.55f) / 2, 0);
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
+        
     }
 }

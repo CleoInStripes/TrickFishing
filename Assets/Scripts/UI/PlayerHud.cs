@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     public TextMeshProUGUI TimerText;
     public GameObject WaveInfo;
     public TextMeshProUGUI WaveText;
+    public TextMeshProUGUI TrickshotsText;
     public GameObject FishesLeftBox;
     public TextMeshProUGUI FishesLeftText;
     public MenuPage GameOverPage;
@@ -52,6 +54,7 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         //UpdateWaveInfo();
         UpdateTimerInfo(); ;
         UpdateBulletTimeInfo();
+        UpdateTrickshotsInfo();
     }
 
     void UpdateHealth()
@@ -103,6 +106,11 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         bulletTimeChargeSlider.value = PlayerModel.Instance.bulletTimeChargeNormalized;
         bulletTimeSliderFill.color = PlayerModel.Instance.bulletTimeAvailable ? bulletTimeAvailableColor : Color.white;
         bulletTimeSliderIcon.color = PlayerModel.Instance.bulletTimeAvailable ? bulletTimeAvailableColor : Color.white;
+    }
+    void UpdateTrickshotsInfo()
+    {
+        var lines = PlayerModel.Instance.recentTrickShotInfos.Select((ts) => $"{ts.name}  +{ts.extraScore}");
+        TrickshotsText.text = string.Join("\n", lines);
     }
 
     async void FlickerDamageScreen()

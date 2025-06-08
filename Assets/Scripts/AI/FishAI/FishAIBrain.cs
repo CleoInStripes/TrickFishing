@@ -254,6 +254,10 @@ public class FishAIBrain : MonoBehaviour
             {
                 agent.SetDestination(target);
             }
+            else if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, roamRange.max, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
             else
             {
                 Debug.LogError("Could not find a roaming position on the Nav Mesh");

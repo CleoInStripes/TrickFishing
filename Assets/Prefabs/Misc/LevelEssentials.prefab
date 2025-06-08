@@ -54,7 +54,7 @@ MonoBehaviour:
   initialFishSpawnSpotsHolder: {fileID: 0}
   playerRespawnPoint: {fileID: 0}
   settings:
-    maxTime: 180
+    maxTime: 300
     difficultyLevel: 0.5
   isGameOver: 0
   timer:

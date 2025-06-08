@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,10 +11,16 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 {
     [Header("Fish Prefabs")]
     public List<FishSpawnGroup> initialFishSpawnGroups;
+    public FishSchool fishSchoolPrefab;
 
     [Header("Initial Spawning")]
     public bool enableInitialSpawning = true;
     public RangeFloat initialSpawnRadiusRange = new(0f, 15f);
+
+    [Header("School Spawning")]
+    public bool enableSchoolSpawning = true;
+    public RangeInt schoolSpawnCountRange = new(2, 4);
+    public RangeFloat schoolSpawnCountIntervalRange = new(30, 45);
 
     [Header("Respawning")]
     public RangeFloat respawnRadiusRange = new(40f, 70f);
@@ -32,6 +39,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
 
     private List<Transform> initialFishSpawnSpots = new();
+    private Randomizer<Transform> initialFishSpawnSpotsRandomizer = new(new List<Transform>());
     [HideInInspector]
     public List<FishAIModel> spawnedFishes = new ();
 
@@ -41,6 +49,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
 
         Transform spawnSpotsHolder = overrideInitialFishSpawnSpotsHolder ? overrideInitialFishSpawnSpotsHolder : LevelManager.Instance.initialFishSpawnSpotsHolder;
         initialFishSpawnSpots = spawnSpotsHolder.GetComponentsInChildren<Transform>().ToList();
+        initialFishSpawnSpotsRandomizer = new (initialFishSpawnSpots);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,6 +63,11 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
         if (enableInitialSpawning)
         {
             SpawnFishesInInitialSpots();
+        }
+
+        if (enableSchoolSpawning)
+        {
+            WaitAndSpawnSchools();
         }
     }
 
@@ -92,6 +106,26 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
                         Debug.LogError("Could not find a random position on the Nav Mesh");
                     }
                 }
+            }
+        }
+    }
+
+    async void WaitAndSpawnSchools()
+    {
+        await Task.Delay((int)(schoolSpawnCountIntervalRange.GetRandom() * 1000));
+
+        var spawnCount = schoolSpawnCountRange.GetRandom();
+        for (int i = 0; i < spawnCount; i++)
+        {
+            Vector3 spawnPosition;
+            if (TryGetRandomNavMeshLocation(initialFishSpawnSpotsRandomizer.GetRandomItem().position, initialSpawnRadiusRange, out spawnPosition))
+            {
+                var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                Instantiate(fishSchoolPrefab, spawnPosition, spawnRotation);
+            }
+            else
+            {
+                Debug.LogError("Could not find a random position on the Nav Mesh for school");
             }
         }
     }

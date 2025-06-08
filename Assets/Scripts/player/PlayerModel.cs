@@ -1,5 +1,7 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
@@ -13,9 +15,17 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
         public float randomness = 90f;
     }
 
+    public class TrickShotInfo
+    {
+        public string name = "";
+        public int extraScore = 0;
+    }
+
+
     [HideInInspector] public Health health;
     [HideInInspector] public gun gun;
     [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public playerMovement playerMovement;
 
     public CameraShakeSettings damageCameraShakeSettings;
 
@@ -23,11 +33,15 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     public int score = 0;
     public float bulletTimeMaxCharge = 1000f;
     public float bulletTimeDischargeRate = 300f;
+    public int maxTrickShotInfos = 10;
+    public float trickShotCleanupInterval = 3;
 
     [HideInInspector] public bool inBulletTime = false;
     [HideInInspector] public float bulletTimeCharge = 0f;
     [HideInInspector] public bool bulletTimeAvailable = false;
     public float bulletTimeChargeNormalized => HelperUtilities.Remap(bulletTimeCharge, 0, bulletTimeMaxCharge, 0, 1);
+
+    [HideInInspector] public List<TrickShotInfo> recentTrickShotInfos = new List<TrickShotInfo>();
 
     public bool allowInput
     {
@@ -53,6 +67,7 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
         health = GetComponent<Health>();
         gun = GetComponent<gun>();
         rb = GetComponent<Rigidbody>();
+        playerMovement = GetComponent<playerMovement>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,6 +75,7 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     {
         health.OnDamageTaken.AddListener(() => OnDamageTaken());
         health.OnHealthDepleted.AddListener(() => OnDeath());
+        WatchAndCleanupTrickShotInfo();
     }
 
     // Update is called once per frame
@@ -125,6 +141,28 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
                 bulletTimeCharge = bulletTimeMaxCharge;
                 bulletTimeAvailable = true;
             }
+        }
+    }
+
+    public void AddTrickShotInfo(TrickShotInfo trickShotInfo)
+    {
+        if (recentTrickShotInfos.Count >= maxTrickShotInfos)
+        {
+            recentTrickShotInfos.RemoveAt(0);
+        }
+        recentTrickShotInfos.Add(trickShotInfo);
+        AddScore(trickShotInfo.extraScore);
+    }
+
+    public async void WatchAndCleanupTrickShotInfo()
+    {
+        while (health.IsAlive)
+        {
+            if (recentTrickShotInfos.Count > 0)
+            {
+                recentTrickShotInfos.RemoveAt(0);
+            }
+            await Task.Delay((int)(trickShotCleanupInterval * 1000));
         }
     }
 

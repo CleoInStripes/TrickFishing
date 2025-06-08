@@ -50,11 +50,20 @@ MonoBehaviour:
       - {fileID: 7624123208369790671, guid: 44cccfc10a201ec449dc4e07a546451d, type: 3}
     countRange:
       min: 2
-      max: 5
+      max: 4
+  fishSchoolPrefab: {fileID: 230854530617171730, guid: cb7daf71341a0ee43b0696fb6065efee,
+    type: 3}
   enableInitialSpawning: 1
   initialSpawnRadiusRange:
     min: 0
     max: 15
+  enableSchoolSpawning: 1
+  schoolSpawnCountRange:
+    min: 2
+    max: 4
+  schoolSpawnCountIntervalRange:
+    min: 30
+    max: 45
   respawnRadiusRange:
     min: 50
     max: 80

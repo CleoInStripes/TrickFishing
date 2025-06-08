@@ -166,7 +166,7 @@ public class FishSchool : MonoBehaviour
     {
         if (infiniteMode)
         {
-            SpawnFishes();
+            SpawnFishes(1);
         } 
         else 
         { 

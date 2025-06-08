@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using DG.Tweening;
 using static UnityEngine.UI.Image;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class gun : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class gun : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
     public float bulletTimeScale = 0.5f;
+    public float aerialShotDetectionDistance = 5f;
 
     public bool Automatic;
 
@@ -110,6 +113,56 @@ public class gun : MonoBehaviour
         isReloading = false;
     }
 
+    List<PlayerModel.TrickShotInfo> GetCurrentTricks(int targetsHit)
+    {
+        List<PlayerModel.TrickShotInfo> trickshots = new();
+
+        // Number of Hits
+        if (targetsHit > 1)
+        {
+            PlayerModel.TrickShotInfo trickShotInfo = new();
+            switch (targetsHit)
+            {
+                case 2:
+                    trickShotInfo.name = "Double Shot";
+                    trickShotInfo.extraScore = 500;
+                    break;
+                case 3:
+                    trickShotInfo.name = "Triple Shot";
+                    trickShotInfo.extraScore = 1000;
+                    break;
+                default:
+                    trickShotInfo.name = $"Kilimanjaro - {targetsHit}x Shot";
+                    trickShotInfo.extraScore = 500 * (targetsHit - 1);
+                    break;
+            }
+            trickshots.Add(trickShotInfo);
+        }
+
+        if (PlayerModel.Instance.inBulletTime)
+        {
+            PlayerModel.TrickShotInfo trickShotInfo = new()
+            {
+                name = "Slow-Mo Shot",
+                extraScore = 200,
+            };
+            trickshots.Add(trickShotInfo);
+        }
+
+        bool isCloseToGround = Physics.Raycast(transform.position, Vector3.down, aerialShotDetectionDistance, PlayerModel.Instance.playerMovement.groundCheck);
+        if (!isCloseToGround)
+        {
+            PlayerModel.TrickShotInfo trickShotInfo = new()
+            {
+                name = "Aerial Shot",
+                extraScore = 200,
+            };
+            trickshots.Add(trickShotInfo);
+        }
+
+        return trickshots;
+    }
+
     void Shoot()
     {
         curAmmo--;
@@ -129,6 +182,7 @@ public class gun : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(fpsCam.transform.position, fpsCam.transform.forward, range);
         System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
+        var targetsHit = 0;
         foreach (RaycastHit hit in hits)
         {
             target target = hit.transform.GetComponentInParent<target>();
@@ -139,6 +193,7 @@ public class gun : MonoBehaviour
 
             //Debug.Log($"Found Target: {target.gameObject.name}");
             target.Hit(damage);
+            targetsHit++;
 
             if (hit.rigidbody != null)
             {
@@ -149,6 +204,15 @@ public class gun : MonoBehaviour
             {
                 GameObject impactGO = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
+            }
+        }
+
+        if (targetsHit > 0)
+        {
+            var trickshots = GetCurrentTricks(targetsHit);
+            foreach (var ts in trickshots)
+            {
+                PlayerModel.Instance.AddTrickShotInfo(ts);
             }
         }
 

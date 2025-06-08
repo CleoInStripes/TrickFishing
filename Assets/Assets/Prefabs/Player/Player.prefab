@@ -370,14 +370,17 @@ MonoBehaviour:
   health: {fileID: 0}
   gun: {fileID: 0}
   rb: {fileID: 0}
+  playerMovement: {fileID: 0}
   damageCameraShakeSettings:
     duration: 0.3
     strength: 0.3
     vibrato: 10
     randomness: 90
   score: 0
-  bulletTimeMaxCharge: 300
-  bulletTimeDischargeRate: 25
+  bulletTimeMaxCharge: 500
+  bulletTimeDischargeRate: 50
+  maxTrickShotInfos: 10
+  trickShotCleanupInterval: 10
   inBulletTime: 0
   bulletTimeCharge: 0
   bulletTimeAvailable: 0
@@ -416,6 +419,7 @@ MonoBehaviour:
   groundCheck:
     serializedVersion: 2
     m_Bits: 65
+  grounded: 0
   maxSlopeAngle: 60
   jumpKey: 32
   sprintKey: 304
@@ -523,6 +527,7 @@ MonoBehaviour:
   maxAmmo: 1
   reloadTime: 0.75
   bulletTimeScale: 0.3
+  aerialShotDetectionDistance: 5
   Automatic: 0
   muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,

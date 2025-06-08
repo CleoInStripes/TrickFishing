@@ -59,7 +59,7 @@ public class playerMovement : MonoBehaviour
     public float playerHeight;
     [Tooltip("Whats below you")]
     public LayerMask groundCheck;
-    bool grounded;
+    [HideInInspector] public bool grounded;
 
     [Header("Slope Standing")]
     [Tooltip("The steepest angle that youre allowed to stand on")]

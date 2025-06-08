@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8240446238752414501}
   - component: {fileID: 2208037645231527406}
   - component: {fileID: 815329050474332303}
+  - component: {fileID: 5555680107381966547}
   m_Layer: 0
   m_Name: TF_logBridge_Model
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5206924404913857291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000001545431, y: 0.00000001545431, z: 0.7071067, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -116.99565, y: 0.006983489, z: 0.10721588}
-  m_LocalScale: {x: 200.79236, y: 200.79236, z: 200.79236}
+  m_LocalScale: {x: 123.88487, y: 123.88488, z: 123.88488}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &2208037645231527406
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,3 +87,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5555680107381966547
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206924404913857291}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2100844470025339020, guid: 5e8ffd8cd26da8b4ea7bc85f6b9539d0, type: 3}

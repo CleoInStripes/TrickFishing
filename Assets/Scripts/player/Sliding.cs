@@ -77,20 +77,6 @@ public class Sliding : MonoBehaviour
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
 
-            //smooth camera zoom? Causes INSANE lag. Handle with care
-            //float time = 0;
-            //float camFOVChange = Mathf.Abs(camFOVStart - camFOVEnd);
-
-            //while (time < camFOVChange)
-            //{
-            //    cam.fieldOfView = Mathf.Lerp(camFOVStart, camFOVEnd, time / camFOVChange);
-
-            //    time += Time.deltaTime;
-            //    Debug.Log(time);
-
-            //}
-
-            //stop timer if under object
             if (!pm.underObject)
             {
                 slideTimer -= Time.deltaTime;
@@ -113,6 +99,8 @@ public class Sliding : MonoBehaviour
     {
         pm.isSliding = false;
 
+        rb.position = rb.position + new Vector3(0, (2.06f * 1.55f) / 2, 0);
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
+        
     }
 }

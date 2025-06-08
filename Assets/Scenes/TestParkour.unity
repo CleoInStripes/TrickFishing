@@ -768,12 +768,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418720366}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &419440316 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-    type: 3}
-  m_PrefabInstance: {fileID: 2124230033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &469981645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5489,16 +5483,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 1009108725064610056, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5513,21 +5497,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458170415940978648, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 419440316}
-    - target: {fileID: 1458170415940978648, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: camFOVEnd
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458170415940978648, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: maxSlideTime
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1997188791301067387, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
@@ -5554,36 +5523,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 419440316}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: camFOVEnd
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: dashForce
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: camFOVZoom
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: dashCooldown
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: dashDuration
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3959480317142043151, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5638,26 +5577,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961593219075984236, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: slideSpeed
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961593219075984236, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: maxSlopeAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961593219075984236, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: slopeIncreaseMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961593219075984236, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: speedIncreaseMultiplier
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7025436412587134655, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}

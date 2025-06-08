@@ -6,6 +6,10 @@ public class Sliding : MonoBehaviour
     public Transform playerObj;
     private Rigidbody rb;
     private playerMovement pm;
+    public Camera cam;
+
+    private float camFOVStart;
+    public float camFOVEnd;
 
     [Header("Sliding")]
     [Tooltip("The amount of time that you can slide for")]
@@ -25,6 +29,8 @@ public class Sliding : MonoBehaviour
 
     private void Start()
     {
+        camFOVStart = cam.fieldOfView;
+
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<playerMovement>();
 
@@ -70,6 +76,19 @@ public class Sliding : MonoBehaviour
         if(!pm.OnSlope() || rb.linearVelocity.y > -0.1f)
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+
+            //smooth camera zoom? Causes INSANE lag. Handle with care
+            //float time = 0;
+            //float camFOVChange = Mathf.Abs(camFOVStart - camFOVEnd);
+
+            //while (time < camFOVChange)
+            //{
+            //    cam.fieldOfView = Mathf.Lerp(camFOVStart, camFOVEnd, time / camFOVChange);
+
+            //    time += Time.deltaTime;
+            //    Debug.Log(time);
+
+            //}
 
             //stop timer if under object
             if (!pm.underObject)

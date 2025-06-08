@@ -346,6 +346,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe12cc9ffb812d40b0ebe8f080633cc, type: 3}
+--- !u!20 &975635535762092742 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7930455853323338411, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7171002522937176173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2434309015561376053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4777443907435274584, guid: 3fe12cc9ffb812d40b0ebe8f080633cc,
@@ -427,6 +433,36 @@ PrefabInstance:
       propertyPath: muzzlePoint
       value: 
       objectReference: {fileID: 3200012222359793411}
+    - target: {fileID: 4144656601665570902, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: slideSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144656601665570902, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: slopeIncreaseMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144656601665570902, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: speedIncreaseMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 975635535762092742}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: camFOVEnd
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: dashForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
         type: 3}
       propertyPath: playerCam
@@ -437,10 +473,30 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 5012149083726926913}
+    - target: {fileID: 6434324421766954490, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: dashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7120017519398551456, guid: 8e5e929a4879b474db8a82a77e6ed38f,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152268881925145826, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 975635535762092742}
+    - target: {fileID: 9152268881925145826, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: camFOVEnd
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152268881925145826, guid: 8e5e929a4879b474db8a82a77e6ed38f,
+        type: 3}
+      propertyPath: maxSlideTime
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,10 +1,23 @@
+using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 {
-    public Health health;
-    public gun gun;
+    [Serializable]
+    public class CameraShakeSettings
+    {
+        public float duration = 0.5f;
+        public float strength = 0.5f;
+        public int vibrato = 10;
+        public float randomness = 90f;
+    }
+
+    [HideInInspector] public Health health;
+    [HideInInspector] public gun gun;
     [HideInInspector] public Rigidbody rb;
+
+    public CameraShakeSettings damageCameraShakeSettings;
 
     [ReadOnly]
     public int score = 0;
@@ -20,7 +33,7 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        health.OnDamageTaken.AddListener(() => OnDamageTaken());
     }
 
     // Update is called once per frame
@@ -32,5 +45,22 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     public void AddScore(int _score)
     {
         score += _score;
+    }
+
+    public void OnDamageTaken()
+    {
+        var cam = PlayerCam.Instance.cam;
+        var oldCamLocalPosition = cam.transform.localPosition;
+        PlayerCam.Instance.cam.transform.DOShakePosition(
+            damageCameraShakeSettings.duration,
+            damageCameraShakeSettings.strength,
+            damageCameraShakeSettings.vibrato,
+            damageCameraShakeSettings.randomness,
+            false,
+            true
+        ).OnComplete(() =>
+        {
+            cam.transform.localPosition = oldCamLocalPosition;
+        });
     }
 }

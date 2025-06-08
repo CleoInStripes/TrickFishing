@@ -369,6 +369,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   gun: {fileID: 0}
+  rb: {fileID: 0}
+  damageCameraShakeSettings:
+    duration: 0.3
+    strength: 0.3
+    vibrato: 10
+    randomness: 90
   score: 0
 --- !u!114 &4144656601665570902
 MonoBehaviour:
@@ -424,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4493bd4b7a7c44a9b93fb9ad580030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   playerCam: {fileID: 0}
   dashForce: 10
   dashUpwardForce: 0
@@ -502,6 +509,7 @@ MonoBehaviour:
   range: 100
   fireRate: 15
   impactForce: 30
+  bulletSpawnOffsetFactor: 0.1
   maxAmmo: 10
   reloadTime: 1
   Automatic: 0

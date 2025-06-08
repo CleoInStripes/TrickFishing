@@ -1122,10 +1122,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishAI_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 5315152580159699622, guid: 07d13701db9aea0429290439da10a4ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396074418312288360, guid: 07d13701db9aea0429290439da10a4ae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8634620179641765956, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.656002
+      value: -30.656
       objectReference: {fileID: 0}
     - target: {fileID: 8634620179641765956, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
@@ -1332,7 +1342,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: e72e10f9f924a9c45a61c32a3c4d9c4d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 387be10fc6868314297ecbe611d65a6e, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1662903573
 GameObject:
@@ -1468,11 +1478,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 815139335103357694, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8.000092
-      objectReference: {fileID: 0}
     - target: {fileID: 965471499330934739, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1527,6 +1532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783952214567209283, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1.910685e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1997188791301067387, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
@@ -1994,7 +2004,12 @@ PrefabInstance:
       objectReference: {fileID: 1327732427}
     - target: {fileID: 3390291717224922431, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
-      propertyPath: capturePointsEnabled
+      propertyPath: newWaveCountdownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390291717224922431, guid: 422855f91b5cac64196a1929f2aba257,
+        type: 3}
+      propertyPath: initialWaveCountdownTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,

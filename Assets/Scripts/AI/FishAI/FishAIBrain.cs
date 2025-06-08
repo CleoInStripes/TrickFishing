@@ -1,4 +1,5 @@
 using BasicTools.ButtonInspector;
+using DG.Tweening;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -268,7 +269,7 @@ public class FishAIBrain : MonoBehaviour
         }
 
         var distanceToPlayer = Vector3.Distance(PlayerModel.Instance.transform.position, transform.position);
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer <= attackDistance || agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.ResetPath();
             agent.velocity = Vector3.zero;
@@ -393,6 +394,7 @@ public class FishAIBrain : MonoBehaviour
         else
         {
             // Melee
+            fishModel.animator.SetTrigger("MeleeAttack");
             PlayerModel.Instance.health.TakeDamage(attackDamage);
         }
 

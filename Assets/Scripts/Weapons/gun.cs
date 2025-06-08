@@ -2,6 +2,8 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using DG.Tweening;
+using UnityEditor.Animations;
 
 public class gun : MonoBehaviour
 {
@@ -25,6 +27,11 @@ public class gun : MonoBehaviour
     public GameObject bulletTrailPrefab;
     public GameObject impactEffectPrefab;
 
+    [Header("Model")]
+    public GameObject gunAvatarRoot;
+    public GameObject reel;
+    public Animator tempAnimator;
+
     private float nextTimeToFire = 0f;
 
     public int CurrentAmmo => curAmmo;
@@ -42,7 +49,7 @@ public class gun : MonoBehaviour
             return;
         }
 
-        if (curAmmo <= 0)
+        if (Input.GetButtonDown("Fire1") && curAmmo <= 0)
         {
             PerformReload();
             return;
@@ -70,11 +77,6 @@ public class gun : MonoBehaviour
                 Shoot();
             }
         }
-
-        if (curAmmo <= 0)
-        {
-            PerformReload();
-        }
     }
 
     public void PerformReload()
@@ -89,7 +91,7 @@ public class gun : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading...");
+        tempAnimator.SetTrigger("Reload");
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -109,6 +111,8 @@ public class gun : MonoBehaviour
             var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position + bulletSpawnOffset, muzzlePoint.transform.rotation);
             Destroy(bulletTrail, 3f);
         }
+
+        PlayRecoil();
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
@@ -133,5 +137,18 @@ public class gun : MonoBehaviour
                 Destroy(impactGO, 2f);
             }
         }
+    }
+
+    void PlayRecoil()
+    {
+        var gun = gunAvatarRoot.transform;
+        Vector3 originalPos = gun.localPosition;
+        Vector3 originalRot = gun.localEulerAngles;
+
+        DOTween.Sequence()
+            .Append(gun.DOLocalMove(originalPos + new Vector3(0, 0, -0.2f), 0.05f))
+            .Join(gun.DOLocalRotate(originalRot + new Vector3(-5, 0, 0), 0.05f))
+            .Append(gun.DOLocalMove(originalPos, 0.1f))
+            .Join(gun.DOLocalRotate(originalRot, 0.1f));
     }
 }

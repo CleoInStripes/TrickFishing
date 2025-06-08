@@ -433,7 +433,7 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   playerCam: {fileID: 0}
   cam: {fileID: 0}
-  camFOVEnd: 0
+  camFOVDash: 0
   dashForce: 10
   dashUpwardForce: 0
   dashDuration: 0.8
@@ -515,13 +515,16 @@ MonoBehaviour:
   impactForce: 30
   bulletSpawnOffsetFactor: 0.1
   maxAmmo: 10
-  reloadTime: 1
+  reloadTime: 0.75
   Automatic: 0
   muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
     type: 3}
   impactEffectPrefab: {fileID: 3918742467114239352, guid: 1ddd6851575b49a43964d38968918774,
     type: 3}
+  gunAvatarRoot: {fileID: 0}
+  reel: {fileID: 0}
+  tempAnimator: {fileID: 0}
 --- !u!114 &5777921017701546972
 MonoBehaviour:
   m_ObjectHideFlags: 0

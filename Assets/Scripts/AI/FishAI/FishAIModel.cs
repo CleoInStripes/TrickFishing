@@ -23,6 +23,7 @@ public class FishAIModel : MonoBehaviour
     [Header("Misc")]
     public Transform projectileSpawnPoint;
     public GameObject deathParticleEffectPrefab;
+    public Animator animator;
 
     [HideInInspector]
     public bool destroyOnDeath = true;

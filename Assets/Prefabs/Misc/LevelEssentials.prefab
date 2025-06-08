@@ -66,9 +66,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capturePointsEnabled: 1
-  capturePointsHolder: {fileID: 0}
+  capturePointLocation: {fileID: 0}
   capturePointPrefab: {fileID: 1362159120544433674, guid: 57ef0f0838f5bc94597aa211624fc1ee,
     type: 3}
+  currentWaveIndex: 0
+  initialWaveCountdownTime: 5
+  newWaveCountdownTime: 5
+  timeToStartNextWave: 0
+  capturePoint: {fileID: 0}
 --- !u!1001 &190893398327550451
 PrefabInstance:
   m_ObjectHideFlags: 0

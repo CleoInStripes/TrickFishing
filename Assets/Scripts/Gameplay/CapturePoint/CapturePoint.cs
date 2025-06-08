@@ -78,7 +78,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
     }
 
     void SpawnFishes() {
-        if (NavMesh.SamplePosition(treasureChest.transform.position, out NavMeshHit hit, fishSchoolPrefab.roamRange.max, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(treasureChest.transform.position, out NavMeshHit hit, fishSchoolPrefab.roamRange.min, NavMesh.AllAreas))
         {
             var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
             currentFishSchool = Instantiate(fishSchoolPrefab, hit.position, spawnRotation);

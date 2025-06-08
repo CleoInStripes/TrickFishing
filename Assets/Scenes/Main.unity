@@ -6074,6 +6074,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021678256}
     m_Modifications:
+    - target: {fileID: 1559658137555943106, guid: 017ac27641146ea4da9c1218574afc4d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5209315824820292899, guid: 017ac27641146ea4da9c1218574afc4d,
         type: 3}
       propertyPath: m_Name
@@ -7205,7 +7210,7 @@ PrefabInstance:
     - target: {fileID: 3847978102385455362, guid: 6ec023b37932af34c8267a27d121ea22,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4633341360962187355, guid: 6ec023b37932af34c8267a27d121ea22,
         type: 3}
@@ -10831,6 +10836,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6816800867579697611, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6840166460398488281, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -12917,6 +12927,11 @@ PrefabInstance:
       propertyPath: capturePointLocation
       value: 
       objectReference: {fileID: 1327732427}
+    - target: {fileID: 3390291717224922431, guid: 422855f91b5cac64196a1929f2aba257,
+        type: 3}
+      propertyPath: initialWaveCountdownTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
       propertyPath: playerRespawnPoint

@@ -63,8 +63,9 @@ MonoBehaviour:
     max: 30
   enableAlerting: 1
   alertRadiusRange:
-    min: 40
-    max: 50
+    min: 3
+    max: 10
   spawnSampleRadius: 2
   maxNavMeshSampleAttempts: 10
+  overrideInitialFishSpawnSpotsHolder: {fileID: 0}
   spawnedFishes: []

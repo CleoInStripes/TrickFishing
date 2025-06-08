@@ -1,10 +1,10 @@
 using BasicTools.ButtonInspector;
-using DG.Tweening;
-using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class FishAIBrain : MonoBehaviour
 {
@@ -52,11 +52,11 @@ public class FishAIBrain : MonoBehaviour
     public bool isRangedAttack = false;
     public bool canRangeAttackWhileChasing = true;
     public FishProjectile projectilePrefab;
-    public float projectileTargetOffsetFactor = 1f;
     public RangeFloat projectileTargetOffsetRange = new(-2, 2);
 
     [Header("Alerting")]
-    public State alertSwitchState = State.Fleeing;
+    public float alertChaseProbability = 0f;
+    public RangeFloat alertChaseProbabilityIncreaseRange = new(0.3f, 0.5f);
 
     [Header("Misc")]
     [SerializeField] float viewAngle = 120f; // in degrees
@@ -88,6 +88,7 @@ public class FishAIBrain : MonoBehaviour
     private float originalStopDistance;
 
     private bool canAttack = true;
+    private bool chaseOnSight => alertChaseProbability >= 1f;
 
     private void Awake()
     {
@@ -123,7 +124,7 @@ public class FishAIBrain : MonoBehaviour
         OnStateEnter(currentState, prevState);
     }
 
-    public void OnAlerted()
+    public void Alert()
     {
         this.OnAlert.Invoke();
 
@@ -132,6 +133,7 @@ public class FishAIBrain : MonoBehaviour
         {
             if (PlayerModel.Instance.health.IsAlive)
             {
+                var alertSwitchState = UnityEngine.Random.Range(0, 1) < alertChaseProbability ? State.Chasing : State.Fleeing;
                 SwitchState(alertSwitchState);
             }
         }
@@ -181,6 +183,7 @@ public class FishAIBrain : MonoBehaviour
                 PickNewRoamDestination();
                 break;
             case State.Chasing:
+                //alertChaseProbability = 1;
                 ApplySpeedMultiplier(chaseSpeedMultiplier);
                 agent.updateRotation = false;
                 agent.SetDestination(PlayerModel.Instance.transform.position);
@@ -198,6 +201,12 @@ public class FishAIBrain : MonoBehaviour
 
     void HandleCurrentStateUpdate()
     {
+        if (currentState != State.Chasing && chaseOnSight && CanSeePlayer())
+        {
+            SwitchState(State.Chasing);
+            return;
+        }
+
         switch(currentState)
         {
             case State.Idle:
@@ -309,11 +318,23 @@ public class FishAIBrain : MonoBehaviour
     {
         if (currentState == State.Fleeing)
         {
+            Vector3 target;
             var fleeDir = (transform.position - PlayerModel.Instance.transform.position).normalized;
-            if (FishAIManager.Instance.TryGetRandomNavMeshLocationInDirection(transform.position, fleeDir, fleeAngleMaxDegrees, fleeDistanceRange, out Vector3 target))
+            if (FishAIManager.Instance.TryGetRandomNavMeshLocationInDirection(transform.position, fleeDir, fleeAngleMaxDegrees, fleeDistanceRange, out target))
             {
-                DebugExtension.DebugWireSphere(target);
                 agent.SetDestination(target);
+            }
+            else if (FishAIManager.Instance.TryGetRandomNavMeshLocation(transform.position, fleeDistanceRange, out target))
+            {
+                agent.SetDestination(target);
+            }
+            else if (FishAIManager.Instance.TryGetRandomNavMeshLocation(transform.position, new RangeFloat(fleeDistanceRange.min / 2, fleeDistanceRange.max), out target))
+            {
+                agent.SetDestination(target);
+            }
+            else
+            {
+                Debug.LogError("Could not find a fleeing position on the Nav Mesh");
             }
         }
     }
@@ -322,6 +343,7 @@ public class FishAIBrain : MonoBehaviour
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
+            alertChaseProbability += alertChaseProbabilityIncreaseRange.GetRandom();
             if (chainFleeWithAttack && Random.value <= chainFleeWithAttackProbability)
             {
                 SwitchState(State.Chasing);
@@ -405,15 +427,34 @@ public class FishAIBrain : MonoBehaviour
             // Ranged
 
             var playerVelocity = PlayerModel.Instance.rb.linearVelocity;
-            var targetOffset = playerVelocity * projectileTargetOffsetFactor;
+            var target = PlayerCam.Instance.cam.transform.position;
+
+            Vector3? interceptPoint = HelperUtilities.FirstOrderIntercept(
+                shooterPos: fishModel.projectileSpawnPoint.position,
+                targetPos: PlayerCam.Instance.cam.transform.position,
+                targetVelocity: playerVelocity,
+                projectileSpeed: projectilePrefab.speed);
+
+            Vector3 targetPoint = target;
+            if (interceptPoint.HasValue)
+            {
+                targetPoint = interceptPoint.Value;
+            }
+            else
+            {
+                Debug.Log("Target can't be intercepted at this speed.");
+            }
+
+            var targetOffset = Vector3.zero;
             if (playerVelocity.magnitude > 1f)
             {
                 targetOffset += Random.onUnitSphere * projectileTargetOffsetRange.GetRandom();
             }
 
-            var target = PlayerCam.Instance.cam.transform.position + targetOffset;
-            var dirToTarget = target - fishModel.projectileSpawnPoint.position;
-            Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToTarget));
+            var adjustedTarget = targetPoint + targetOffset;
+            var dirToAdjTarget = adjustedTarget - fishModel.projectileSpawnPoint.position;
+            var projectile = Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToAdjTarget));
+            projectile.damage = attackDamage;
         }
         else
         {

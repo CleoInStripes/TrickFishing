@@ -63,13 +63,13 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     {
         CapturePointSystem capturePointSystem = CapturePointSystem.Instance;
 
-        WaveText.text = "Waiting for next wave...";
+        WaveText.text = "Dropping Treasure...";
         FishesLeftText.text = "";
         FishesLeftBox.SetActive(false);
 
         if (capturePointSystem.isCountingDown)
         {
-            WaveText.text = $"New wave incoming in {Mathf.Ceil(capturePointSystem.timeToStartNextWave)}";
+            WaveText.text = $"New treasure dropping in {Mathf.Ceil(capturePointSystem.timeToStartNextWave)}";
         }
         else if (capturePointSystem.isWaveActive)
         {

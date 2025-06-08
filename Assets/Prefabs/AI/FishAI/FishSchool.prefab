@@ -50,14 +50,14 @@ MonoBehaviour:
       items:
       - {fileID: 7624123208369790671, guid: 7513e6cff93d3e5449d0ee5a5b932ee3, type: 3}
     countRange:
-      min: 3
-      max: 3
+      min: 5
+      max: 8
   - prefabs:
       items:
       - {fileID: 5552485130138333609, guid: 83b2243f5ebea71418d9052ba10f74d4, type: 3}
     countRange:
-      min: 2
-      max: 2
+      min: 6
+      max: 10
   spawnRadiusRange:
     min: 0
     max: 15
@@ -65,7 +65,7 @@ MonoBehaviour:
   roamFocalPoint: {fileID: 0}
   roamRange:
     min: 7
-    max: 10
+    max: 100
   circleRoamRange:
     min: 3
     max: 5

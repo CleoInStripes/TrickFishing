@@ -93,6 +93,8 @@ public class FishAIModel : MonoBehaviour
 
     public void OnDead()
     {
+        SoundEffectsManager.Instance.PlayAt("TF_Enemyhurt", avatarYControl.transform.position, 0.4f);
+        
         // TODO: Play animation, particle fx, etc..
         var pfx = Instantiate(deathParticleEffectPrefab, avatarYControl.transform.position + (Vector3.up * 1), avatarYControl.transform.rotation);
         Destroy(pfx, 10f);

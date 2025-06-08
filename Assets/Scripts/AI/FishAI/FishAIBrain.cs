@@ -269,7 +269,7 @@ public class FishAIBrain : MonoBehaviour
         }
 
         var distanceToPlayer = Vector3.Distance(PlayerModel.Instance.transform.position, transform.position);
-        if (distanceToPlayer <= attackDistance || agent.remainingDistance <= agent.stoppingDistance)
+        if (distanceToPlayer <= attackDistance)
         {
             agent.ResetPath();
             agent.velocity = Vector3.zero;

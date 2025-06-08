@@ -34,6 +34,7 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     void Start()
     {
         health.OnDamageTaken.AddListener(() => OnDamageTaken());
+        health.OnHealthDepleted.AddListener(() => OnDeath());
     }
 
     // Update is called once per frame
@@ -49,6 +50,8 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 
     public void OnDamageTaken()
     {
+        SoundEffectsManager.Instance.Play("TF_Playerhurt", 0.3f);
+        
         var cam = PlayerCam.Instance.cam;
         var oldCamLocalPosition = cam.transform.localPosition;
         PlayerCam.Instance.cam.transform.DOShakePosition(
@@ -62,5 +65,10 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
         {
             cam.transform.localPosition = oldCamLocalPosition;
         });
+    }
+
+    public void OnDeath()
+    {
+        SoundEffectsManager.Instance.Play("TF_Playerdie");
     }
 }

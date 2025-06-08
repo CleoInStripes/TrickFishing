@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 3364656503678048123}
-  walkSpeed: 7
+  walkSpeed: 10
   sprintSpeed: 16
   slideSpeed: 35
   dashSpeed: 50

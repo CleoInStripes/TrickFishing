@@ -56,7 +56,7 @@ Material:
     - _DecalMeshViewBias: 0
     - _Density: 30
     - _DrawOrder: 0
-    - _Intensity: 1.3
+    - _Intensity: 1.5
     - _Offset: 5
     - _Power: 2.5
     m_Colors:

@@ -203,7 +203,7 @@ MonoBehaviour:
   TreasureChestPrefab: {fileID: 3895548755994111152, guid: a03277f223fd8f54c94df42be3d13687,
     type: 3}
   treasureChestSpawnHeight: 35
-  treasureChestSpawnOffset: 10
+  treasureChestSpawnOffset: 7.5
   btnPreActivate: 0
   btnActivate: 0
   isActive: 0

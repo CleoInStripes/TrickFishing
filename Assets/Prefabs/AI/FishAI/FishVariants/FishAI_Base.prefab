@@ -491,7 +491,7 @@ MonoBehaviour:
   followStopDistance: 0
   followSpeedMultiplier: 1
   followTarget: {fileID: 0}
-  attackDistance: 5
+  attackDistance: 5.1
   attackDamage: 5
   attackIntervalRange:
     min: 3
@@ -629,7 +629,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260096392016879390}
-  - component: {fileID: 5564101867284028129}
   - component: {fileID: 2599913813068563664}
   m_Layer: 7
   m_Name: Avatar
@@ -654,29 +653,6 @@ Transform:
   - {fileID: 3131814797830571257}
   m_Father: {fileID: 8634620179641765956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5564101867284028129
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6931070556066248757}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 1.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!95 &2599913813068563664
 Animator:
   serializedVersion: 7

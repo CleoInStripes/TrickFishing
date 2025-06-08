@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.31764707, g: 0.5803922, b: 0.5803922, a: 1}
+  m_FogColor: {r: 0.31764707, g: 0.52014923, b: 0.5803922, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.025
   m_LinearFogStart: 0
@@ -409,7 +409,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2021678256}
   - {fileID: 2033998787}
@@ -2447,7 +2447,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.46950272, g: 0.7735849, b: 0.6998135, a: 1}
+  m_Color: {r: 0.47058824, g: 0.6842238, b: 0.77254903, a: 1}
   m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
@@ -3835,6 +3835,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fishtankTopBot_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 614789530450963167, guid: 9786ae74dcdcb484a93bdece47481e60,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6802941578616949224, guid: 9786ae74dcdcb484a93bdece47481e60,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3853,7 +3858,7 @@ PrefabInstance:
     - target: {fileID: 6802941578616949224, guid: 9786ae74dcdcb484a93bdece47481e60,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.9
       objectReference: {fileID: 0}
     - target: {fileID: 6802941578616949224, guid: 9786ae74dcdcb484a93bdece47481e60,
         type: 3}
@@ -3863,7 +3868,7 @@ PrefabInstance:
     - target: {fileID: 6802941578616949224, guid: 9786ae74dcdcb484a93bdece47481e60,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6802941578616949224, guid: 9786ae74dcdcb484a93bdece47481e60,
         type: 3}
@@ -4124,7 +4129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327732427}
   m_Layer: 0
-  m_Name: CapturePoints
+  m_Name: CapturePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4139,7 +4144,7 @@ Transform:
   m_GameObject: {fileID: 1327732426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 54.6, y: 2.61, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5276,6 +5281,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.52156866
+      objectReference: {fileID: 0}
     - target: {fileID: 1009108725064610056, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5287,6 +5297,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1009108725064610056, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500178922799886407, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500178922799886407, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500178922799886407, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500178922799886407, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -5316,6 +5346,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3498910798785559697, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498910798785559697, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533821007171882988, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533821007171882988, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533821007171882988, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3635633821320085184, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: camFOVDash
@@ -5337,6 +5392,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3959480317142043151, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007783968036832791, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007783968036832791, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007783968036832791, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -6430,22 +6500,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1309168578070669921, guid: 422855f91b5cac64196a1929f2aba257,
-        type: 3}
-      propertyPath: initialFishSpawnGroups.Array.data[0].countRange.max
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309168578070669921, guid: 422855f91b5cac64196a1929f2aba257,
-        type: 3}
-      propertyPath: initialFishSpawnGroups.Array.data[0].countRange.min
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309168578070669921, guid: 422855f91b5cac64196a1929f2aba257,
-        type: 3}
-      propertyPath: 'initialFishSpawnGroups.Array.data[0].prefabs.items.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5552485130138333609, guid: 83b2243f5ebea71418d9052ba10f74d4,
-        type: 3}
     - target: {fileID: 1755681580000242135, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
       propertyPath: m_Size.x
@@ -6483,8 +6537,13 @@ PrefabInstance:
       objectReference: {fileID: 1327732427}
     - target: {fileID: 3390291717224922431, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
+      propertyPath: capturePointLocation
+      value: 
+      objectReference: {fileID: 1327732427}
+    - target: {fileID: 3390291717224922431, guid: 422855f91b5cac64196a1929f2aba257,
+        type: 3}
       propertyPath: capturePointsEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}

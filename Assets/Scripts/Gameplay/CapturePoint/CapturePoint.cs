@@ -104,6 +104,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
 
     void OnSuccessfulCapture()
     {
+        SoundEffectsManager.Instance.Play("TF_ObjectiveCapture_SFX", 0.8f);
         PlayerModel.Instance.AddScore(captureScore);
         Deactivate();
     }
@@ -117,7 +118,7 @@ public class CapturePoint : SingletonMonoBehaviour<CapturePoint>
 
         isActive = true;
         beam.SetActive(true);
-        currentFishSchool.CircleFocalPoint();
+        //currentFishSchool.CircleFocalPoint();
     }
 
     public void Deactivate()

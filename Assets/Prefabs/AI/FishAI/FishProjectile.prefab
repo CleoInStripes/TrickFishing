@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2203287258571248685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2520930915293396108}
   - component: {fileID: 6864319545117250844}
   - component: {fileID: 4913452922128571812}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FishProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3094593228498203847}
   - component: {fileID: 3172247632213493627}
   - component: {fileID: 3657074044724515620}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

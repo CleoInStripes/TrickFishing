@@ -50,6 +50,7 @@ public class FishAIBrain : MonoBehaviour
     public RangeFloat attackIntervalRange = new(3, 5);
     public bool isRangedAttack = false;
     public FishProjectile projectilePrefab;
+    public RangeFloat projectileTargetOffsetRange = new(-2, 2);
 
     [Header("Alerting")]
     public State alertSwitchState = State.Fleeing;
@@ -252,6 +253,7 @@ public class FishAIBrain : MonoBehaviour
     {
         if (!CanSeePlayer())
         {
+            RotateByVelocity();
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
                 SwitchState(State.Roaming);
@@ -259,10 +261,9 @@ public class FishAIBrain : MonoBehaviour
             return;
         }
 
-        RotateTowardsPlayer();
-
         if (agent.pathPending)
         {
+            RotateByVelocity();
             return;
         }
 
@@ -271,6 +272,8 @@ public class FishAIBrain : MonoBehaviour
         {
             agent.ResetPath();
             agent.velocity = Vector3.zero;
+            RotateTowardsPlayer();
+
             if (canAttack)
             {
                 PerformAttack();
@@ -278,6 +281,7 @@ public class FishAIBrain : MonoBehaviour
         } 
         else
         {
+            RotateByVelocity();
             agent.SetDestination(PlayerModel.Instance.transform.position);
         }
     }
@@ -332,7 +336,20 @@ public class FishAIBrain : MonoBehaviour
 
     void RotateTowardsPlayer()
     {
-        Vector3 direction = PlayerModel.Instance.transform.position - transform.position;
+        RotateTowards(PlayerModel.Instance.transform.position);
+    }
+
+    void RotateByVelocity()
+    {
+        if (agent.velocity.magnitude > 0)
+        {
+            RotateTowards(transform.position + (agent.velocity * 10));
+        }
+    }
+
+    void RotateTowards(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
         direction.y = 0; // Optional: prevent tilting up/down
 
         if (direction.sqrMagnitude > 0.001f)
@@ -370,7 +387,8 @@ public class FishAIBrain : MonoBehaviour
         {
             // Ranged
             var dirToPlayer = PlayerCam.Instance.cam.transform.position - fishModel.projectileSpawnPoint.position;
-            Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToPlayer));
+            var dirToTarget = dirToPlayer + Random.onUnitSphere * projectileTargetOffsetRange.GetRandom();
+            Instantiate(projectilePrefab, fishModel.projectileSpawnPoint.position, Quaternion.LookRotation(dirToTarget));
         }
         else
         {

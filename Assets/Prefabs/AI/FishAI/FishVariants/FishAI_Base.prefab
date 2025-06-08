@@ -471,7 +471,7 @@ MonoBehaviour:
   viewDistance: 200
   visibilityLayers:
     serializedVersion: 2
-    m_Bits: 81
+    m_Bits: 89
   currentState: 0
   switchStateTarget: 0
   btnSwitchState: 0

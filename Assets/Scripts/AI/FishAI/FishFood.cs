@@ -8,7 +8,7 @@ public class FishFood : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(this, timeout);
+        Destroy(gameObject, timeout);
     }
 
     // Update is called once per frame
@@ -19,6 +19,7 @@ public class FishFood : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        SoundEffectsManager.Instance.Play("TF_Healthpickup", 0.7f);
         var player = other.gameObject.GetComponentInParent<PlayerModel>();
         if (player)
         {

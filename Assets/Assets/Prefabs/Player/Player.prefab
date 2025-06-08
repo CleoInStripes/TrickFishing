@@ -81,7 +81,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769145073549907294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -403,7 +403,7 @@ MonoBehaviour:
   doubleJumpForce: 1.5
   aboveHeadCheck:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 321
   aboveHeadCheckObj: {fileID: 472777818205998567}
   underObject: 0
   playerHeight: 1.55
@@ -432,6 +432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
   playerCam: {fileID: 0}
+  cam: {fileID: 0}
+  camFOVEnd: 0
   dashForce: 10
   dashUpwardForce: 0
   dashDuration: 0.8
@@ -450,6 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 3364656503678048123}
+  cam: {fileID: 0}
+  camFOVEnd: 0
   maxSlideTime: 1.25
   slideForce: 250
   slideYScale: 0.5
@@ -516,7 +520,8 @@ MonoBehaviour:
   muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
     type: 3}
-  impactEffectPrefab: {fileID: 0}
+  impactEffectPrefab: {fileID: 3918742467114239352, guid: 1ddd6851575b49a43964d38968918774,
+    type: 3}
 --- !u!114 &5777921017701546972
 MonoBehaviour:
   m_ObjectHideFlags: 0

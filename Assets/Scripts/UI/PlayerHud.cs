@@ -7,6 +7,10 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI AmmoText;
+    public GameObject WaveInfo;
+    public TextMeshProUGUI WaveText;
+    public GameObject FishesLeftBox;
+    public TextMeshProUGUI FishesLeftText;
 
     [Header("Damage Screen")]
     public MenuPage damageScreen;
@@ -32,6 +36,7 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         UpdateHealth();
         UpdateScore();
         UpdateAmmoText();
+        UpdateWaveInfo();
     }
 
     void UpdateHealth()
@@ -47,6 +52,26 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     void UpdateAmmoText()
     {
         AmmoText.text = $"{PlayerModel.Instance.gun.CurrentAmmo}/{PlayerModel.Instance.gun.maxAmmo}";
+    }
+
+    void UpdateWaveInfo()
+    {
+        CapturePointSystem capturePointSystem = CapturePointSystem.Instance;
+
+        WaveText.text = "Waiting for next wave...";
+        FishesLeftText.text = "";
+        FishesLeftBox.SetActive(false);
+
+        if (capturePointSystem.isCountingDown)
+        {
+            WaveText.text = $"New wave incoming in {(int)capturePointSystem.timeToStartNextWave}";
+        }
+        else if (capturePointSystem.isWaveActive)
+        {
+            WaveText.text = $"Wave {capturePointSystem.currentWaveIndex + 1}";
+            FishesLeftText.text = $"{capturePointSystem.capturePoint.activeFishCount}";
+            FishesLeftBox.SetActive(true);
+        }
     }
 
     async void FlickerDamageScreen()

@@ -3,16 +3,22 @@ using UnityEngine;
 public class CapturePointSystem : SingletonMonoBehaviour<CapturePointSystem>
 {
     public bool capturePointsEnabled = true;
-    public Transform capturePointsHolder;
+    public Transform capturePointLocation;
     public CapturePoint capturePointPrefab;
 
-    private Randomizer<Transform> capturePointsRandomizer;
-    private CapturePoint capturePoint;
+    [Header("Wave")]
+    [HideInInspector] public int currentWaveIndex = 0;
+    public float initialWaveCountdownTime = 15;
+    public float newWaveCountdownTime = 5;
+    [HideInInspector] public float timeToStartNextWave = 0;
+    public bool isCountingDown => timeToStartNextWave > 0;
+    public bool isWaveActive => capturePoint && capturePoint.isActive;
+
+    [HideInInspector] public CapturePoint capturePoint;
 
     private new void Awake()
     {
         base.Awake();
-        capturePointsRandomizer = new(capturePointsHolder.GetComponentsInChildren<Transform>());
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,27 +30,42 @@ public class CapturePointSystem : SingletonMonoBehaviour<CapturePointSystem>
         }
 
         SpawnCapturePoint();
-        capturePoint.PreActivate();
+        StartInitialWave();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (timeToStartNextWave > 0)
+        {
+            timeToStartNextWave -= Time.deltaTime;
+            if (timeToStartNextWave <= 0)
+            {
+                timeToStartNextWave = 0;
+                capturePoint.DropTreasure();
+            }
+        }
+    }
+
+    void StartInitialWave()
+    {
+        currentWaveIndex = 0;
+        timeToStartNextWave = initialWaveCountdownTime;
+    }
+
+    public void StartNewWave()
+    {
+        currentWaveIndex++;
+        timeToStartNextWave = newWaveCountdownTime;
     }
 
     void SpawnCapturePoint()
     {
-        var spawnPoint = capturePointsRandomizer.GetRandomItem();
-        capturePoint = Instantiate(capturePointPrefab, spawnPoint.position, spawnPoint.rotation);
+        capturePoint = Instantiate(capturePointPrefab, capturePointLocation.position, capturePointLocation.rotation);
     }
 
-    public void MoveToNewLocation()
+    public void OnCapturePointDeactivated()
     {
-        var spawnPoint = capturePointsRandomizer.GetRandomItem();
-        capturePoint.transform.position = spawnPoint.position;
-        capturePoint.transform.rotation = spawnPoint.rotation;
-
-        capturePoint.PreActivate();
+        StartNewWave();
     }
 }

@@ -50,14 +50,14 @@ MonoBehaviour:
       items:
       - {fileID: 7624123208369790671, guid: 7513e6cff93d3e5449d0ee5a5b932ee3, type: 3}
     countRange:
-      min: 5
-      max: 7
+      min: 3
+      max: 3
   - prefabs:
       items:
       - {fileID: 5552485130138333609, guid: 83b2243f5ebea71418d9052ba10f74d4, type: 3}
     countRange:
-      min: 3
-      max: 5
+      min: 2
+      max: 2
   spawnRadiusRange:
     min: 0
     max: 15
@@ -67,12 +67,18 @@ MonoBehaviour:
     min: 7
     max: 10
   circleRoamRange:
-    min: 0
-    max: 0
+    min: 3
+    max: 5
   waitTimeRangeAtRoamTarget:
     min: 0
     max: 0
   isWaitingAtRoamTarget: 0
+  OnAlert:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllFishesDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &2254548771920981846
 NavMeshAgent:
   m_ObjectHideFlags: 0

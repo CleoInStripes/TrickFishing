@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4736598898001726108}
   - component: {fileID: 6556665815455608287}
   - component: {fileID: 1636280521452627607}
-  - component: {fileID: 6498898929039297728}
   m_Layer: 7
   m_Name: Placeholder
   m_TagString: Untagged
@@ -89,29 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6498898929039297728
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246834431341087107}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 1.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!1 &1259516696808150053
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398142679516262621}
+  - component: {fileID: 3727786011661270070}
   m_Layer: 7
   m_Name: AvatarYControl
   m_TagString: Untagged
@@ -347,6 +324,29 @@ Transform:
   - {fileID: 4736598898001726108}
   m_Father: {fileID: 7260096392016879390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3727786011661270070
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353858605472394051}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 2
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!1 &5315152580159699622
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260096392016879390}
+  - component: {fileID: 5564101867284028129}
   m_Layer: 7
   m_Name: Avatar
   m_TagString: Untagged
@@ -619,3 +620,26 @@ Transform:
   - {fileID: 398142679516262621}
   m_Father: {fileID: 8634620179641765956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5564101867284028129
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931070556066248757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 1.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.1}

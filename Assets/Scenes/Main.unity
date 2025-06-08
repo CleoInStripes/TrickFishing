@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_logBridge_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -228,7 +233,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &47205253
 Transform:
@@ -260,7 +265,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &50189367
 Transform:
@@ -289,6 +294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_Coral3_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 806131059288496051, guid: dbabf0bdb8cca174693f490d734537b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4108002895871601448, guid: dbabf0bdb8cca174693f490d734537b2,
         type: 3}
@@ -416,6 +426,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -489,6 +504,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -595,6 +615,7 @@ Transform:
   - {fileID: 1545364253}
   - {fileID: 1222132280}
   - {fileID: 1199540061}
+  - {fileID: 556243275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &94036320 stripped
@@ -617,7 +638,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &96599628
 Transform:
@@ -648,7 +669,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &97323293
 Transform:
@@ -691,7 +712,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &102045095
 Transform:
@@ -769,6 +790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_Coral1_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330216723611188820, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6524630094208260910, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
         type: 3}
@@ -981,7 +1007,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &186390868
 Transform:
@@ -1085,6 +1111,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_logBridge_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1169,7 +1200,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &192146671
 Transform:
@@ -1206,15 +1237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 73.299
-      objectReference: {fileID: 0}
-    - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 72.01558
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
@@ -1356,6 +1382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8252880438214046470, guid: b6d897af697de7c429e75e373ca973d4,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1443,6 +1474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_fShelfCoral_Model (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1587,7 +1623,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &283689435
 Transform:
@@ -1697,6 +1733,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -1776,7 +1817,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &298357582
 Transform:
@@ -1871,6 +1912,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf2_Model 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3074542795070247420, guid: 56f26d7b0f2516447ba0db546eb57cb9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1937,6 +1983,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf5_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
@@ -2019,7 +2070,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &331823055
 Transform:
@@ -2049,6 +2100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_kelp_Model (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473932268873668983, guid: e8d127a2585a56a46bec36374a246dc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6317045912515175790, guid: e8d127a2585a56a46bec36374a246dc4,
         type: 3}
@@ -2117,6 +2173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -2266,6 +2327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2349,6 +2415,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncePad
       objectReference: {fileID: 0}
+    - target: {fileID: 8318431119063376078, guid: 5e589491f1aed5a4d9745cb49b07bae8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2393,10 +2464,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 730662788}
     m_Modifications:
+    - target: {fileID: 76844542251327183, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
       propertyPath: m_Name
       value: GroundBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3500665807177805097, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
@@ -2500,7 +2581,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &358571831
 Transform:
@@ -2636,6 +2717,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_logBridge_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2697,7 +2783,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 556243275}
     m_Modifications:
     - target: {fileID: 3895548755994111152, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -2707,17 +2793,17 @@ PrefabInstance:
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.62
+      value: -57.566826
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.452734
+      value: -23.07943
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.55
+      value: -8.957467
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -2781,7 +2867,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &378333194
 Transform:
@@ -2886,6 +2972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -3054,7 +3145,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &478594686
 Transform:
@@ -3158,6 +3249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_ORIGINFIXClosedShell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982657186749916184, guid: 5f4b98a1be5b1e64d8e996a79e6dd3ae,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7758770990498119330, guid: 5f4b98a1be5b1e64d8e996a79e6dd3ae,
         type: 3}
@@ -3312,6 +3408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3334,7 +3435,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &493068167
 Transform:
@@ -3443,7 +3544,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &497174265
 Transform:
@@ -3551,6 +3652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -3655,6 +3761,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_logTunnel_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 3450425670381990622, guid: da482bb2da8e0eb438750fa7f304982f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8384889330229930293, guid: da482bb2da8e0eb438750fa7f304982f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3716,6 +3827,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 521069452}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &521280680 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
+    type: 3}
+  m_PrefabInstance: {fileID: 781179178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &535541858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 433664521935082168, guid: 5e589491f1aed5a4d9745cb49b07bae8,
@@ -3734,6 +3851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
@@ -3814,12 +3936,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556243274}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.946827, y: 23.532164, z: -4.592533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Children:
+  - {fileID: 521280680}
+  - {fileID: 1850344756}
+  - {fileID: 1532150036}
+  m_Father: {fileID: 87288503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &568949378
 PrefabInstance:
@@ -3833,6 +3958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
@@ -4042,6 +4172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_Coral2_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 1652991182044927971, guid: 7bdae7e9fe279cf499a9bbe19bc9ae7d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4125,6 +4260,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_ORIGNFIXOpenShell
       objectReference: {fileID: 0}
+    - target: {fileID: 6348629239550727214, guid: ef4c579477789994dbbeebfa9b6992a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4147,7 +4287,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &629734952
 Transform:
@@ -4252,6 +4392,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_logBridge_Model (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -4320,10 +4465,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1476028288}
     m_Modifications:
+    - target: {fileID: 76844542251327183, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
       propertyPath: m_Name
       value: GroundBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3500665807177805097, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
@@ -4439,7 +4594,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &664273810
 Transform:
@@ -4471,7 +4626,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &685162771
 Transform:
@@ -4507,7 +4662,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &688705527
 Transform:
@@ -4540,6 +4695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -4621,7 +4781,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &730662788
 Transform:
@@ -4654,7 +4814,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &735536819
 Transform:
@@ -4690,7 +4850,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &749017797
 Transform:
@@ -4860,6 +5020,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4955,6 +5120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncePad
       objectReference: {fileID: 0}
+    - target: {fileID: 8318431119063376078, guid: 5e589491f1aed5a4d9745cb49b07bae8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4978,7 +5148,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 556243275}
     m_Modifications:
     - target: {fileID: 3895548755994111152, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -4988,7 +5158,7 @@ PrefabInstance:
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3712
+      value: 1.3712001
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -4998,22 +5168,22 @@ PrefabInstance:
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3712
+      value: 1.3712001
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.93
+      value: 22.983173
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1802864
+      value: -21.351877
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.73
+      value: -4.1374664
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -5084,6 +5254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_ORIGINFIXClosedShell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982657186749916184, guid: 5f4b98a1be5b1e64d8e996a79e6dd3ae,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7758770990498119330, guid: 5f4b98a1be5b1e64d8e996a79e6dd3ae,
         type: 3}
@@ -5159,6 +5334,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -5227,10 +5407,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1808550736}
     m_Modifications:
+    - target: {fileID: 3421134186826032422, guid: 72ce2bba4056cc84c977ee23923b6f11,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577002748832400789, guid: 72ce2bba4056cc84c977ee23923b6f11,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5978392762747624959, guid: 72ce2bba4056cc84c977ee23923b6f11,
         type: 3}
       propertyPath: m_Name
       value: TF_SmallBumpyRock_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978392762747624959, guid: 72ce2bba4056cc84c977ee23923b6f11,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6466135689026520901, guid: 72ce2bba4056cc84c977ee23923b6f11,
         type: 3}
@@ -5316,7 +5511,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &841312772
 Transform:
@@ -5420,6 +5615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock4_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195919259367030039, guid: ec1b27fe31a38644686f74aaa7d6b67e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6825067872379922349, guid: ec1b27fe31a38644686f74aaa7d6b67e,
         type: 3}
@@ -5684,6 +5884,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_RoundRock4_Mesh (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6195919259367030039, guid: ec1b27fe31a38644686f74aaa7d6b67e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6825067872379922349, guid: ec1b27fe31a38644686f74aaa7d6b67e,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -5854,6 +6059,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -6019,7 +6229,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &934464672
 Transform:
@@ -6064,7 +6274,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &939120971
 Transform:
@@ -6164,10 +6374,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1320243955}
     m_Modifications:
+    - target: {fileID: 3388467489701741997, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
       propertyPath: m_Name
       value: TF_Boulder_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309787809248077174, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6467268529701971918, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
@@ -6348,6 +6573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_Coral1_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4330216723611188820, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6524630094208260910, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6435,7 +6665,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &948617687
 Transform:
@@ -6645,6 +6875,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6761,7 +6996,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1000405580
 Transform:
@@ -6870,7 +7105,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1012292731
 Transform:
@@ -6975,6 +7210,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -7053,6 +7293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf_3_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454081013969639160, guid: 7b3b6a03ea428ad4883782b4735be2c9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060857411237649016, guid: 7b3b6a03ea428ad4883782b4735be2c9,
         type: 3}
@@ -7162,6 +7407,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_kelp_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 1473932268873668983, guid: e8d127a2585a56a46bec36374a246dc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6317045912515175790, guid: e8d127a2585a56a46bec36374a246dc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7234,7 +7484,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1081578480
 Transform:
@@ -7596,6 +7846,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncePad
       objectReference: {fileID: 0}
+    - target: {fileID: 8318431119063376078, guid: 5e589491f1aed5a4d9745cb49b07bae8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5744870115260397881, guid: 5e589491f1aed5a4d9745cb49b07bae8, type: 3}
     m_RemovedGameObjects: []
@@ -7619,7 +7874,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1153014918
 Transform:
@@ -7726,7 +7981,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1183452334
 Transform:
@@ -7766,7 +8021,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1199540061
 Transform:
@@ -7798,6 +8053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
@@ -7884,7 +8144,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1205367438
 Transform:
@@ -8010,7 +8270,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1246102235
 Transform:
@@ -8057,10 +8317,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735536819}
     m_Modifications:
+    - target: {fileID: 76844542251327183, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
       propertyPath: m_Name
       value: GroundBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 664958141939668332, guid: 6b5602e7f179cbd4aa08ee250c827770,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3500665807177805097, guid: 6b5602e7f179cbd4aa08ee250c827770,
         type: 3}
@@ -8146,7 +8416,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1287319021
 Transform:
@@ -8175,6 +8445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logTunnel_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450425670381990622, guid: da482bb2da8e0eb438750fa7f304982f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8384889330229930293, guid: da482bb2da8e0eb438750fa7f304982f,
         type: 3}
@@ -8243,6 +8518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
@@ -8594,7 +8874,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1317375432
 Transform:
@@ -8628,6 +8908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock2_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869791243868168937, guid: 60d4800a073a2ea43aa81c019a421114,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5250961841565317203, guid: 60d4800a073a2ea43aa81c019a421114,
         type: 3}
@@ -8761,7 +9046,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1320243955
 Transform:
@@ -8805,6 +9090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -8906,6 +9196,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 102045095}
     m_Modifications:
+    - target: {fileID: 163193775199824623, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233993870333906981, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8396359606015887500, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8961,6 +9261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_BigBumpyRock_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 9209311756796842550, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8980,7 +9285,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1330094299
 Transform:
@@ -9075,6 +9380,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9094,7 +9404,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1335210241
 Transform:
@@ -9125,7 +9435,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1347393354
 Transform:
@@ -9159,7 +9469,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1354027811
 Transform:
@@ -9188,6 +9498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -9268,7 +9583,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1401142876
 Transform:
@@ -9299,7 +9614,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1403653348
 Transform:
@@ -9398,6 +9713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9421,6 +9741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf5_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
@@ -9495,6 +9820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock2_Mesh (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869791243868168937, guid: 60d4800a073a2ea43aa81c019a421114,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5250961841565317203, guid: 60d4800a073a2ea43aa81c019a421114,
         type: 3}
@@ -9583,7 +9913,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1423438348
 Transform:
@@ -9730,10 +10060,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.016
       objectReference: {fileID: 0}
+    - target: {fileID: 3388467489701741997, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
       propertyPath: m_Name
       value: TF_Boulder_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309787809248077174, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6467268529701971918, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
@@ -9883,6 +10228,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9905,7 +10255,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1472387000
 Transform:
@@ -10011,7 +10361,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1476028288
 Transform:
@@ -10042,6 +10392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock2_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869791243868168937, guid: 60d4800a073a2ea43aa81c019a421114,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5250961841565317203, guid: 60d4800a073a2ea43aa81c019a421114,
         type: 3}
@@ -10127,6 +10482,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1808550736}
     m_Modifications:
+    - target: {fileID: 163193775199824623, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233993870333906981, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8396359606015887500, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -10202,6 +10567,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_BigBumpyRock_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 9209311756796842550, guid: f9ccfb2997b1a21448aa76fb75a8dcd2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10215,6 +10585,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2146226765}
   m_SourcePrefab: {fileID: 100100000, guid: f9ccfb2997b1a21448aa76fb75a8dcd2, type: 3}
+--- !u!4 &1532150036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
+    type: 3}
+  m_PrefabInstance: {fileID: 1962258123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1537577245
 GameObject:
   m_ObjectHideFlags: 0
@@ -10258,6 +10634,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
@@ -10463,6 +10844,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_RoundRock1_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 135470180150892774, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 358631174318162148, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 696985760738090521, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 768595760613491292, guid: a8c0de8833720ac4a850e41dd3c4babb,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -10518,6 +10914,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -39.747
       objectReference: {fileID: 0}
+    - target: {fileID: 8965684485063319615, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10553,6 +10954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
@@ -10650,7 +11056,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1662899333
 Transform:
@@ -10849,6 +11255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_Coral2_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652991182044927971, guid: 7bdae7e9fe279cf499a9bbe19bc9ae7d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11813,7 +12224,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1723141609
 Transform:
@@ -11919,7 +12330,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1726597875
 Transform:
@@ -12015,6 +12426,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12068,7 +12484,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1759292940
 Transform:
@@ -12239,6 +12655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12267,7 +12688,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1784168373
 Transform:
@@ -12420,6 +12841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
@@ -12575,6 +13001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_ORIGNFIXOpenShell
       objectReference: {fileID: 0}
+    - target: {fileID: 6348629239550727214, guid: ef4c579477789994dbbeebfa9b6992a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12649,6 +13080,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_Coral2_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 1652991182044927971, guid: 7bdae7e9fe279cf499a9bbe19bc9ae7d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12680,7 +13116,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1808550736
 Transform:
@@ -12723,6 +13159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -12847,6 +13288,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf5_Model (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7002431276635687546, guid: fda437f08824a26439ee84aba0844faf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218214213284209571, guid: fda437f08824a26439ee84aba0844faf,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -12918,6 +13364,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 19569439}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1850344756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
+    type: 3}
+  m_PrefabInstance: {fileID: 369939901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1857375827
 GameObject:
   m_ObjectHideFlags: 0
@@ -12963,7 +13415,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1860203405
 Transform:
@@ -13063,6 +13515,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_hShelfCoral_Model (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437200104616262652, guid: f17993d129979d24b92746e9a6ed7350,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13080,6 +13537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock2_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869791243868168937, guid: 60d4800a073a2ea43aa81c019a421114,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5250961841565317203, guid: 60d4800a073a2ea43aa81c019a421114,
         type: 3}
@@ -13220,6 +13682,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13245,7 +13712,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1948658313
 Transform:
@@ -13314,7 +13781,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 556243275}
     m_Modifications:
     - target: {fileID: 3895548755994111152, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -13339,17 +13806,17 @@ PrefabInstance:
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -52.47
+      value: -70.416824
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.1557665
+      value: -18.376396
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.38
+      value: 31.972532
       objectReference: {fileID: 0}
     - target: {fileID: 4958295770067436548, guid: a03277f223fd8f54c94df42be3d13687,
         type: 3}
@@ -13408,6 +13875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock3_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320712261945780919, guid: ef879c7fd5ec5664fa86501e9aa66294,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7985926329338933261, guid: ef879c7fd5ec5664fa86501e9aa66294,
         type: 3}
@@ -13483,6 +13955,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_Coral1_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 4330216723611188820, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6524630094208260910, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13550,6 +14027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_Coral3_Model (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 806131059288496051, guid: dbabf0bdb8cca174693f490d734537b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4108002895871601448, guid: dbabf0bdb8cca174693f490d734537b2,
         type: 3}
@@ -13808,11 +14290,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
-      propertyPath: settings.maxTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
-        type: 3}
       propertyPath: playerRespawnPoint
       value: 
       objectReference: {fileID: 2132322569}
@@ -13845,7 +14322,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2033998787
 Transform:
@@ -13885,7 +14362,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2034411142
 Transform:
@@ -14081,6 +14558,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_fShelfCoral_Model (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6565302325520530116, guid: b6d897af697de7c429e75e373ca973d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14132,6 +14614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_logBridge_Model (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206924404913857291, guid: 80e1de3860ebc804ba8fac665e3ab964,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240446238752414501, guid: 80e1de3860ebc804ba8fac665e3ab964,
         type: 3}
@@ -14216,6 +14703,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_RoundRock1_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 135470180150892774, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 358631174318162148, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 696985760738090521, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 768595760613491292, guid: a8c0de8833720ac4a850e41dd3c4babb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14266,6 +14768,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -31.043
       objectReference: {fileID: 0}
+    - target: {fileID: 8965684485063319615, guid: a8c0de8833720ac4a850e41dd3c4babb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14285,10 +14792,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 331823055}
     m_Modifications:
+    - target: {fileID: 3388467489701741997, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
       propertyPath: m_Name
       value: TF_Boulder_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948000405693840756, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309787809248077174, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6467268529701971918, guid: 6a2b0543b2db9ae41af4b142c0e2f353,
         type: 3}
@@ -14363,6 +14885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_Coral1_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330216723611188820, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6524630094208260910, guid: 3dc5ce0371520544b89ae772dfd1f0ba,
         type: 3}
@@ -14462,6 +14989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TF_RoundRock4_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195919259367030039, guid: ec1b27fe31a38644686f74aaa7d6b67e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6825067872379922349, guid: ec1b27fe31a38644686f74aaa7d6b67e,
         type: 3}
@@ -14596,6 +15128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_RoundRock3_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 7320712261945780919, guid: ef879c7fd5ec5664fa86501e9aa66294,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7985926329338933261, guid: ef879c7fd5ec5664fa86501e9aa66294,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14670,6 +15207,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TF_seaLeaf1_Model 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2348116522984553273, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2362144169517035813, guid: 7aeccd2dfed4ce64b8ac51a6aa14470e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14742,7 +15284,3 @@ SceneRoots:
   - {fileID: 61243808}
   - {fileID: 266247593}
   - {fileID: 1791378564}
-  - {fileID: 556243275}
-  - {fileID: 781179178}
-  - {fileID: 369939901}
-  - {fileID: 1962258123}

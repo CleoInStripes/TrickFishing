@@ -376,6 +376,11 @@ MonoBehaviour:
     vibrato: 10
     randomness: 90
   score: 0
+  bulletTimeMaxCharge: 300
+  bulletTimeDischargeRate: 25
+  inBulletTime: 0
+  bulletTimeCharge: 0
+  bulletTimeAvailable: 0
 --- !u!114 &4144656601665570902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,8 +520,9 @@ MonoBehaviour:
   fireRate: 15
   impactForce: 30
   bulletSpawnOffsetFactor: 0.1
-  maxAmmo: 10
+  maxAmmo: 1
   reloadTime: 0.75
+  bulletTimeScale: 0.3
   Automatic: 0
   muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
@@ -540,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  minDamageInterval: 1
   startWithMaxHealth: 1
   OnDamageTaken:
     m_PersistentCalls:

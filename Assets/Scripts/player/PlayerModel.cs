@@ -21,6 +21,13 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 
     [ReadOnly]
     public int score = 0;
+    public float bulletTimeMaxCharge = 1000f;
+    public float bulletTimeDischargeRate = 300f;
+
+    [HideInInspector] public bool inBulletTime = false;
+    [HideInInspector] public float bulletTimeCharge = 0f;
+    [HideInInspector] public bool bulletTimeAvailable = false;
+    public float bulletTimeChargeNormalized => HelperUtilities.Remap(bulletTimeCharge, 0, bulletTimeMaxCharge, 0, 1);
 
     public bool allowInput
     {
@@ -77,6 +84,18 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 
         if (allowInput)
         {
+            inBulletTime = false;
+            if (bulletTimeAvailable && Input.GetButton("Fire2"))
+            {
+                inBulletTime = true;
+                bulletTimeCharge -= bulletTimeDischargeRate * Time.unscaledDeltaTime;
+                if (bulletTimeCharge <= 0)
+                {
+                    bulletTimeCharge = 0;
+                    bulletTimeAvailable = false;
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.Home))
             {
                 rb.position = LevelManager.Instance.playerRespawnPoint.position;
@@ -90,6 +109,16 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     public void AddScore(int _score)
     {
         score += _score;
+
+        if (!bulletTimeAvailable)
+        {         
+            bulletTimeCharge += _score;
+            if (bulletTimeCharge >= bulletTimeMaxCharge)
+            {
+                bulletTimeCharge = bulletTimeMaxCharge;
+                bulletTimeAvailable = true;
+            }
+        }
     }
 
     public void OnDamageTaken()

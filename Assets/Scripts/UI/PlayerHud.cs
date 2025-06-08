@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
 {
@@ -19,6 +20,12 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     [Header("Damage Screen")]
     public MenuPage damageScreen;
     public float damageScreenFlickerWaitTime = 3f;
+
+    [Header("Bullet Time")]
+    public Slider bulletTimeChargeSlider;
+    public Image bulletTimeSliderFill;
+    public Image bulletTimeSliderIcon;
+    public Color bulletTimeAvailableColor = Color.green;
 
     [HideInInspector] public bool isPaused = false;
 
@@ -43,7 +50,8 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         UpdateScore();
         UpdateAmmoText();
         //UpdateWaveInfo();
-        UpdateTimerInfo();
+        UpdateTimerInfo(); ;
+        UpdateBulletTimeInfo();
     }
 
     void UpdateHealth()
@@ -88,6 +96,13 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         int seconds = secondsLeft % 60;
 
         TimerText.text = $"{minutes:D2}:{seconds:D2}";
+    }
+
+    void UpdateBulletTimeInfo()
+    {
+        bulletTimeChargeSlider.value = PlayerModel.Instance.bulletTimeChargeNormalized;
+        bulletTimeSliderFill.color = PlayerModel.Instance.bulletTimeAvailable ? bulletTimeAvailableColor : Color.white;
+        bulletTimeSliderIcon.color = PlayerModel.Instance.bulletTimeAvailable ? bulletTimeAvailableColor : Color.white;
     }
 
     async void FlickerDamageScreen()

@@ -15,6 +15,7 @@ public class gun : MonoBehaviour
     private int curAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
+    public float bulletTimeScale = 0.5f;
 
     public bool Automatic;
 
@@ -47,7 +48,8 @@ public class gun : MonoBehaviour
             return;
         }
 
-        tempAnimator.SetBool("ADS", Input.GetButton("Fire2"));
+        tempAnimator.SetBool("ADS", PlayerModel.Instance.bulletTimeAvailable && Input.GetButton("Fire2"));
+        Time.timeScale = 1f;
 
         if (isReloading)
         {
@@ -65,6 +67,8 @@ public class gun : MonoBehaviour
             PerformReload();
             return;
         }
+
+        Time.timeScale = PlayerModel.Instance.inBulletTime ? bulletTimeScale : 1f;
 
         if (Automatic)
         {

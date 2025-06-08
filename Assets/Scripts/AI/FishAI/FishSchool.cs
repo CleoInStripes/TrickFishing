@@ -104,7 +104,7 @@ public class FishSchool : MonoBehaviour
         isWaitingAtRoamTarget = false;
     }
     
-    void SpawnFishes()
+    void SpawnFishes(float alertChaseProbability = 0)
     {
         var totalSpawned = 0;
         var totalAttempts = 0;
@@ -120,6 +120,7 @@ public class FishSchool : MonoBehaviour
                     {
                         var spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
                         var fish = FishAIManager.Instance.SpawnFish(spawnGroup.prefabs.GetRandomItem().gameObject, spawnPosition, spawnRotation);
+                        fish.aiBrain.alertChaseProbability = alertChaseProbability;
                         fish.aiBrain.chainFleeWithAttack = true;
                         fish.aiBrain.followTarget = transform;
                         fish.aiBrain.SwitchState(FishAIBrain.State.Following);

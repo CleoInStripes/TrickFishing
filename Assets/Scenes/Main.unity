@@ -11443,6 +11443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
         type: 3}
+      propertyPath: field of view
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 975635535762092742, guid: d1047636fe51fe84d8e1fba6d6bc7d12,
+        type: 3}
       propertyPath: m_BackGroundColor.g
       value: 0.52156866
       objectReference: {fileID: 0}

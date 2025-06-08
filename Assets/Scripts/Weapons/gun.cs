@@ -95,7 +95,7 @@ public class gun : MonoBehaviour
     {
         isReloading = true;
         tempAnimator.SetTrigger("Reload");
-        SoundEffectsManager.Instance.Play("TF_Reelshot", 0.3f);
+        SoundEffectsManager.Instance.Play("TF_Reelshot", 0.1f);
 
         yield return new WaitForSeconds(reloadTime);
 

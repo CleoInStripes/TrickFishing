@@ -14,6 +14,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     [Header("Level References")]
     public Transform initialFishSpawnSpotsHolder;
+    public Transform playerRespawnPoint;
 
     [Header("Misc")]
     public LevelSettings settings;

@@ -6876,6 +6876,7 @@ Transform:
   - {fileID: 1662903574}
   - {fileID: 1327732427}
   - {fileID: 2052524153}
+  - {fileID: 2132322569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1964204120
@@ -7206,6 +7207,11 @@ PrefabInstance:
       objectReference: {fileID: 1327732427}
     - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
         type: 3}
+      propertyPath: playerRespawnPoint
+      value: 
+      objectReference: {fileID: 2132322569}
+    - target: {fileID: 6077387833109781479, guid: 422855f91b5cac64196a1929f2aba257,
+        type: 3}
       propertyPath: initialFishSpawnSpotsHolder
       value: 
       objectReference: {fileID: 1662903574}
@@ -7526,6 +7532,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1662903574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2132322568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2132322569}
+  m_Layer: 0
+  m_Name: PlayerRespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2132322569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132322568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -51.4, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1953615219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2814403555650351375
 PrefabInstance:

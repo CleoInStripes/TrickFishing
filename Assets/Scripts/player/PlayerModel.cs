@@ -58,6 +58,11 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PlayerHud.Instance.isPaused)
@@ -67,6 +72,17 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
             else
             {
                 LevelManager.Instance.PauseGame();
+            }
+        }
+
+        if (allowInput)
+        {
+            if (Input.GetKeyDown(KeyCode.Home))
+            {
+                rb.position = LevelManager.Instance.playerRespawnPoint.position;
+                rb.rotation = LevelManager.Instance.playerRespawnPoint.rotation;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
             }
         }
     }

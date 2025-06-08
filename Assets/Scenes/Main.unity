@@ -737,6 +737,11 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.y
       value: 82
       objectReference: {fileID: 0}
+    - target: {fileID: 3847978102385455362, guid: 6ec023b37932af34c8267a27d121ea22,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4633341360962187355, guid: 6ec023b37932af34c8267a27d121ea22,
         type: 3}
       propertyPath: m_Name

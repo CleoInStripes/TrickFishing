@@ -72,8 +72,8 @@ MonoBehaviour:
   capturePointPrefab: {fileID: 1362159120544433674, guid: 57ef0f0838f5bc94597aa211624fc1ee,
     type: 3}
   currentWaveIndex: 0
-  initialWaveCountdownTime: 5
-  newWaveCountdownTime: 5
+  initialWaveCountdownTime: 1
+  newWaveCountdownTime: 1
   timeToStartNextWave: 0
   capturePoint: {fileID: 0}
 --- !u!1001 &190893398327550451
@@ -236,6 +236,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UnderwaterFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448915455062682503, guid: 41a36b8777373cd478818d95aa00598c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448915455062682503, guid: 41a36b8777373cd478818d95aa00598c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448915455062682503, guid: 41a36b8777373cd478818d95aa00598c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8448915455062682503, guid: 41a36b8777373cd478818d95aa00598c,
         type: 3}

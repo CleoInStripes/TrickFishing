@@ -13,10 +13,13 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     public TextMeshProUGUI FishesLeftText;
     public MenuPage GameOverPage;
     public TextMeshProUGUI GameOverScoreText;
+    public MenuPage PausePage;
 
     [Header("Damage Screen")]
     public MenuPage damageScreen;
     public float damageScreenFlickerWaitTime = 3f;
+
+    [HideInInspector] public bool isPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,10 +27,6 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         PlayerModel.Instance.health.OnDamageTaken.AddListener(() =>
         {
             FlickerDamageScreen();
-        });
-        PlayerModel.Instance.health.OnHealthDepleted.AddListener(() =>
-        {
-            ShowGameOverScreen();
         });
     }
 
@@ -99,9 +98,26 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
 
     public void ShowGameOverScreen()
     {
+        Time.timeScale = 0f;
         GameOverScoreText.text = $"Your Score: {PlayerModel.Instance.score}";
         GameOverPage.Show();
         HelperUtilities.UpdateCursorLock(false);
+    }
+
+
+    public void Resume()
+    {
+        PausePage.Hide();
+        Time.timeScale = 1f;
+        HelperUtilities.UpdateCursorLock(true);
+        isPaused = false;
+    }
+
+    public void ShowPauseScreen()
+    {
         Time.timeScale = 0f;
+        PausePage.Show();
+        HelperUtilities.UpdateCursorLock(false);
+        isPaused = true;
     }
 }

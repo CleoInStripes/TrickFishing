@@ -31,6 +31,7 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     [Header("Misc")]
     public float spawnSampleRadius = 2f;
     public int maxNavMeshSampleAttempts = 10;
+    public Transform overrideInitialFishSpawnSpotsHolder;
 
 
     private List<Transform> initialFishSpawnSpots = new();
@@ -40,7 +41,9 @@ public class FishAIManager : SingletonMonoBehaviour<FishAIManager>
     private new void Awake()
     {
         base.Awake();
-        initialFishSpawnSpots = LevelManager.Instance.initialFishSpawnSpotsHolder.GetComponentsInChildren<Transform>().ToList();
+
+        Transform spawnSpotsHolder = overrideInitialFishSpawnSpotsHolder ? overrideInitialFishSpawnSpotsHolder : LevelManager.Instance.initialFishSpawnSpotsHolder;
+        initialFishSpawnSpots = spawnSpotsHolder.GetComponentsInChildren<Transform>().ToList();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

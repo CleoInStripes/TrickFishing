@@ -113,6 +113,11 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerModel.Instance.allowInput)
+        {
+            return;
+        }
+
         //player rotate
         var cam = PlayerCam.Instance.cam;
         playerObj.rotation = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0);

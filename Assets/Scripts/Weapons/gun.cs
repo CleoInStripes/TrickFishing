@@ -44,7 +44,7 @@ public class gun : MonoBehaviour
 
     void Update()
     {
-        if (!PlayerModel.Instance.health.IsAlive)
+        if (!PlayerModel.Instance.allowInput)
         {
             return;
         }
@@ -108,6 +108,8 @@ public class gun : MonoBehaviour
     void Shoot()
     {
         curAmmo--;
+
+        SoundEffectsManager.Instance.Play("TF_Bubbleshot", 0.5f);
 
         if (bulletTrailPrefab)
         {

@@ -14,6 +14,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public string mainMenuScene = "MainMenu";
     public string mainLevelScene = "Main";
 
+    [Header("Settings")]
+    public Vector2 mouseSensitivity = Vector2.one;
+    [HideInInspector] public Vector2 originalMouseSensitivity = Vector2.one;
+
     public InputDevice lastDetectedDevice = null;
 
     private Vector2 lastScreenSize;
@@ -38,6 +42,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         QualitySettings.vSyncCount = 0; // VSync must be disabled.
         Application.targetFrameRate = 60;
+    }
+
+    private void Start()
+    {
+        originalMouseSensitivity = mouseSensitivity;
     }
 
     // Update is called once per frame

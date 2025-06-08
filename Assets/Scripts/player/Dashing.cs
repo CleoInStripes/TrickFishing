@@ -41,6 +41,11 @@ public class Dashing : MonoBehaviour
 
     private void Update()
     {
+        if (!PlayerModel.Instance.allowInput)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(dashKey))
         {
             Dash();

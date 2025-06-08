@@ -22,6 +22,24 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     [ReadOnly]
     public int score = 0;
 
+    public bool allowInput
+    {
+        get
+        {
+            if (!health.IsAlive)
+            {
+                return false;
+            }
+
+            if (PlayerHud.Instance.isPaused)
+            {
+                return false;
+            }
+
+            return true;
+        }
+    }
+
     public new void Awake()
     {
         base.Awake();
@@ -40,7 +58,17 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PlayerHud.Instance.isPaused)
+            {
+                PlayerHud.Instance.Resume();
+            }
+            else
+            {
+                LevelManager.Instance.PauseGame();
+            }
+        }
     }
 
     public void AddScore(int _score)
@@ -70,5 +98,6 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
     public void OnDeath()
     {
         SoundEffectsManager.Instance.Play("TF_Playerdie");
+        LevelManager.Instance.TriggerGameOver();
     }
 }

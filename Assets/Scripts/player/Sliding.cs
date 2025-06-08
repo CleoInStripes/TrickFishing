@@ -39,6 +39,11 @@ public class Sliding : MonoBehaviour
 
     private void Update()
     {
+        if (!PlayerModel.Instance.allowInput)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(slideKey))
         {
             StartSlide();

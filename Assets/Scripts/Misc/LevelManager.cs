@@ -42,7 +42,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
                 if (timer.expired)
                 {
                     // Out of time
-                    TriggerGameOver();
+                    //TriggerGameOver();
                 }
             }
         }
@@ -58,7 +58,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         timer = new SimpleTimer(settings.maxTime);
     }
 
-    void TriggerGameOver()
+    public void TriggerGameOver()
     {
         if (isGameOver) {
             return;
@@ -66,6 +66,11 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
         isGameOver = true;
 
-        // TODO: Handle Game Over Logic
+        PlayerHud.Instance.ShowGameOverScreen();
+    }
+
+    public void PauseGame()
+    {
+        PlayerHud.Instance.ShowPauseScreen();
     }
 }

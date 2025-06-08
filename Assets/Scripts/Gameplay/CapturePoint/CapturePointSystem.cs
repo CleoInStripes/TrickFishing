@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CapturePointSystem : SingletonMonoBehaviour<CapturePointSystem>
 {
+    public bool capturePointsEnabled = true;
     public Transform capturePointsHolder;
     public CapturePoint capturePointPrefab;
-    public bool capturePointsEnabled = true;
 
     private Randomizer<Transform> capturePointsRandomizer;
     private CapturePoint capturePoint;
@@ -18,8 +18,12 @@ public class CapturePointSystem : SingletonMonoBehaviour<CapturePointSystem>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnCapturePoint();
+        if (!capturePointsEnabled)
+        {
+            return;
+        }
 
+        SpawnCapturePoint();
         capturePoint.PreActivate();
     }
 

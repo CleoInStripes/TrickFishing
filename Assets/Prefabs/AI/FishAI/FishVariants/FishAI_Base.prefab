@@ -108,8 +108,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.25
+  m_Radius: 1
+  m_Height: 1.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!1 &1259516696808150053
@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 3353858605472394051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -401,8 +401,8 @@ MonoBehaviour:
   avatarRoot: {fileID: 7260096392016879390}
   avatarYControl: {fileID: 398142679516262621}
   avatarYOffsetRange:
-    min: -1
-    max: 1
+    min: -2
+    max: 2
   swimYRange:
     min: -0.25
     max: 0.25
@@ -410,8 +410,8 @@ MonoBehaviour:
     min: 1
     max: 2
   swimYLongTermRange:
-    min: -1
-    max: 1
+    min: -2
+    max: 2
   swimYLongTermDurationRange:
     min: 5
     max: 7
@@ -466,6 +466,9 @@ MonoBehaviour:
   isRangedAttack: 0
   projectilePrefab: {fileID: 6864319545117250844, guid: f1a5741599378e440b19ec03c75c8c14,
     type: 3}
+  projectileTargetOffsetRange:
+    min: -2
+    max: 2
   alertSwitchState: 4
   viewAngle: 160
   viewDistance: 200
@@ -553,7 +556,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3
+  m_Height: 6
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

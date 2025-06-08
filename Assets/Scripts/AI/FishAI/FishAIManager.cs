@@ -4,9 +4,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Splines;
-using static UnityEditor.FilePathAttribute;
-using static UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class FishAIManager : SingletonMonoBehaviour<FishAIManager>

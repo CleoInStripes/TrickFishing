@@ -1,9 +1,7 @@
 
 using UnityEngine;
 using System.Collections;
-using System;
 using DG.Tweening;
-using UnityEditor.Animations;
 
 public class gun : MonoBehaviour
 {

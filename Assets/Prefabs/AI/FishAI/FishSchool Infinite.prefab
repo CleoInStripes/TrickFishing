@@ -21,22 +21,22 @@ PrefabInstance:
     - target: {fileID: 2135461826161267095, guid: 0b41657ff002c58499b1dcb60e2d5535,
         type: 3}
       propertyPath: fishSpawnGroups.Array.data[0].countRange.max
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2135461826161267095, guid: 0b41657ff002c58499b1dcb60e2d5535,
         type: 3}
       propertyPath: fishSpawnGroups.Array.data[0].countRange.min
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2135461826161267095, guid: 0b41657ff002c58499b1dcb60e2d5535,
         type: 3}
       propertyPath: fishSpawnGroups.Array.data[1].countRange.max
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2135461826161267095, guid: 0b41657ff002c58499b1dcb60e2d5535,
         type: 3}
       propertyPath: fishSpawnGroups.Array.data[1].countRange.min
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4905546724844004779, guid: 0b41657ff002c58499b1dcb60e2d5535,
         type: 3}

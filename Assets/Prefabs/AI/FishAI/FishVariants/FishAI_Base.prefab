@@ -629,6 +629,8 @@ MonoBehaviour:
   deathParticleEffectPrefab: {fileID: 375571543012155186, guid: 3f71509385a927d41951db333fafccc3,
     type: 3}
   animator: {fileID: 2599913813068563664}
+  fishFoodPrefab: {fileID: 1537556073048532093, guid: 49e0d61eb382f5f44b4ef9810255b6c9,
+    type: 3}
   destroyOnDeath: 1
   health: {fileID: 0}
   aiBrain: {fileID: 0}

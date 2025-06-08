@@ -30,6 +30,7 @@ public class FishAIModel : MonoBehaviour
     public Transform projectileSpawnPoint;
     public GameObject deathParticleEffectPrefab;
     public Animator animator;
+    public GameObject fishFoodPrefab;
 
     [HideInInspector]
     public bool destroyOnDeath = true;
@@ -111,6 +112,8 @@ public class FishAIModel : MonoBehaviour
         // TODO: Play animation, particle fx, etc..
         var pfx = Instantiate(deathParticleEffectPrefab, avatarYControl.transform.position + (Vector3.up * 1), avatarYControl.transform.rotation);
         Destroy(pfx, 10f);
+
+        Instantiate(fishFoodPrefab, avatarYControl.transform.position + (Vector3.up * 1), avatarYControl.transform.rotation);
 
         PlayerModel.Instance.AddScore(killScore);
         OnDeath.Invoke();

@@ -10,6 +10,7 @@ public class MenuPage : MonoBehaviour
     public Selectable selectOnShow;
     public bool selectOnEnable = false;
 
+    public bool disableSelectablesDuringFade = true;
     public bool enablePreSequence = true;
     public float fadeDuration = 0.4f;
 
@@ -38,9 +39,12 @@ public class MenuPage : MonoBehaviour
     {
         DOTween.Kill(gameObject);
         var selectables = gameObject.GetInteractiveSelectables();
-        foreach (var selectable in selectables)
+        if (disableSelectablesDuringFade)
         {
-            selectable.interactable = false;
+            foreach (var selectable in selectables)
+            {
+                selectable.interactable = false;
+            }
         }
 
         var showSeq = gameObject.DOFade(1, fadeDuration);
@@ -78,9 +82,12 @@ public class MenuPage : MonoBehaviour
         DOTween.Kill(gameObject);
 
         var selectables = gameObject.GetInteractiveSelectables();
-        foreach (var selectable in selectables)
+        if (disableSelectablesDuringFade)
         {
-            selectable.interactable = false;
+            foreach (var selectable in selectables)
+            {
+                selectable.interactable = false;
+            }
         }
 
         var hideSeq = gameObject.DOFade(0, fadeDuration);

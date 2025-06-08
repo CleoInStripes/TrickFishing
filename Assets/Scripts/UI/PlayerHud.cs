@@ -11,6 +11,8 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
     public TextMeshProUGUI WaveText;
     public GameObject FishesLeftBox;
     public TextMeshProUGUI FishesLeftText;
+    public MenuPage GameOverPage;
+    public TextMeshProUGUI GameOverScoreText;
 
     [Header("Damage Screen")]
     public MenuPage damageScreen;
@@ -22,6 +24,10 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         PlayerModel.Instance.health.OnDamageTaken.AddListener(() =>
         {
             FlickerDamageScreen();
+        });
+        PlayerModel.Instance.health.OnHealthDepleted.AddListener(() =>
+        {
+            ShowGameOverScreen();
         });
     }
 
@@ -64,7 +70,7 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
 
         if (capturePointSystem.isCountingDown)
         {
-            WaveText.text = $"New wave incoming in {(int)capturePointSystem.timeToStartNextWave}";
+            WaveText.text = $"New wave incoming in {Mathf.Ceil(capturePointSystem.timeToStartNextWave)}";
         }
         else if (capturePointSystem.isWaveActive)
         {
@@ -79,5 +85,23 @@ public class PlayerHud : SingletonMonoBehaviour<PlayerHud>
         damageScreen.Show();
         await Task.Delay((int)(damageScreenFlickerWaitTime * 1000));
         damageScreen.Hide();
+    }
+
+    public void Restart()
+    {
+        GameManager.Instance.RestartCurrentScene();
+    }
+
+    public void GoToMainMenu()
+    {
+        GameManager.Instance.GoToMainMenu();
+    }
+
+    public void ShowGameOverScreen()
+    {
+        GameOverScoreText.text = $"Your Score: {PlayerModel.Instance.score}";
+        GameOverPage.Show();
+        HelperUtilities.UpdateCursorLock(false);
+        Time.timeScale = 0f;
     }
 }

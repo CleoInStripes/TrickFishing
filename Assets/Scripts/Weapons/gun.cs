@@ -44,6 +44,11 @@ public class gun : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerModel.Instance.health.IsAlive)
+        {
+            return;
+        }
+
         if (isReloading)
         {
             return;

@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 8204494955924865638, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
       propertyPath: hitScore
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8204494955924865638, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}
       propertyPath: killScore
-      value: 300
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8634620179641765956, guid: 07d13701db9aea0429290439da10a4ae,
         type: 3}

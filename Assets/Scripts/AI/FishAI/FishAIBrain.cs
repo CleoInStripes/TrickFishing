@@ -128,7 +128,10 @@ public class FishAIBrain : MonoBehaviour
         // If we are chasing/attacking, we don't care about alerts - we just wanna go for the kill
         if (!nonAlertableStates.Contains(currentState))
         {
-            SwitchState(alertSwitchState);
+            if (PlayerModel.Instance.health.IsAlive)
+            {
+                SwitchState(alertSwitchState);
+            }
         }
     }
 
@@ -252,6 +255,12 @@ public class FishAIBrain : MonoBehaviour
 
     void PerformChase()
     {
+        if (!PlayerModel.Instance.health.IsAlive)
+        {
+            SwitchState(State.Roaming);
+            return;
+        }
+
         if (!CanSeePlayer())
         {
             RotateByVelocity();

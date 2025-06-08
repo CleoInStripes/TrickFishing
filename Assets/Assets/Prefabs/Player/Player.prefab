@@ -520,7 +520,8 @@ MonoBehaviour:
   muzzlePoint: {fileID: 0}
   bulletTrailPrefab: {fileID: 7763882905047970251, guid: 00ca4218c6d848945bf4a89d2a3fb0c6,
     type: 3}
-  impactEffectPrefab: {fileID: 0}
+  impactEffectPrefab: {fileID: 3918742467114239352, guid: 1ddd6851575b49a43964d38968918774,
+    type: 3}
 --- !u!114 &5777921017701546972
 MonoBehaviour:
   m_ObjectHideFlags: 0

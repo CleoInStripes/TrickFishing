@@ -84,6 +84,13 @@ public class PlayerModel : SingletonMonoBehaviour<PlayerModel>
 
         if (allowInput)
         {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                bulletTimeCharge = bulletTimeMaxCharge;
+                bulletTimeAvailable = true;
+            }
+
+
             inBulletTime = false;
             if (bulletTimeAvailable && Input.GetButton("Fire2"))
             {

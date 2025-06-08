@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using static UnityEngine.UI.Image;
 
 public class gun : MonoBehaviour
 {
@@ -123,20 +124,21 @@ public class gun : MonoBehaviour
             var bulletTrail = Instantiate(bulletTrailPrefab, muzzlePoint.transform.position + bulletSpawnOffset, muzzlePoint.transform.rotation);
             Destroy(bulletTrail, 3f);
         }
-
         PlayRecoil();
 
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        {
-            //Debug.Log(hit.transform.name);
+        RaycastHit[] hits = Physics.RaycastAll(fpsCam.transform.position, fpsCam.transform.forward, range);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
+        foreach (RaycastHit hit in hits)
+        {
             target target = hit.transform.GetComponentInParent<target>();
-            if (target != null)
+            if (!target)
             {
-                //Debug.Log($"Found Target: {target.gameObject.name}");
-                target.Hit(damage);
+                break;
             }
+
+            //Debug.Log($"Found Target: {target.gameObject.name}");
+            target.Hit(damage);
 
             if (hit.rigidbody != null)
             {
@@ -149,6 +151,30 @@ public class gun : MonoBehaviour
                 Destroy(impactGO, 2f);
             }
         }
+
+        //RaycastHit hit;
+        //if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        //{
+        //    //Debug.Log(hit.transform.name);
+
+        //    target target = hit.transform.GetComponentInParent<target>();
+        //    if (target != null)
+        //    {
+        //        //Debug.Log($"Found Target: {target.gameObject.name}");
+        //        target.Hit(damage);
+        //    }
+
+        //    if (hit.rigidbody != null)
+        //    {
+        //        hit.rigidbody.AddForce(-hit.normal * impactForce);
+        //    }
+
+        //    if (impactEffectPrefab)
+        //    {
+        //        GameObject impactGO = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+        //        Destroy(impactGO, 2f);
+        //    }
+        //}
     }
 
     void PlayRecoil()
